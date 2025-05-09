@@ -1,0 +1,42 @@
+.team_content{
+    height: auto;
+}
+.team__containers {
+    width: 100%;
+    min-height: auto;
+    color: var(--text);
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.team_image {
+    height: auto;
+    width: 70%;
+    border-radius: 50px;
+}
+.team_content {
+    place-items: center;
+}
+.team-h3 {
+    font-size: var(--miniheader);
+}
+.team-p {
+    font-size: var(--p);
+    font-weight: 600;
+}
+.team-next{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    padding: 1rem;
+  
+}
+.team-pre{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    padding: 1rem;
+    
+}

@@ -1,0 +1,206 @@
+.how__container{
+    width: 100%;
+}
+.how__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+.how__content h1{
+    font-size: var(--miniheader);
+    font-weight: 600;
+    text-align: center;
+}
+.how__p{
+    font-size: var(--p);
+    font-weight: 500;
+    text-align: center;
+}
+.how__contents{
+    display: flex;
+    
+    place-items: center;
+   width: 90%;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.how__h2{
+    font-size: var(--p);
+    font-weight: 700;
+    border: 1px solid var(--blueshover);
+    background-color: var(--blueshovers);
+    padding: 10px 9px;
+    border-radius: 20px;
+    
+}
+.how-num{
+   position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--text);
+    color: var(--BgWhite);
+    font-weight: 700;
+}
+.how__cons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.how__cons p{
+    font-size: var(--p);
+    font-weight: 500;
+    text-align: center;
+}
+.red{
+    background-color: red;
+    position: relative;
+}
+.green{
+    background-color: green;
+    z-index: 3;
+}
+.blue{
+    background-color: blue;
+    z-index: 3;
+}
+.purple{
+    background-color: purple;
+    z-index: 3;
+}
+.red::before{
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+ z-index: 2;
+ background-color: none;
+ border: 2px dashed red;
+ width: 250px;
+ left: 100%;
+
+ 
+}
+.green::before{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+   z-index: 2;
+   background-color: none;
+   border: 2px dashed green;
+   width: 250px;
+   left: 100%;
+  
+   
+  }
+  .blue::before{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+   z-index: 2;
+   background-color: none;
+   border: 2px dashed blue;
+   width: 250px;
+   left: 100%;
+  
+   
+  }
+  @media (max-width: 820px) {
+    .how__content{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100%;
+    }
+    .how__contents{
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+    .how__content h1{
+        font-size: var(--miniheader);
+    }
+    .how__p{
+        font-size: var(--p);
+    }
+    .how__h2{
+        font-size: var(--p);
+    }
+    .how__cons{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .how__num{
+        position: relative;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: var(--text);
+        color: var(--BgWhite);
+        font-weight: 700;
+    }
+    .red::before{
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+       z-index: 2;
+       background-color: none;
+       border: 2px dashed red;
+       width: 250px;
+       left: 100%;
+       display: none;
+      
+       
+      }
+      .green::before{
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 100%;
+         z-index: 2;
+         background-color: none;
+         border: 2px dashed green;
+         width: 250px;
+         left: 100%;
+         display: none;
+        
+         
+        }
+        .blue::before{
+          content: "";
+          position: absolute;
+          height: 2px;
+          width: 100%;
+         z-index: 2;
+         background-color: none;
+         border: 2px dashed blue;
+         width: 250px;
+         left: 100%;
+         display: none;
+        
+         
+        }
+}
+@media (max-width: 500px) {
+    .how__content{
+        padding-top: 2rem;
+    }
+}

@@ -1,0 +1,68 @@
+.signup__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--BgWhite);
+}
+.signup-form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--BgWhite);
+}
+.signup__h1{
+    font-size: var(--header);
+    color: var(--primarycolor);
+    font-family: var(--font-family);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.inputsignup{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--text);
+    margin-bottom: 1rem;
+    font-size: var(--p);
+    font-family: var(--font-family);
+    color: var(--text);
+}
+.signup__button{
+    background-color: var(--primarycolor);
+    color: var(--BgWhite);
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: var(--p);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+.signup__button:hover{
+    background-color: var(--goldhover);
+}
+
+.password__field {
+    position: relative;
+    width: 100%;
+  }
+  .password__field svg {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    height: 20px; /* Adjust this value based on your icon size */
+    width: 20px; /* Adjust this value based on your icon size */
+  }
+    .password__field input {
+        padding-right: 40px; /* Adjust this value based on the width of the icon */
+    }  

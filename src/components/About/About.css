@@ -1,0 +1,113 @@
+.container_about {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+    
+}
+.about__hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.671)),url("../../../public/aboutsky.jpeg");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+    color: var(--text);
+    backdrop-filter: blur(50px);
+    background-attachment: fixed;
+}
+.about--h1{
+    font-size: var(--header);
+    font-weight: 600;
+    text-align: center;
+    color: var(--BgWhite);
+}
+.empower-content{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    color: var(--text);
+    gap: 1rem;
+    padding: 2rem;
+}
+.em-h1{
+    font-size: var(--header);
+    font-weight: 600;
+    
+    color: var(--text);
+}
+.mission-content{
+    text-align: center;
+    font-size: var(--p);
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: var(--blueshovers);
+    border: 1px solid var(--blueshover);
+}
+.whychoose-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    color: var(--text);
+    gap: 1rem;
+    padding: 2rem;
+}
+.future-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
+    width: 100%;
+    color: var(--BgWhite);
+    gap: 1rem;
+    text-align: center;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.671)),url("../../../public/handshake.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+.privacy-policy-container{
+    width: 100%;
+    text-align: center;
+    line-height: 0.5rem;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.057);
+}
+@media (max-width: 768px) {
+    .about--h1{
+        font-size: var(--miniheader);
+    }
+    .empower-content{
+        flex-direction: column-reverse;
+        flex: content;
+        gap: 1rem;
+    }
+    .empower-content h1{
+        font-size: var(--miniheader);
+    }
+    .mission-content{
+        font-size: var(--p);
+    }
+    .future-content h1{
+        font-size: var(--miniheader);
+    }
+    .whychoose-content{
+        flex-direction: column-reverse;
+        
+        gap: 1rem;
+    }
+    .em-h1{
+        font-size: var(--miniheader);
+    }
+}

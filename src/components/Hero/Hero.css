@@ -1,0 +1,131 @@
+.hero__blues{
+    height: 0rem;
+    width: 100%;
+    background-color: rgba(120, 120, 238, 0.918);
+    position: absolute;
+    bottom: 30%;
+  
+    
+    box-shadow: 0 0 900px 200px rgba(85, 91, 201, 0.669);
+    border-radius: 50%;
+    
+    animation: move 5s linear infinite;
+}
+.hero__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+}
+.hero__section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh;
+    background-color: var(--BgWhite);
+    position: relative;
+    place-items: center;
+}
+.hero_h1{
+    text-align: center;
+    color: var(--text);
+    font-size: var(--header);
+    font-weight: 600;
+}
+.hero_span{
+    color: var(--primarycolor);
+}
+.hero__p{
+    text-align: center;
+    font-size: var(--miniheader);
+    color: var(--text);
+}
+.hero_p{
+    font-size: var(--p);
+    color: var(--text);
+    text-align: center;
+    
+}
+.pdiv{
+    width: 60%;
+}
+.hero_btn{
+    background-color: var(--primarycolor);
+    padding: 0.8rem 1.7rem;
+    border-radius: 20px;
+    font-size: var(--p);
+    color: var(--BgWhite);
+    font-weight: 500;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.hero_btn:hover{
+   background-color: var(--blueshover);
+}
+.hero__img{
+  
+   height: 25rem;
+    object-fit: cover;
+    
+    z-index: 0;
+    top: 0;
+    left: 0;
+}
+.img-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+ 
+}
+@media all and (max-width: 767px) {
+    .hero__section{
+        height: 100vh;
+        
+    }
+    .hero__img{
+      height: 20rem;
+        width: 100%;
+       
+        
+        
+        
+         
+
+    }
+    .img-con{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+     
+    }
+    .pdiv{
+        width: 95%;
+    }
+    .hero_h1{
+        font-size: 1.6rem;
+    }
+    .hero_p{
+        font-size: 1rem;
+        
+       
+    }
+    
+    .hero__p{
+        font-size: var(--p);
+        font-weight: 500;
+    }
+    .hero_btn{
+        font-size: 1rem;
+    }
+   
+}

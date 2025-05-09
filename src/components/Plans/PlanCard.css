@@ -1,0 +1,90 @@
+.Plan_card{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    color: var(--text);
+    background-color: var(--blueshovers);
+    border: 1px solid var(--blueshover);
+    border-radius: 20px;
+    
+    align-items: center;
+    padding: 0.7rem;
+    width: 100%;
+    max-width: 400px;
+}
+.container-PLAN {
+    width: 100%;
+    min-height: 100vh;
+    place-content: center;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.plan-btn{
+    background-color: var(--primarycolor);
+   padding: 0.5rem;
+    font-size: var(--p);
+    color: var(--BgWhite);
+    border-radius: 20px;
+    margin-top: 1rem;
+}
+.pop-con{
+    background-color: rgba(37, 37, 37, 0.521);
+}
+.pop-main{
+    background-color: var(--BgWhite);
+    padding: 2rem;
+    border-radius: 20px;
+    width: ;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.041);
+}
+.concel-btn{
+    background-color: var(--primarycolor);
+    padding: 0.5rem;
+    font-size: var(--p);
+    color: var(--BgWhite);
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+.submit-btn{
+   
+    padding: 0.5rem;
+    font-size: var(--p);
+    color: var(--BgWhite);
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+.select-input{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #80a7fa;
+    font-size: var(--p);
+    margin-bottom: 1rem;
+}
+.card_hlder{
+    width: 100%;
+    gap: 1rem;
+}
+@media (max-width: 668px) {
+    .Plan_card{
+        width: 100%;
+    }
+    .container-PLAN {
+        padding: 0;
+    }
+    .card_hlder{
+display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+        padding: 1rem;
+        width: 100%;
+        place-items: center;
+        
+    }
+}
