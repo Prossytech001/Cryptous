@@ -445,6 +445,8 @@ const DashboardLayout = ({ children }) => {
     { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
     { path: '/plans', label: 'Plans', icon: <MdOutlineAttachMoney /> },
     { path: '/support', label: 'Support', icon: <MdSupportAgent /> },
+    { path: '/funding', label: 'Fund Account', icon: <MdSupportAgent /> }
+
    
   ];
 

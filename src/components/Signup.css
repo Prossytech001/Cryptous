@@ -66,3 +66,19 @@
     .password__field input {
         padding-right: 40px; /* Adjust this value based on the width of the icon */
     }  
+
+    @media all and (max-width: 500px){
+        .signup-form{
+            width: 90%;
+            
+        }
+        .signup__h1{
+            font-size: var(--header);
+        }
+        .inputsignup{
+            font-size: var(--p);
+        }
+        .signup__button{
+            font-size: var(--p);
+        }
+    }
