@@ -426,7 +426,7 @@ import { CgProfile } from "react-icons/cg";
 import { RiMessage3Fill } from "react-icons/ri";
 import { MdSupportAgent, MdLogout, MdOutlineAttachMoney } from "react-icons/md";
 import { FaBars, FaTimes } from "react-icons/fa";
-import './DashboardLayout.css';
+import '../../../src/components/layouts/Dashboardlayout.css';
 
 const DashboardLayout = ({ children }) => {
   const { logout } = useContext(AuthContext);
