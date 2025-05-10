@@ -73,7 +73,7 @@ export default function PaymentPage() {
     try {
       const res = await axios.post(`${api}/api/payment/create`, {
         amount,
-        userId: JSON.parse(localStorage.getItem("user"))?.id, // Replace with dynamic user ID
+        userId: localStorage.getItem('userId'), // Replace with dynamic user ID
       });
 
       setPaymentData(res.data);
@@ -87,7 +87,7 @@ export default function PaymentPage() {
   useEffect(() => {
     if (paymentData?.paymentId) {
       const interval = setInterval(async () => {
-        const res = await axios.get(`/api/payment/status/${paymentData.paymentId}`);
+        const res = await axios.get(`${api}/api/payment/status/${paymentData.paymentId}`);
         if (res.data.status === 'finished') {
           setStatusMessage('✅ Payment successful! Your balance will be updated shortly.');
           clearInterval(interval);
