@@ -92,6 +92,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { login } = useContext(AuthContext);// Assuming this is used for authentication context
   const api = import.meta.env.VITE_API_URL; 
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate(); // Initialize the navigate function
 
@@ -182,7 +183,7 @@ const Login = () => {
         email,
         password,
       });
-  
+      setLoading(true);
       // ✅ Save token and user info to localStorage
       localStorage.setItem("authToken", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -198,6 +199,7 @@ const Login = () => {
       console.error("❌ Login failed:", err.response?.data?.message || err.message);
       // Optionally show error to user
     }
+    setLoading(false);
   };
   
 
@@ -236,7 +238,7 @@ const Login = () => {
           </span>
         </div>
         <div className="forget"><h1>Forget password</h1></div>
-        <button type="submit" className="signup__button">Login</button>
+        <button type="submit" className="signup__button">{loading ? 'Loading.....' : 'Login'}</button>
         <h1>Don't have an account? <Link to="/signup">Sign up</Link></h1>
       </form>
     </div>
