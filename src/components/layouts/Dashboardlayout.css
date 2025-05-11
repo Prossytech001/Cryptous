@@ -271,7 +271,7 @@ transition: 0.5s ease-in-out;
 .layout-container {
     display: flex;
     min-height: 100vh;
-    background-color: #f8f9fa;
+    background-color: #ffffff88;
     position: relative;
     flex-direction: column;
   }

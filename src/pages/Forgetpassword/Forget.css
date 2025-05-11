@@ -1,0 +1,27 @@
+.reset-form{
+    background-color: var(--BgWhite);
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+}
+.reset-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+flex-direction: column;
+height: 100vh;
+}
+.res-input{
+    height: 50px;
+    width: 100%;
+    border: 2px solid var(--primarycolor);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.res-btn{
+    background-color: var(--primarycolor);
+    height: 50px;
+    width: 100%;
+    color: var(--BgWhite);
+    font-size: var(--p);
+}

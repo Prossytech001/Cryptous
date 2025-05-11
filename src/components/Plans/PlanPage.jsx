@@ -8,6 +8,7 @@ import "../../components/Plans/PlanCard.css"
 const PlanPage = () => {
   const [plans, setPlans] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [loader, setLoader] = useState(false)
   const [amount, setAmount] = useState("");
   const api = import.meta.env.VITE_API_URL;
   const token = localStorage.getItem("authToken");

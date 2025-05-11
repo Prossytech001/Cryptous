@@ -152,24 +152,26 @@
 
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Loader from './components/Layout';
+
 import { AuthContext } from '../src/components/Authcontext';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import VerifyEmail from './pages/VerifyEmail';
+
 import Dashboard from './pages/Dashboard';
 import Homepage from './pages/Homepage';
 import PrivateRoute from '../src/components/PrivateRoute';
 import PublicLayout from '../src/components/layouts/Publiclayout';
 import DashboardLayout from '../src/components/layouts/Dashboardlayout';
 import Profile from './pages/Profile';
-import StakeForm from './pages/StakeForm';
+
 import PlanPage from '../src/components/Plans/PlanPage';
 import Showplan from '../src/components/Showplan/Showplan';
 import About from "../src/components/About/About";
 import Contact from "./pages/Contact"
 import PrivacyPolicy from "./pages/Privacy";
 import PaymentPage from './pages/PaymentFunding';
+import Forgetpassword from './pages/Forgetpassword/ForgetPassword';
+import ResetPassword from './pages/Forgetpassword/ResetPassword';
 function App() {
   const { isAuthenticated } = React.useContext(AuthContext);
 
@@ -188,6 +190,10 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/forget"  element={<Forgetpassword/>}/>
+          <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+
+
         </Route>
 
         {/* PRIVATE ROUTES WRAPPED IN DASHBOARD LAYOUT */}

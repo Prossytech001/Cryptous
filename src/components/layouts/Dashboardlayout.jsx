@@ -427,6 +427,7 @@ import { RiMessage3Fill } from "react-icons/ri";
 import { MdSupportAgent, MdLogout, MdOutlineAttachMoney } from "react-icons/md";
 import { FaBars, FaTimes } from "react-icons/fa";
 import '../../../src/components/layouts/Dashboardlayout.css';
+import { RiFundsBoxFill } from "react-icons/ri";
 
 const DashboardLayout = ({ children }) => {
   const { logout } = useContext(AuthContext);
@@ -445,7 +446,7 @@ const DashboardLayout = ({ children }) => {
     { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
     { path: '/plans', label: 'Plans', icon: <MdOutlineAttachMoney /> },
     { path: '/support', label: 'Support', icon: <MdSupportAgent /> },
-    { path: '/funding', label: 'Fund Account', icon: <MdSupportAgent /> }
+    { path: '/funding', label: 'Fund Account', icon: <RiFundsBoxFill /> }
 
    
   ];
