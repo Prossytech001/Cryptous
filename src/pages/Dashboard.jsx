@@ -868,7 +868,7 @@ const handleStakeClaim = async (stakeId) => {
             {filteredStakes.map((stake) => (
               <tr key={stake._id} className="list-dash  border-b hover:bg-gray-50">
                 <td className="p-3">{stake.plan?.name || "-"}</td>
-                <th className="p-3">${stake.amount}</th>
+                <td className="p-3">${stake.amount}</td>
                 <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
                 <td className="px-4 py-2">{(stake.dailyROI)}%</td>
                 
