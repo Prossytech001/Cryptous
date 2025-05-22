@@ -1,0 +1,47 @@
+.create-user-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    padding: 20px;
+   
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+}
+.admin-create-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #2A2A3C;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   justify-content: center;
+    align-items: center;
+}
+.create-user-button {
+    background-color: #3B82F6;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-user-button:hover {
+    background-color: #2563EB;
+}
+
+@media all and (max-width: 768px) {
+    .admin-create-form{
+        width: 100%;
+        padding: 10px;
+    }
+}

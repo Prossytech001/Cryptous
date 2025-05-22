@@ -452,7 +452,7 @@ const DashboardLayout = ({ children }) => {
   ];
 
   return (
-    <div className="layout-container">
+    <div className={`layout-container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
       {/* Top Nav */}
       <div className="top-nav">
         <button className="toggle-button" onClick={() => setSidebarOpen(!isSidebarOpen)}>
@@ -495,7 +495,7 @@ const DashboardLayout = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main className="main-content">
+      <main style={{ backgroundColor: '#1e1e2d' }} className="main-content">
         {children}
       </main>
     </div>

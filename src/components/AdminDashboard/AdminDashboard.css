@@ -1,0 +1,116 @@
+.admin-dashboard_container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #1E1E2D;
+}
+.admin-card {
+    background-color: #2A2A3C;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+}
+.admin_dash_h4{
+    font-size: var(--header);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.acard2{
+    color: #FFA800;
+}
+
+.acard3{
+    color: #50CD89;
+}
+.admin-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    overflow-x: auto;
+   
+}
+.admin-table-header{
+    background-color: #323248;
+    color: #FFFFFF; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    font-size: var(--p);
+}
+.admin-balance{
+   
+    padding: 10px;
+   
+   
+    color: #50CD89;
+}
+.admin_tr{
+    background-color: #2A2A3C;
+    color: #FFFFFF;
+   
+    
+}
+.admin_tr:hover{
+    background-color: #323248;
+}
+.admin-username{
+    text-transform: uppercase;
+    color:	#FFC700;
+}
+.admin-email{
+     color: #3E97FF;
+}
+.admin-see-more-btn{
+    background-color: #A855F7;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.admin_recent_activity {
+   
+   
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+}
+.admin_recent_activity-list{
+    list-style: none;
+    padding: 15px;
+    display: flex;
+   justify-content: space-between;
+    gap: 10px;
+}
+/*adminDashboardlayout*/
+.aside_admin{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #2B2B3C;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.admin-panel-link{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+   
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: var(--p);
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+.admin-panel-link:hover{
+    background-color: #3E3E4D;
+}

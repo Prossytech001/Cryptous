@@ -150,101 +150,237 @@
 
 // export default App;
 
-import React from 'react';
+// import React from 'react';
+// import { Routes, Route } from 'react-router-dom';
+// import AdminDashboard from './pages/AdminDashboard';
+
+// import { AuthContext } from '../src/components/Authcontext';
+// import Login from './pages/Login';
+// import Signup from './pages/Signup';
+
+// import Dashboard from './pages/Dashboard';
+// import Homepage from './pages/Homepage';
+// import PrivateRoute from '../src/components/PrivateRoute';
+// import PublicLayout from '../src/components/layouts/Publiclayout';
+// import DashboardLayout from '../src/components/layouts/Dashboardlayout';
+// import Profile from './pages/Profile';
+// import AdminLogin from './pages/AdminLogin';
+// import PlanPage from '../src/components/Plans/PlanPage';
+// import Showplan from '../src/components/Showplan/Showplan';
+// import About from "../src/components/About/About";
+// import Contact from "./pages/Contact"
+// import PrivacyPolicy from "./pages/Privacy";
+// import PaymentPage from './pages/PaymentFunding';
+// import Forgetpassword from './pages/Forgetpassword/ForgetPassword';
+// import ResetPassword from './pages/Forgetpassword/ResetPassword';
+// function App() {
+//   const { isAuthenticated } = React.useContext(AuthContext);
+
+//   return (
+    
+//       <Routes>
+//         {/* PUBLIC ROUTES WRAPPED IN PUBLIC LAYOUT */}
+//         <Route element={<PublicLayout />}>
+        
+//           <Route path="/" element={<Homepage />} />
+         
+//           <Route path="/login" element={<Login />} />
+//           <Route path="/signup" element={<Signup />} />
+//           <Route path="/investmentPlan" element={<Showplan />} />
+
+          
+//           <Route path="/about" element={<About />} />
+//           <Route path="/contact" element={<Contact />} />
+//           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+//           <Route path="/forget"  element={<Forgetpassword/>}/>
+//           <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+
+
+//         </Route>
+
+
+//         <Routes>
+//         <Route path="/admin/login" element={<AdminLogin />} />
+//         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+//         {/* Other routes */}
+//       </Routes>
+
+//         {/* PRIVATE ROUTES WRAPPED IN DASHBOARD LAYOUT */}
+//         <Route
+//           path="/dashboard"
+//           element={
+//             <PrivateRoute>
+//               <DashboardLayout>
+//                 <Dashboard />
+//               </DashboardLayout>
+//             </PrivateRoute>
+//           }
+//         />
+//          {/* ✅ PROFILE ROUTE */}
+//          <Route
+//           path="/profile"
+//           element={
+//             <PrivateRoute>
+//               <DashboardLayout>
+//                 <Profile />
+//               </DashboardLayout>
+//             </PrivateRoute>
+//           }
+//         />
+//         {/* STAKE FORM ROUTE */}
+       
+
+//          <Route
+//           path="/plans"
+//           element={
+//             <PrivateRoute>
+//               <DashboardLayout>
+//                 <PlanPage />
+//               </DashboardLayout>
+//             </PrivateRoute>
+//           }
+//         />
+
+// <Route
+//           path="/funding"
+//           element={
+//             <PrivateRoute>
+//               <DashboardLayout>
+//                 <PaymentPage />
+//               </DashboardLayout>
+//             </PrivateRoute>
+//           }
+//         />
+
+// <Route
+//           path="/admin"
+//           element={
+//             <PrivateRoute>
+//               <DashboardLayout>
+//                 <AdminDashboard />
+//               </DashboardLayout>
+//             </PrivateRoute>
+//           }
+//         />
+//       </Routes>
+      
+    
+//   );
+// }
+
+// export default App;
+
 import { Routes, Route } from 'react-router-dom';
-
+import React from 'react';
 import { AuthContext } from '../src/components/Authcontext';
-import Login from './pages/Login';
 import Signup from './pages/Signup';
-
 import Dashboard from './pages/Dashboard';
 import Homepage from './pages/Homepage';
-import PrivateRoute from '../src/components/PrivateRoute';
-import PublicLayout from '../src/components/layouts/Publiclayout';
-import DashboardLayout from '../src/components/layouts/Dashboardlayout';
+import Login from './pages/Login';
+import PrivateRoute from './components/PrivateRoute';
+import PublicLayout from './components/layouts/Publiclayout';
+import DashboardLayout from './components/layouts/Dashboardlayout';
 import Profile from './pages/Profile';
-
-import PlanPage from '../src/components/Plans/PlanPage';
-import Showplan from '../src/components/Showplan/Showplan';
-import About from "../src/components/About/About";
-import Contact from "./pages/Contact"
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminPrivateRoute from './components/AdminPrivateRoute';
+import AdminDashboardLayout from './components/layouts/AdminDashboardLayout';
+import PlanPage from './components/Plans/PlanPage';
+import Showplan from './components/Showplan/Showplan';
+import About from "./components/About/About";
+import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/Privacy";
 import PaymentPage from './pages/PaymentFunding';
 import Forgetpassword from './pages/Forgetpassword/ForgetPassword';
 import ResetPassword from './pages/Forgetpassword/ResetPassword';
+import AdminUsers from './pages/AdminUsers';
+import CreateUserForm from './pages/CreateUserForm';
 function App() {
-  const { isAuthenticated } = React.useContext(AuthContext);
+  const { isAuthenticated, user } = React.useContext(AuthContext);
 
   return (
-    
-      <Routes>
-        {/* PUBLIC ROUTES WRAPPED IN PUBLIC LAYOUT */}
-        <Route element={<PublicLayout />}>
-        
-          <Route path="/" element={<Homepage />} />
-         
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/investmentPlan" element={<Showplan />} />
-          
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/forget"  element={<Forgetpassword/>}/>
-          <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+    <Routes>
+      {/* PUBLIC ROUTES */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/investmentPlan" element={<Showplan />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="/forget" element={<Forgetpassword />} />
+        <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+      </Route>
 
+      {/* USER DASHBOARD ROUTES */}
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <Dashboard />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <Profile />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/plans"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <PlanPage />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/funding"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <PaymentPage />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
 
-        </Route>
-
-        {/* PRIVATE ROUTES WRAPPED IN DASHBOARD LAYOUT */}
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <DashboardLayout>
-                <Dashboard />
-              </DashboardLayout>
-            </PrivateRoute>
-          }
-        />
-         {/* ✅ PROFILE ROUTE */}
-         <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <DashboardLayout>
-                <Profile />
-              </DashboardLayout>
-            </PrivateRoute>
-          }
-        />
-        {/* STAKE FORM ROUTE */}
-       
-
-         <Route
-          path="/plans"
-          element={
-            <PrivateRoute>
-              <DashboardLayout>
-                <PlanPage />
-              </DashboardLayout>
-            </PrivateRoute>
-          }
-        />
-
-<Route
-          path="/funding"
-          element={
-            <PrivateRoute>
-              <DashboardLayout>
-                <PaymentPage />
-              </DashboardLayout>
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    
+      {/* ADMIN ROUTES */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <AdminPrivateRoute>
+            <AdminDashboardLayout>
+              <AdminDashboard />
+                </AdminDashboardLayout>
+              </AdminPrivateRoute>
+        }
+      />
+      <Route path="/admin/users" element={
+        <AdminPrivateRoute>
+            <AdminDashboardLayout>
+        <AdminUsers />    </AdminDashboardLayout>
+        </AdminPrivateRoute>} />
+               <Route path="/admin/users/new" element={
+        <AdminPrivateRoute>
+            <AdminDashboardLayout>
+                <CreateUserForm />
+            </AdminDashboardLayout>
+        </AdminPrivateRoute>} />  
+    </Routes>
   );
 }
 
 export default App;
+

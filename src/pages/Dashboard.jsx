@@ -350,6 +350,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "../components/layouts/Dashboardlayout.css";
+import { FaArrowDown } from "react-icons/fa6";
 import {
   LineChart, Line, CartesianGrid,  Legend, ResponsiveContainer
 } from 'recharts';
@@ -374,10 +375,74 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("authToken");
   const [filter, setFilter] = useState("all");
+   const [activities, setActivities] = useState([]);
+  const [filters, setFilters] = useState(7);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   
+const [visibleCount, setVisibleCount] = useState(2);
+
+ 
 
   const api = import.meta.env.VITE_API_URL;
-  
+
+
+
+  const [countdowns, setCountdowns] = useState({});
+
+// ✅ 1. Define helper FIRST
+const getCountdownParts = (lastClaimDate) => {
+  const next = new Date(lastClaimDate || Date.now());
+  next.setDate(next.getDate() + 1);
+  const now = new Date();
+
+  const diff = next - now;
+
+  if (diff <= 0) return { text: "Ready to claim", ready: true };
+
+  const hours = Math.floor(diff / 1000 / 60 / 60);
+  const minutes = Math.floor((diff / 1000 / 60) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  return {
+    text: `${hours}h ${minutes}m ${seconds}s`,
+    ready: false,
+  };
+};
+
+// ✅ 2. Now you can use it inside useEffect
+useEffect(() => {
+  const interval = setInterval(() => {
+    const updated = {};
+    stakes.forEach(stake => {
+      const { text } = getCountdownParts(stake.lastClaimDate || stake.startDate);
+      updated[stake._id] = text;
+    });
+    setCountdowns(updated);
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, [stakes]);
+
+
+
+  const fetchActivities = async () => {
+    try {
+      const res = await axios.get(`${api}/api/activity/recent`, {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { days: filter, page, limit: 5 }
+      });
+      setActivities(res.data.activities);
+      setTotalPages(res.data.totalPages);
+    } catch (err) {
+      console.error("Error fetching activity:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchActivities();
+  }, [filters, page]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -476,21 +541,143 @@ const Dashboard = () => {
       
       
 
+      const hasClaimedToday = () => {
+  const today = new Date().toDateString();
+  const lastClaim = new Date(stake.lastClaimDate || stake.startDate).toDateString();
+  return today === lastClaim;
+};
+
+const handleStakeClaim = async (stakeId) => {
+  try {
+    const res = await axios.post(`${api}/api/stakes/${stakeId}/claim`, {}, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    Swal.fire("Success", res.data.message, "success");
+    fetchUpdatedStakes(); // Refresh your stakes
+  } catch (err) {
+    Swal.fire("Oops", err.response?.data?.message || "Something went wrong", "error");
+  }
+};
+
+
   if (loading) return <div><Loader/></div>;
+
+  const fetchUpdatedStakes = async () => {
+  const updatedStakes = await axios.get(`${api}/api/stakes/my-stakes`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  setStakes(updatedStakes.data);
+};
+
+  const handleToggleUsers = () => {
+  if (visibleCount >= stakes.length) {
+    setVisibleCount(2); // Collapse
+  } else {
+    setVisibleCount(prev => Math.min(prev + 2, stakes.length)); // Show more
+  }
+};
+
 
   return (
     <div className="p-6">
       <div className="dashs__h1boby flex justify-between items-center mb-6">
-      <h1 className="text-3xl font-bold mb-6">Welcome {user ? user.username : "Loading..."}</h1>
-      <button
-          onClick={handleDailyROIClaim}
-          className="dash-btn"
-        >
-          <IoDiamond/> Daily earnings
-        </button>
-      </div>
+      <h1 className="text-3xl text-white font-bold mb-6">Welcome {user ? user.username : "Loading..."}</h1>
+      
+        {user?.hasUnclaimedToday && (
+  <div className="bg-red-600 text-white p-3 rounded mb-4 shadow">
+    🚨 You haven’t claimed your daily ROI today!
+  </div>
+)}
 
-      <div className="funds__dash grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+
+
+
+
+
+      </div>
+      {/* {filteredStakes.slice(0, visibleCount).map((stake) => {
+  const today = new Date().toDateString();
+  const lastClaim = new Date(stake.lastClaimDate || stake.startDate).toDateString();
+  const hasClaimedToday = today === lastClaim;
+  const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
+
+  return (
+  
+<>
+<table className="table--dash rounded-xl overflow-hidden shadow-md">
+    <thead className="header-dash text-left p-4">
+            <tr>
+              <th className="p-3">Plan</th>
+              <th className="p-3">Amount</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Daily ROI</th>
+              <th className="p-3">Next earning</th>
+              <th className="p-3">Earnings So Far</th>
+              <th className="p-3">Status</th>
+            </tr>
+     </thead>
+    
+    <tbody>
+    <tr key={stake._id} className="table--dash">
+      <td className="p-3">{stake.plan?.name || "-"}</td>
+      <td className="p-3">${stake.amount}</td>
+      <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
+      <td className="p-3">{stake.dailyROI}%</td>
+       <p className={`text-sm ${ready ? "text-green-400" : "text-yellow-400"}`}>
+          Next ROI: {text}
+        </p>
+      <td className="p-3">${stake.earningsSoFar.toFixed(2)}</td>
+      <td className="p-3">
+        <span
+          className={`satus py-1 rounded-full text-sm font-semibold ${
+            stake.isCompleted
+              ? "bg-green-100 text-green-800"
+              : "bg-red-300 text-red-800"
+          }`}
+        >
+          {stake.isCompleted ? "Completed" : "Active"}
+        </span>
+      </td>
+      <td className="p-3">
+        <button
+          onClick={() => handleStakeClaim(stake._id)}
+          disabled={hasClaimedToday || stake.isCompleted}
+          className={`px-3 py-1 rounded text-white ${
+            hasClaimedToday || stake.isCompleted
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700"
+          }`}
+        >
+          {hasClaimedToday ? "Claimed" : "Claim ROI"}
+        </button>
+      </td>
+    </tr>
+    </tbody>
+    </table>
+     {users.length > 10 && (
+  <div className="text-center mt-4">
+    <button
+      onClick={handleToggleUsers}
+      className="admin-see-more-btn "
+    >
+      {visibleCount >= users.length ? 'See Less' : 'See More'}
+    </button>
+  </div>
+)}
+    </>
+  );
+})} */}
+{/* 💰 Stake Table */}
+
+
+{/* 👇 Show More Button */}
+
+
+
+
+      <div className="funds__dash flex flex-col md:flex-cols-3 gap-4 mb-6">
         <div className="dash-fund ">
         <div className="dash-fund-text">
           <h2 className="fund-b">Funded Balance</h2>
@@ -500,12 +687,13 @@ const Dashboard = () => {
           <p className="balance-dash text-green-600 text-lg">${user  ? user.balance.toFixed(2) : "loading.."}</p>
           
         </div>
+        <div className="dash-funds flex ">
         <div className="earnings-dash">
         <div className="dash-fund-text">
           <h2 className="earning-b text-xl font-semibold">Total Earnings</h2>
           <p className="text-gray-600 text-lg">USD</p>
           </div>
-          <p className="earn-b text-blue-600 text-lg">${user.totalEarnings.toFixed(2)}</p>
+          <p className="earn-b text-lg">${user.totalEarnings.toFixed(2)}</p>
         </div>
         <div className="withdrawable-dash">
         <div className="dash-fund-text">
@@ -514,64 +702,146 @@ const Dashboard = () => {
           </div>
           <p className="with-b text-purple-600 text-lg">${user.withdrawableBalance.toFixed(2)}</p>
         </div>
+        </div>
       </div>
 
       <div className="mb-8 text-center">
-       
-      </div>
+       </div>
+{/* 📋 My Stakes */}
+      <h2 className="text-white font-bold text-xl mb-4">📋 My Stakes</h2>
+
+<div className="overflow-x-auto">
+  <table className="table--dash taabbllee rounded-xl overflow-x-auto shadow-md w-full">
+    <thead className="header-dash text-left p-4">
+      <tr>
+        <th className="stak-pads p-3">Plan</th>
+        <th className="p-3">Amount</th>
+        <th className="p-3">Date</th>
+        <th className="p-3">Daily ROI</th>
+        <th className="p-3">Next Earning</th>
+        <th className="p-3">Earnings So Far</th>
+        <th className="p-3">Status</th>
+        <th className="p-3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {filteredStakes.slice(0, visibleCount).map((stake) => {
+        const today = new Date().toDateString();
+        const lastClaim = new Date(stake.lastClaimDate || stake.startDate).toDateString();
+        const hasClaimedToday = today === lastClaim;
+        const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
+
+        return (
+          <tr key={stake._id} className="stak-pad hover:bg-gray-100 lissh">
+            <td className="stak-pads p-3">{stake.plan?.name || "-"}</td>
+            <td className="p-3">${stake.amount}</td>
+            <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
+            <td className="p-3">{stake.dailyROI}%</td>
+            <td className={`p-3 text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</td>
+            <td className="p-3">${stake.earningsSoFar.toFixed(2)}</td>
+            <td className="p-3">
+              <span className={`satus py-1 px-2 rounded-full text-sm font-semibold ${
+                stake.isCompleted ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+              }`}>
+                {stake.isCompleted ? "Completed" : "Active"}
+              </span>
+            </td>
+            <td className="stak-pads p-3">
+              <button
+                onClick={() => handleStakeClaim(stake._id)}
+                disabled={hasClaimedToday || stake.isCompleted}
+                className={`stak-pad px-3 py-1 rounded text-white text-sm ${
+                  hasClaimedToday || stake.isCompleted
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-600 hover:bg-blue-700"
+                }`}
+              >
+                {hasClaimedToday ? "Claimed" : "Claim ROI"}
+              </button>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+
+
+
+</div>
+
+  {filteredStakes.length > 2 && (
+  <div className="text-center mt-4">
+    <button
+      onClick={handleToggleUsers}
+      className="user-see-more-btn bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600"
+    >
+      {visibleCount >= filteredStakes.length ? 'See Less' : 'See More'}
+      <FaArrowDown className="ml-2" />
+    </button>
+  </div>
+)}
+
+      <div className="content-act flex flex-col md:flex-row gap-4 justify-between">
+    {/* Recent Activity Section */}
+<div className="dashboard-activity1 text-white ">
+  <div className="flex justify-between items-center mb-4">
+    <select
+      value={filters}
+      onChange={(e) => setFilters(e.target.value)}
+      className="bg-dashboard-card p-2 rounded text-white"
+    >
+      <option value="7">Last 7 Days</option>
+      <option value="30">Last 30 Days</option>
+      <option value="90">Last 90 Days</option>
+    </select>
+    <button
+      onClick={() => setDrawerOpen(!drawerOpen)}
+      className="lg:hidden bg-blue-600 px-4 py-1 rounded"
+    >
+      {drawerOpen ? 'Close' : 'Show'} Recent
+    </button>
+  </div>
+
+  {/* Drawer for Mobile */}
+  {drawerOpen && (
+    <div className="  h-full bg-gray p-4 shadow-lg overflow-y-auto lg:hidden">
+      <h2 className="text-white font-bold mb-3">Recent Activity</h2>
+      <ActivityList data={activities} />
+    </div>
+  )}
+
+  {/* Desktop List */}
+  <div className="hidden lg:block">
+    <h2 className="text-white font-bold mb-3">Recent Activity</h2>
+    <ActivityList data={activities} />
+  </div>
+
+  {/* Pagination */}
+  <div className="flex justify-end gap-2 mt-4">
+    <button
+      onClick={() => setPage((p) => Math.max(p - 1, 1))}
+      className="btn"
+    >
+      Prev
+    </button>
+    <button
+      onClick={() => setPage((p) => (p < totalPages ? p + 1 : p))}
+      className="btn"
+    >
+      Next
+    </button>
+  </div>
+</div>
+
+
     
-
-<div className="dash-cjart">
-
-<div className="response mb-6">
- 
-<h2 className="textx font-bold mt-8 mb-2"> ROI Breakdown (Bar View)</h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={combineROIHistory()} >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="amount" fill="blue" name="Daily Earnings" />
-          </BarChart>
-        </ResponsiveContainer>
-     
-</div>
-
-
-<div className="response2">
-<h2 className="textx font-bold mt-10 mb-4">Stake Status Breakdown</h2>
-  <ResponsiveContainer width="100%" height={250}>
-    <PieChart>
-      <Pie
-        data={stakeStatusData}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        innerRadius={60}
-        outerRadius={90}
-        fill="#8884d8"
-        label
-      >
-        {stakeStatusData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-      <Tooltip />
-      <Legend />
-    </PieChart>
-  </ResponsiveContainer>
-</div>
-
-</div>
+<div className="dashboard-activity">
 <div className="mb-4">
-  <label className="mr-2 font-medium">Filter:</label>
+  <label className="mr-2 text-white font-medium">Filter:</label>
    <select
     value={filter}
     onChange={(e) => setFilter(e.target.value)}
-    className="border px-3 py-1 rounded-md"
+    className="border text-white  px-3 py-1 rounded-md"
   >
     <option value="all">All</option>
     <option value="active">Active</option>
@@ -581,9 +851,9 @@ const Dashboard = () => {
 
 
 
-      <h2 className="text-2xl font-bold mb-4">📋 Stake History</h2>
+      <h2 className="text-white font-bold mb-4">📋 Stake History</h2>
       <div className="overflow-x-auto">
-        <table className="table--dash bg-white rounded-xl overflow-hidden shadow-md">
+        <table className="table--dash  bg-white rounded-xl overflow-hidden shadow-md">
           <thead className="header-dash text-left p-4">
             <tr>
               <th className="p-3">Plan</th>
@@ -596,10 +866,10 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {filteredStakes.map((stake) => (
-              <tr key={stake._id} className="list-dash border-b hover:bg-gray-50">
+              <tr key={stake._id} className="list-dash  border-b hover:bg-gray-50">
                 <td className="p-3">{stake.plan?.name || "-"}</td>
-                <td className="p-3">${stake.amount}</td>
-                <td className="p-3">{stake.startDate}</td>
+                <th className="p-3">${stake.amount}</th>
+                <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
                 <td className="px-4 py-2">{(stake.dailyROI)}%</td>
                 
                 <td className="p-3">${stake.earningsSoFar.toFixed(2)}</td>
@@ -608,7 +878,7 @@ const Dashboard = () => {
                     className={`satus py-1 rounded-full text-sm font-semibold ${
                       stake.isCompleted
                         ? "bg-green-100 text-green-800"
-                        : "bg-yellow-100 text-yellow-800"
+                        : "bg-red-300 text-red-800"
                     }`}
                   >
                     {stake.isCompleted ? "Completed" : "Active"}
@@ -619,8 +889,49 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
+      </div>
+      </div>
     </div>
   );
 };
+
+
+
+const ActivityList = ({ data }) => (
+  <ul className="flex ul-activity flex-col border-b border-gray-700 pb-2">
+    {data.map((item, i) => {
+      const isPositive = [ 'Daily ROI Claimed', 'Bonus'].includes(item.type);
+      const isNegative = ['Create Stake', 'Stake Created','Withdrawal'].includes(item.type);
+
+      const amountDisplay = isPositive
+        ? `+${item.amount}`
+        : isNegative
+        ? `-${item.amount}`
+        : item.amount;
+
+      const colorClass = isPositive
+        ? 'text-green-500'
+        : isNegative
+        ? 'text-red-500'
+        : 'text-white-500';
+
+      return (
+        <li key={i} className="dashactul  flex justify-between border-b border-gray-700 ">
+          <div>
+            <p className="font-medium">{item.type}</p>
+            <p className="text-sm ">
+              {new Date(item.date).toDateString()}
+            </p>
+          </div>
+          <div className={`font-semibold ${colorClass}`}>
+            {amountDisplay}
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+);
+
+
 
 export default Dashboard;

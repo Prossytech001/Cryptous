@@ -1,0 +1,71 @@
+.admin-users-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #1E1E2D;
+    height: 100vh;
+}
+.adminUser-card {
+    background-color: #2A2A3C;
+   
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+}
+.adminUser-head{
+   
+    
+   width: 100%;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+}
+.adminUser-head1{
+    
+height: 3rem;
+  
+    place-items: center;
+}
+.admin-edit{
+    background-color: green;
+    color: #FFFFFF;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.admin-edit:hover{
+    background-color: darkgreen;
+}
+.admin-act{
+    background-color: rgb(185, 143, 2);
+    color: #FFFFFF;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.admin-act:hover{
+    background-color: rgb(100, 85, 0);
+}
+.admin-del{
+    background-color: rgb(243, 20, 4);
+    color: #FFFFFF;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.admin-del:hover{
+    background-color: darkred;
+}
+.button-container{
+    display: flex;
+    
+    justify-content: space-between;
+}
+.active_adminUser{
+    padding: 2px;
+}
