@@ -444,9 +444,12 @@ const DashboardLayout = ({ children }) => {
     { path: '/dashboard', label: 'Dashboard', icon: <AiFillDashboard /> },
     { path: '/profile', label: 'Profile', icon: <CgProfile /> },
     { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
+    { path: '/withdraw', label: 'Withdrawal', icon: <MdOutlineAttachMoney /> },
+     { path: '/funding', label: 'Fund Account', icon: <RiFundsBoxFill /> },
+      { path: '/history', label: 'Transaction History', icon: <RiFundsBoxFill /> },
     { path: '/plans', label: 'Plans', icon: <MdOutlineAttachMoney /> },
     { path: '/support', label: 'Support', icon: <MdSupportAgent /> },
-    { path: '/funding', label: 'Fund Account', icon: <RiFundsBoxFill /> }
+   
 
    
   ];

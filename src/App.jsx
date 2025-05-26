@@ -295,6 +295,11 @@ import Forgetpassword from './pages/Forgetpassword/ForgetPassword';
 import ResetPassword from './pages/Forgetpassword/ResetPassword';
 import AdminUsers from './pages/AdminUsers';
 import CreateUserForm from './pages/CreateUserForm';
+import Withdraw from './pages/Withdraw';
+import AdminWithdrawals from './pages/AdminWithdraw';
+import UserHistory from './pages/UserHistory';
+import AdminDepositDetails from './pages/AdminDepositDetails';
+import AdminDeposits from './pages/AdminDeposits';
 function App() {
   const { isAuthenticated, user } = React.useContext(AuthContext);
 
@@ -354,6 +359,26 @@ function App() {
           </PrivateRoute>
         }
       />
+      <Route
+        path="/withdraw"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <Withdraw />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/history"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <UserHistory />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
 
       {/* ADMIN ROUTES */}
       <Route path="/admin/login" element={<AdminLogin />} />
@@ -367,6 +392,16 @@ function App() {
               </AdminPrivateRoute>
         }
       />
+      <Route
+        path="/admin/withdrawals"
+        element={
+          <AdminPrivateRoute>
+            <AdminDashboardLayout>
+              <AdminWithdrawals />
+            </AdminDashboardLayout>
+          </AdminPrivateRoute>
+        }
+      />
       <Route path="/admin/users" element={
         <AdminPrivateRoute>
             <AdminDashboardLayout>
@@ -378,6 +413,28 @@ function App() {
                 <CreateUserForm />
             </AdminDashboardLayout>
         </AdminPrivateRoute>} />  
+        <Route
+  path="/admin/deposits"
+  element={
+    <AdminPrivateRoute>
+      <AdminDashboardLayout>
+        <AdminDeposits />
+      </AdminDashboardLayout>
+    </AdminPrivateRoute>
+  }
+/>
+
+<Route
+  path="/admin/deposit/:id"
+  element={
+    <AdminPrivateRoute>
+      <AdminDashboardLayout>
+        <AdminDepositDetails />
+      </AdminDashboardLayout>
+    </AdminPrivateRoute>
+  }
+/>
+
     </Routes>
   );
 }

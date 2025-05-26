@@ -30,9 +30,10 @@ import axios from "axios";
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
+  const api = import.meta.env.VITE_API_URL;
   async function fetchData() {
     try {
-      const response = await axios.get("http://localhost:5000/api/users");
+      const response = await axios.get(`${api}/api/users`);
       console.log("API Response:", response.data);
       setUsers(Array.isArray(response.data) ? response.data : response.data.users); // Handle object format
     } catch (err) {

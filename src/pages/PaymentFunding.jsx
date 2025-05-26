@@ -159,6 +159,8 @@ export default function PaymentPage() {
   const [paymentData, setPaymentData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
   const api = import.meta.env.VITE_API_URL;
 
   const handleCreatePayment = async () => {
@@ -170,6 +172,7 @@ export default function PaymentPage() {
         userId: localStorage.getItem('userId'),
       });
       setPaymentData(res.data);
+      setShowModal(true); // ✅ Show popup when payment is created
     } catch (err) {
       console.error(err);
       setStatusMessage('❌ Failed to create payment.');
@@ -192,6 +195,15 @@ export default function PaymentPage() {
       return () => clearInterval(interval);
     }
   }, [paymentData]);
+
+  const handleCopy = () => {
+  if (paymentData?.payAddress) {
+    navigator.clipboard.writeText(paymentData.payAddress);
+    setStatusMessage("📋 Wallet address copied!");
+    setTimeout(() => setStatusMessage(""), 3000);
+  }
+};
+
 
   return (
     <div className="payment-contaier">
@@ -255,24 +267,44 @@ export default function PaymentPage() {
           </div>
 
           {/* Right: QR + Address */}
-          {paymentData && (
-            <div className="or-pay flex-1 bg-gray-50 border border-dashed border-gray-300 rounded-xl p-4">
-              <div className="text-center mb-4">
-                <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?data=${paymentData.payAddress}&size=160x160`}
-                  alt="QR Code"
-                  className="mx-auto"
-                />
-              </div>
-              <p className="text-sm text-gray-500 mb-1 text-center">Send exactly:</p>
-              <p className="text-lg font-bold text-center text-gray-800">{paymentData.amount} USDT</p>
+          {showModal && paymentData && (
+  <div className="fixed inset-0 fade-in-up z-50 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white w-full max-w-md p-6 rounded-xl shadow-xl relative">
+      <button
+        onClick={() => setShowModal(false)}
+        className="absolute top-2 right-3 text-xl font-bold text-gray-500 hover:text-red-500"
+      >
+        ×
+      </button>
 
-              <p className="text-sm text-gray-500 mt-4 mb-1 text-center">To address:</p>
-              <p className="address text-xs font-mono text-center break-all bg-white p-2 border border-gray-200 rounded">
-                {paymentData.payAddress}
-              </p>
-            </div>
-          )}
+      <h3 className="text-xl font-semibold text-center text-blue-600 mb-4">Payment Instructions</h3>
+
+      <div className="text-center mb-4">
+        <img
+          src={`https://api.qrserver.com/v1/create-qr-code/?data=${paymentData.payAddress}&size=160x160`}
+          alt="QR Code"
+          className="mx-auto"
+        />
+      </div>
+
+      <p className="text-sm text-center text-gray-600 mb-1">Send exactly:</p>
+      <p className="text-lg font-bold text-center">{paymentData.amount} USDT</p>
+
+      <p className="text-sm text-center text-gray-600 mt-4 mb-1">To address:</p>
+      <p className="text-xs font-mono text-center break-all bg-gray-100 p-2 border border-gray-300 rounded">
+        {paymentData.payAddress}
+      </p>
+
+      <button
+        onClick={handleCopy}
+        className="w-full mt-3 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition"
+      >
+        📋 Copy Wallet Address
+      </button>
+    </div>
+  </div>
+)}
+
         </div>
       </div>
     </div>
