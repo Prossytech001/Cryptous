@@ -182,7 +182,8 @@ export default function PaymentPage() {
       { amount },
       {
         headers: {
-          Authorization: `Bearer ${token}`, // Ensure this is not undefined/null
+          Authorization: `Bearer ${token}`,g
+          'Content-Type': 'application/json'// Ensure this is not undefined/null
         },
       }
     );
