@@ -164,21 +164,36 @@ export default function PaymentPage() {
   const api = import.meta.env.VITE_API_URL;
 
   const handleCreatePayment = async () => {
-    setLoading(true);
-    setStatusMessage('');
-    try {
-      const res = await axios.post(`${api}/api/payments/create`, {
-        amount,
-        userId: localStorage.getItem('userId'),
-      });
-      setPaymentData(res.data);
-      setShowModal(true); // ✅ Show popup when payment is created
-    } catch (err) {
-      console.error(err);
-      setStatusMessage('❌ Failed to create payment.');
-    }
+  setLoading(true);
+  setStatusMessage('');
+
+  const token = localStorage.getItem('authToken');
+  console.log("🔐 Token being used:", token); // Add this line
+
+  if (!token) {
+    setStatusMessage("You are not logged in.");
     setLoading(false);
-  };
+    return;
+  }
+
+  try {
+    const res = await axios.post(
+      `${api}/api/payments/create`,
+      { amount },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Ensure this is not undefined/null
+        },
+      }
+    );
+    setPaymentData(res.data);
+    setShowModal(true);
+  } catch (err) {
+    console.error("❌ Axios Error:", err.response?.data || err.message);
+    setStatusMessage('❌ Failed to create payment.');
+  }
+  setLoading(false);
+};
 
   useEffect(() => {
     if (paymentData?.paymentId) {
