@@ -76,8 +76,8 @@ transition: 0.5s ease-in-out;
     justify-content: space-between;
     flex-direction: column;
    font-weight: 600;
-    padding: 0.5rem 1.5rem;
-    background-color: #ffd75b;
+    padding: 0.5rem 0.5rem;
+    background-color: var(--ing);
     height: 100%;
     border-radius: 20px;
     width: 100%;
@@ -108,8 +108,8 @@ transition: 0.5s ease-in-out;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-   background-color: #2b2a3b;
-    padding: 0.5rem 1.5rem;
+   background-color: var(--inbs);
+    padding: 0.5rem 0.5rem;
     
     height: 100%;
     border-radius: 20px;
@@ -130,8 +130,8 @@ transition: 0.5s ease-in-out;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: #2b2a3b;
-    padding: 0.5rem 1.5rem;
+    background-color: var(--inbs);
+    padding: 0.5rem 0.5rem;
    
     height: 100%;
     border-radius: 20px;
@@ -165,7 +165,7 @@ transition: 0.5s ease-in-out;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: #2D2A4D;
+    background-color: var(--inbs);
     padding: 1rem;
     height: 100%;
     border-radius: 20px;
@@ -178,7 +178,7 @@ transition: 0.5s ease-in-out;
  
     display: flex;
    height: 100%;
-    background-color: #2D2A4D;
+    background-color: var(--inbs);
     padding: 1rem;
     border-radius: 20px;
    
@@ -263,7 +263,7 @@ transition: 0.5s ease-in-out;
 .table--dash{
     
     width: 100%;
-  border-collapse: collapse;
+  
   color: white;
     
    
@@ -280,7 +280,7 @@ transition: 0.5s ease-in-out;
 
 
 .table--dash th {
-  background-color: #1E1E2D;
+  background-color: var(--inb);
   padding: 0.2rem;
   text-align: left;
 }
@@ -288,11 +288,11 @@ transition: 0.5s ease-in-out;
 
 
 .table--dash tbody tr:nth-child(even) {
-  background-color: #3B3854; /* light blue */
+  background-color: var(--inb); /* light blue */
 }
 
 .table--dash tbody tr:nth-child(odd) {
-  background-color: #2D2A4D; /* dark blue */
+  background-color: var(--inb); /* dark blue */
 }
 
 .header-dash{
@@ -347,39 +347,40 @@ transition: 0.5s ease-in-out;
 }
 .stake-dash{
    width: 100%;
-      border-collapse:collapse; 
+ background-color: var(--inbs);
       margin-bottom: 2rem;
       overflow: hidden;
       border-radius: 20px;
-      border: 2px solid #fff;
+     
+      margin-top: 1rem;
+}
+.stake-dashe{
+  margin-top: 3rem;
 }
 @media all and (max-width: 800px){
   .stake-dash{
-    width: 60rem;
+    width: 35rem;
     overflow-x: auto;
+  }
+  .stakenon{
+    display: none;
   }
 }
 
 
 .stake-dash th { 
      padding: 0.75rem; 
-   border: 2px solid #cccccc05; 
+  
     text-align: left; 
    
 
 color: #fff;}
-.stake-dash tr:nth-child(even) {
-  background-color: #3B3854; /* light blue */
-}
 
-.stake-dash tr:nth-child(odd) {
-  background-color: #2D2A4D; /* dark blue */
-}
 
 
     .stake-dash td { 
      padding: 0.75rem; 
-   border: 2px solid #cccccc18; 
+  
     text-align: left; }
 
 .stak-pad{
@@ -391,7 +392,7 @@ color: #fff;}
  
 }
 .user-see-more-btn{
-   border: 2px solid #3B3854;
+   
     color: #FFFFFF;
    place-items: center;
   
@@ -402,9 +403,35 @@ color: #fff;}
     cursor: pointer;
     
 }
+.last7{
+  background-color: var(--inb);
+  width: 100%;
+}
+.last7:host{
+  background-color: var(--inb);
+  color: var(--BgWhite);
+  padding: 0.5rem;
+  border-radius: 20px;
+  font-size: var(--p);
+  font-weight: 600;
+  transition: 0.5s ease-in-out;
+}
+.bg-dashboard-card{
+  background-color: var(--ings);
+  color: var(--ing);
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+.activitydisplay{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
 .btnact{
-  background-color: #1e1e2d;
-  padding: 3px;
+font-weight: 500;
+  color: var(--ing);
 }
 @media all and (max-width: 1000px){
  
@@ -627,6 +654,7 @@ color: #fff;}
 
 .main-content {
   transition: margin-left 0.3s ease;
+  background-color: #03193d;
 }
 
 

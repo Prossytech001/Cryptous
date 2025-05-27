@@ -632,19 +632,19 @@ const handleStakeClaim = async (stakeId) => {
         </div>
       </div>
 
-      <div className="mb-8 text-center">
+      <div className="stake-dashe mb-8 text-center">
        </div>
 {/* 📋 My Stakes */}
-      <h2 className="text-white font-bold text-xl mb-4">📋 My Stakes</h2>
+      <h2 className="text-white text-center font-bold text-xl mb-4"> My Stakes</h2>
 
 <div className="overflows">
   <table className="stake-dash  rounded-xl overflow-x-auto shadow-md w-full">
     <thead className=" text-left p-4">
       <tr>
         <th className=" ">Plan</th>
-        <th className="">Amount</th>
-        <th className="">Date</th>
-        <th className="">Daily ROI</th>
+        <th className="stakenon">Amount</th>
+        <th className="stakenon">Date</th>
+        <th className="stakenon">Daily ROI</th>
         <th className="">Next Earning</th>
         <th className="">Earnings So Far</th>
         <th className="">Status</th>
@@ -659,11 +659,11 @@ const handleStakeClaim = async (stakeId) => {
         const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
 
         return (
-          <tr key={stake._id} className=" hover:bg-gray-100">
+          <tr key={stake._id} className=" ">
             <td className=" text-white">{stake.plan?.name || "-"}</td>
-            <td className=" text-white">${stake.amount}</td>
-            <td className=" text-white text-center">{new Date(stake.startDate).toDateString()}</td>
-            <td className=" text-white ">{stake.dailyROI}%</td>
+            <td className=" text-white stakenon">${stake.amount}</td>
+            <td className=" text-white stakenon text-center">{new Date(stake.startDate).toDateString()}</td>
+            <td className=" text-white stakenon">{stake.dailyROI}%</td>
             <td className={`text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</td>
             <td className="text-white">${stake.earningsSoFar.toFixed(2)}</td>
             <td className="">
@@ -717,9 +717,9 @@ const handleStakeClaim = async (stakeId) => {
       onChange={(e) => setFilters(e.target.value)}
       className="bg-dashboard-card p-2 rounded text-white"
     >
-      <option value="7">Last 7 Days</option>
-      <option value="30">Last 30 Days</option>
-      <option value="90">Last 90 Days</option>
+      <option className="last7" value="7">Last 7 Days</option>
+      <option className="last7" value="30">Last 30 Days</option>
+      <option className="last7" value="90">Last 90 Days</option>
     </select>
     <button
       onClick={() => setDrawerOpen(!drawerOpen)}
@@ -763,22 +763,24 @@ const handleStakeClaim = async (stakeId) => {
 
     
 <div className="dashboard-activity">
+  <div className="activitydisplay">
 <div className="mb-4">
   <label className="mr-2 text-white font-medium">Filter:</label>
    <select
     value={filter}
     onChange={(e) => setFilter(e.target.value)}
-    className="border text-white  px-3 py-1 rounded-md"
+    className="bg-dashboard-card border text-white  px-3 py-1 rounded-md"
   >
-    <option value="all text-white-100">All</option>
-    <option value="active">Active</option>
-    <option value="completed">Completed</option>
+    <option className="last7" value="all text-white-100">All</option>
+    <option className="last7"  value="active">Active</option>
+    <option className="last7"  value="completed">Completed</option>
   </select>
 </div>
 
 
 
       <h2 className="text-white font-bold mb-4">📋 Stake History</h2>
+      </div>
       <div className="overflow-x-auto">
         <table className="table--dash  bg-white rounded-xl overflow-hidden shadow-md">
           <thead className="header-dash text-left p-4">

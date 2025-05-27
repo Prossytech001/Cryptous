@@ -498,7 +498,7 @@ const DashboardLayout = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main style={{ backgroundColor: '#1e1e2d' }} className="main-content">
+      <main  className="main-content">
         {children}
       </main>
     </div>
