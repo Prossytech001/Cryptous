@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import "../../components/Plans/PlanCard.css"
+import { RiShieldStarFill } from "react-icons/ri";
+import { FaCircleCheck } from "react-icons/fa6";
+import Loader from "../../components/Loader/Loader";
 
 
 const PlanPage = () => {
   const [plans, setPlans] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState(null);
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(true);
   const [amount, setAmount] = useState("");
   const api = import.meta.env.VITE_API_URL;
   const token = localStorage.getItem("authToken");
@@ -17,7 +20,9 @@ const PlanPage = () => {
     const fetchPlans = async () => {
       try {
         const res = await axios.get(`${api}/api/plans`);
-        setPlans(res.data); // ✅ FIXED: res.data is the array
+        setPlans(res.data);
+       setLoader(false);
+        // ✅ FIXED: res.data is the array
       } catch (err) {
         console.error("Failed to fetch plans", err);
       }
@@ -97,26 +102,42 @@ const handleSubmit = async () => {
       });
     }
   };
-  
+
+  if (loader) return <div><Loader/></div>;
 
   return (
     <div className="container-PLAN ">
-      <h1 className="text-3xl font-bold mb-6 text-center">Investment Plans</h1>
+      
+      <h1 className="absolute top-15  text-3xl text-white font-bold mb-6 text-center">Investment Plans</h1>
+      
       <div className="card_hlder grid grid-cols-1 md:grid-cols-3 ">
         {Array.isArray(plans) && plans.map((plan) => (
           <div
             key={plan._id}
             className="Plan_card  shadow-lg rounded-2xl  hover:shadow-xl transition"
           >
-            <h2 className="text-xl font-semibold mb-2">{plan.name}</h2>
-            <p className="text-gray-600 mb-1">
+            <div className="pamcon">
+            <RiShieldStarFill className="planwin"/>
+            
+            <h2 className="text-xl text-white font-semibold mb-2">{plan.name}</h2>
+            
+            <p className="plan-like text-gray-600 mb-1">
+              <strong>{(plan.dailyROI).toFixed(2)}% ROI</strong>
+            </p>
+             </div>
+             <div className="plap">
+            <p className=" flex items-center gap-1 text-gray-400 mb-1">
+              <FaCircleCheck className="palngood"/>
               Duration: <strong>{plan.durationDays} days</strong>
             </p>
-            <p className="text-gray-600 mb-1">
-              Daily ROI: <strong>{(plan.dailyROI * 100).toFixed(2)}%</strong>
+
+            <p className="flex items-center gap-1 text-gray-400 mb-4">
+              <FaCircleCheck className="palngood"/> 
+               Minimun : ${plan.minInvestment} 
             </p>
-            <p className="text-gray-600 mb-4">
-              Min: ${plan.minInvestment} | Max: ${plan.maxInvestment}
+            <p className=" flex items-center gap-1 text-gray-400 mb-4">
+              <FaCircleCheck className="palngood"/>
+              Maximun : ${plan.maxInvestment}
             </p>
             <button
               onClick={() => handleInvestClick(plan)}
@@ -124,6 +145,8 @@ const handleSubmit = async () => {
             >
               Invest Now
             </button>
+            </div>
+           
           </div>
         ))}
       </div>
@@ -156,6 +179,7 @@ const handleSubmit = async () => {
           </div>
         </div>
       )}
+      
     </div>
   );
 };

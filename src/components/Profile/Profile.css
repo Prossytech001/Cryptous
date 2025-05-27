@@ -4,12 +4,13 @@
    border-radius: 20px;
    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.025);
     padding: 2rem;
-    background-color: #ffffff;
+     background-color: #2D2A4D;
     min-height: auto;
     font-family: Arial, sans-serif;
     width: 50%;
     max-width: 800px;
     margin: 0 auto;
+    color: #fff;
 
 }
 .profile__page{
@@ -34,7 +35,7 @@
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.041);
-    background-color: #ffffff;
+     background-color: #2D2A4D;
     min-height: auto;
     font-family: Arial, sans-serif;
     width: auto;
@@ -50,11 +51,13 @@
     font-size: var(--p);
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: #fff;
 }
 .profile__h3{
     font-size: var(--miniheader);
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: #fff;
 }
 .spaces{
     margin-bottom: 3rem;
@@ -66,13 +69,14 @@
     border: 1px solid #ccc;
     font-size: var(--p);
     margin-bottom: 1rem;
+    color: #fff;
 }
 .profile__h2{
     font-size: 1.9rem;
     font-weight: bold;
     margin-bottom: 1rem;
     display: flex;
-    color: #000;
+   color: #fff;
 }
 .profile__p{
     font-size: var(--p);

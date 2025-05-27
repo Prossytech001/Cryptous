@@ -17,17 +17,22 @@
     place-content: center;
   border-radius: 20px;
     height: auto;
+     padding: 1rem 2rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.032);
-    background-color: var(--BgWhite);
+    background-color: #2D2A4D;
 }
 .pay-input{
     width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid var(--grey);
-    margin-bottom: 20px;
-    font-size: 1.2rem;
+          padding: 10px;
+          margin-bottom: 10px;
+          background: none;
+          border: 2px solid #544ba0;
+          border-radius: 20px;
+          color: #fff;
+          outline: none;
+}
+.pay-input:focus{
+    border: 3px solid #544ba0;
 }
 .pay-btn {
     width: 100%;
@@ -35,7 +40,7 @@
     border-radius: 10px;
     padding: 10px;
     border: none;
-    background-color: var(--primarycolor);
+    background-color: #544ba0;
     color: var(--BgWhite);
     font-size: 1.2rem;
     font-weight: 600;
@@ -56,6 +61,10 @@
     font-weight: 600;
     cursor: pointer;
 }
+.paymentlabel{
+    color: var(--BgWhite);
+    font-size: 1.2rem;
+}
 .or-pay{
     display: flex;
     justify-content: center;
@@ -66,6 +75,34 @@
 .address{
     font-size: var(--p);
 }
+.payment_gateway{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.popup-overlay-border{
+    background-color: #2D2A4D;
+}
+.payamount{
+    color: var(--BgWhite);
+    font-size: 2rem;
+}
+.payamounts{
+    color: rgba(255, 255, 255, 0.623);
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+.payadder{
+    padding: 0.7rem;
+    background-color: #66666627;
+    color: #fff;
+}
+.paycopy{
+        background-color: #544ba0;
+        margin: 10px 0;
+        padding: 0.7rem;
+}
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -74,3 +111,83 @@
 .fade-in-up {
   animation: fadeInUp 0.3s ease-out;
 }
+
+/* Add to Payment.css */
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  
+  
+}
+.popup-overlays {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.329);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  bottom: 0;
+  
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  animation: fadeSlideIn 0.4s ease-out forwards;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+}
+
+.popup-close:hover {
+  color: red;
+}
+@media all and (max-width: 500px){
+    .popup-overlays {
+ inset: auto;
+  bottom: 0;
+ width: 100%;
+ left: 0;
+
+ 
+  
+}
+.popup-overlay-border{
+    padding-top: 20px;
+}
+.paycopy{
+        background-color: #544ba0;
+        margin: 10px 0;
+        padding: 0.4rem;
+}
+}
+

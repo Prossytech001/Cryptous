@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import "../components/UserHistory/UserHistorty.css"
+import Loader from '../components/Loader/Loader';
 
 const UserHistory = () => {
   const [deposits, setDeposits] = useState([]);
@@ -29,9 +31,9 @@ const UserHistory = () => {
 
   return (
     <div className="history-page">
-      <h2>📜 Transaction History</h2>
+      <h2 className='history-h2'>📜 Transaction History</h2>
 
-      {loading ? <p>Loading...</p> : (
+      {loading ? <p><Loader/></p> : (
         <>
           <h3>Deposits</h3>
           <table>
@@ -55,7 +57,7 @@ const UserHistory = () => {
               ))}
             </tbody>
           </table>
-
+      <div className="with-transaction">
           <h3>Withdrawals</h3>
           <table>
             <thead>
@@ -77,15 +79,11 @@ const UserHistory = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </>
       )}
 
-      <style>{`
-        .history-page { padding: 2rem; max-width: 900px; margin: auto; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
-        th, td { padding: 0.75rem; border: 1px solid #ccc; text-align: left; }
-        h3 { margin-top: 2rem; }
-      `}</style>
+      
     </div>
   );
 };

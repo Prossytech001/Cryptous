@@ -121,6 +121,7 @@
 // export default WithdrawForm;
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../components/Withdraw/Withdraw.css"
 
 const WithdrawForm = ({ userBalance }) => {
   const [amount, setAmount] = useState('');
@@ -228,8 +229,10 @@ const handleWithdraw = async (e) => {
 
 
   return (
+    <div>
+    <h2 className='withdraw-containerh2'>Withdraw Funds</h2>
     <div className="withdraw-container">
-      <h2>Withdraw Funds</h2>
+      
       <form onSubmit={handleWithdraw} className="withdraw-form">
         <input
           type="number"
@@ -259,15 +262,8 @@ const handleWithdraw = async (e) => {
       )}
 
       <style>{`
-        .withdraw-container {
-          max-width: 400px;
-          margin: auto;
-        }
-        .withdraw-form input, .withdraw-form button {
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 10px;
-        }
+       
+       
         .popup {
           position: fixed;
           top: 20%;
@@ -292,6 +288,7 @@ const handleWithdraw = async (e) => {
           }
         }
       `}</style>
+    </div>
     </div>
   );
 };

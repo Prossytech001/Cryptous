@@ -583,7 +583,7 @@ const handleStakeClaim = async (stakeId) => {
   return (
     <div className="p-6">
       <div className="dashs__h1boby flex justify-between items-center mb-6">
-      <h1 className="text-3xl text-white font-bold mb-6">Welcome {user ? user.username : "Loading..."}</h1>
+      <h1 className=" dbwel text-3xl text-white font-bold mb-6">Welcome {user ? user.username : "Loading..."}</h1>
       
         {user?.hasUnclaimedToday && (
   <div className="bg-red-600 text-white p-3 rounded mb-4 shadow">
@@ -597,80 +597,7 @@ const handleStakeClaim = async (stakeId) => {
 
 
       </div>
-      {/* {filteredStakes.slice(0, visibleCount).map((stake) => {
-  const today = new Date().toDateString();
-  const lastClaim = new Date(stake.lastClaimDate || stake.startDate).toDateString();
-  const hasClaimedToday = today === lastClaim;
-  const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
-
-  return (
-  
-<>
-<table className="table--dash rounded-xl overflow-hidden shadow-md">
-    <thead className="header-dash text-left p-4">
-            <tr>
-              <th className="p-3">Plan</th>
-              <th className="p-3">Amount</th>
-              <th className="p-3">Date</th>
-              <th className="p-3">Daily ROI</th>
-              <th className="p-3">Next earning</th>
-              <th className="p-3">Earnings So Far</th>
-              <th className="p-3">Status</th>
-            </tr>
-     </thead>
-    
-    <tbody>
-    <tr key={stake._id} className="table--dash">
-      <td className="p-3">{stake.plan?.name || "-"}</td>
-      <td className="p-3">${stake.amount}</td>
-      <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
-      <td className="p-3">{stake.dailyROI}%</td>
-       <p className={`text-sm ${ready ? "text-green-400" : "text-yellow-400"}`}>
-          Next ROI: {text}
-        </p>
-      <td className="p-3">${stake.earningsSoFar.toFixed(2)}</td>
-      <td className="p-3">
-        <span
-          className={`satus py-1 rounded-full text-sm font-semibold ${
-            stake.isCompleted
-              ? "bg-green-100 text-green-800"
-              : "bg-red-300 text-red-800"
-          }`}
-        >
-          {stake.isCompleted ? "Completed" : "Active"}
-        </span>
-      </td>
-      <td className="p-3">
-        <button
-          onClick={() => handleStakeClaim(stake._id)}
-          disabled={hasClaimedToday || stake.isCompleted}
-          className={`px-3 py-1 rounded text-white ${
-            hasClaimedToday || stake.isCompleted
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-green-600 hover:bg-green-700"
-          }`}
-        >
-          {hasClaimedToday ? "Claimed" : "Claim ROI"}
-        </button>
-      </td>
-    </tr>
-    </tbody>
-    </table>
-     {users.length > 10 && (
-  <div className="text-center mt-4">
-    <button
-      onClick={handleToggleUsers}
-      className="admin-see-more-btn "
-    >
-      {visibleCount >= users.length ? 'See Less' : 'See More'}
-    </button>
-  </div>
-)}
-    </>
-  );
-})} */}
-{/* 💰 Stake Table */}
-
+     
 
 {/* 👇 Show More Button */}
 
@@ -682,23 +609,23 @@ const handleStakeClaim = async (stakeId) => {
         <div className="dash-fund-text">
           <h2 className="fund-b">Funded Balance</h2>
          
-          <p className="text-gray-600 text-lg">USD</p>
+          <p className="text-gray-600 text-lg">USDT</p>
           </div>
-          <p className="balance-dash text-green-600 text-lg">${user  ? user.balance.toFixed(2) : "loading.."}</p>
+          <p className="balance-dash text-white-600">${user  ? user.balance.toFixed(2) : "loading.."}</p>
           
         </div>
         <div className="dash-funds flex ">
         <div className="earnings-dash">
         <div className="dash-fund-text">
           <h2 className="earning-b text-xl font-semibold">Total Earnings</h2>
-          <p className="text-gray-600 text-lg">USD</p>
+          <p className="text-gray-600 text-lg">USDT</p>
           </div>
           <p className="earn-b text-lg">${user.totalEarnings.toFixed(2)}</p>
         </div>
         <div className="withdrawable-dash">
         <div className="dash-fund-text">
-          <h2 className="withdraw-b">Withdrawable Balance</h2>
-          <p className="text-gray-600 text-lg">USD</p>
+          <h2 className="withdraw-b">Withdrawable Amount</h2>
+          <p className="text-gray-600 text-lg">USDT</p>
           </div>
           <p className="with-b text-purple-600 text-lg">${user.withdrawableBalance.toFixed(2)}</p>
         </div>
@@ -710,18 +637,18 @@ const handleStakeClaim = async (stakeId) => {
 {/* 📋 My Stakes */}
       <h2 className="text-white font-bold text-xl mb-4">📋 My Stakes</h2>
 
-<div className="overflow-x-auto">
-  <table className="table--dash taabbllee rounded-xl overflow-x-auto shadow-md w-full">
-    <thead className="header-dash text-left p-4">
+<div className="overflows">
+  <table className="stake-dash  rounded-xl overflow-x-auto shadow-md w-full">
+    <thead className=" text-left p-4">
       <tr>
-        <th className="stak-pads p-3">Plan</th>
-        <th className="p-3">Amount</th>
-        <th className="p-3">Date</th>
-        <th className="p-3">Daily ROI</th>
-        <th className="p-3">Next Earning</th>
-        <th className="p-3">Earnings So Far</th>
-        <th className="p-3">Status</th>
-        <th className="p-3">Action</th>
+        <th className=" ">Plan</th>
+        <th className="">Amount</th>
+        <th className="">Date</th>
+        <th className="">Daily ROI</th>
+        <th className="">Next Earning</th>
+        <th className="">Earnings So Far</th>
+        <th className="">Status</th>
+        <th className="">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -732,21 +659,21 @@ const handleStakeClaim = async (stakeId) => {
         const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
 
         return (
-          <tr key={stake._id} className="stak-pad hover:bg-gray-100 lissh">
-            <td className="stak-pads p-3">{stake.plan?.name || "-"}</td>
-            <td className="p-3">${stake.amount}</td>
-            <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
-            <td className="p-3">{stake.dailyROI}%</td>
-            <td className={`p-3 text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</td>
-            <td className="p-3">${stake.earningsSoFar.toFixed(2)}</td>
-            <td className="p-3">
+          <tr key={stake._id} className=" hover:bg-gray-100">
+            <td className=" text-white">{stake.plan?.name || "-"}</td>
+            <td className=" text-white">${stake.amount}</td>
+            <td className=" text-white text-center">{new Date(stake.startDate).toDateString()}</td>
+            <td className=" text-white ">{stake.dailyROI}%</td>
+            <td className={`text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</td>
+            <td className="text-white">${stake.earningsSoFar.toFixed(2)}</td>
+            <td className="">
               <span className={`satus py-1 px-2 rounded-full text-sm font-semibold ${
                 stake.isCompleted ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
               }`}>
                 {stake.isCompleted ? "Completed" : "Active"}
               </span>
             </td>
-            <td className="stak-pads p-3">
+            <td className=" p-3">
               <button
                 onClick={() => handleStakeClaim(stake._id)}
                 disabled={hasClaimedToday || stake.isCompleted}
@@ -796,7 +723,7 @@ const handleStakeClaim = async (stakeId) => {
     </select>
     <button
       onClick={() => setDrawerOpen(!drawerOpen)}
-      className="lg:hidden bg-blue-600 px-4 py-1 rounded"
+      className="btnact lg:hidden px-4 py-1 rounded"
     >
       {drawerOpen ? 'Close' : 'Show'} Recent
     </button>
@@ -843,7 +770,7 @@ const handleStakeClaim = async (stakeId) => {
     onChange={(e) => setFilter(e.target.value)}
     className="border text-white  px-3 py-1 rounded-md"
   >
-    <option value="all">All</option>
+    <option value="all text-white-100">All</option>
     <option value="active">Active</option>
     <option value="completed">Completed</option>
   </select>
@@ -867,7 +794,7 @@ const handleStakeClaim = async (stakeId) => {
           <tbody>
             {filteredStakes.map((stake) => (
               <tr key={stake._id} className="list-dash  border-b hover:bg-gray-50">
-                <td className="p-3">{stake.plan?.name || "-"}</td>
+                <td className=" p-3">{stake.plan?.name || "-"}</td>
                 <td className="p-3">${stake.amount}</td>
                 <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
                 <td className="px-4 py-2">{(stake.dailyROI)}%</td>

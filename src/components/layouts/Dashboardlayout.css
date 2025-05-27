@@ -75,14 +75,18 @@ transition: 0.5s ease-in-out;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-   
-    padding: 1rem 2rem;
-    background-color: #e5d010;
+   font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    background-color: #ffd75b;
     height: 100%;
     border-radius: 20px;
     width: 100%;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     
+}
+.dbwel{
+  color: #d1d1e2ce;
+  font-size: 1rem;
 }
 .dash-fund-text{
     font-size: 1.5rem;
@@ -104,8 +108,8 @@ transition: 0.5s ease-in-out;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-   background-color: #3B3854;
-    padding: 1rem 2rem;
+   background-color: #2b2a3b;
+    padding: 0.5rem 1.5rem;
     
     height: 100%;
     border-radius: 20px;
@@ -126,8 +130,8 @@ transition: 0.5s ease-in-out;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: #3B3854;
-    padding: 1rem 2rem;
+    background-color: #2b2a3b;
+    padding: 0.5rem 1.5rem;
    
     height: 100%;
     border-radius: 20px;
@@ -266,6 +270,12 @@ transition: 0.5s ease-in-out;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     margin-top: 1rem;
 }
+@media all and (max-width: 800px){
+ .table--dash{
+    width: 50rem;
+    overflow-x: auto;
+  }
+}
 
 
 
@@ -324,12 +334,53 @@ transition: 0.5s ease-in-out;
     background-color: var(--blueshover);
     color: var(--BgWhite);
 }
+.overflows{
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 1rem;
+}
 .satus{
     padding: 2px;
 }
 .dash-columen{
     flex-direction: column;
 }
+.stake-dash{
+   width: 100%;
+      border-collapse:collapse; 
+      margin-bottom: 2rem;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 2px solid #fff;
+}
+@media all and (max-width: 800px){
+  .stake-dash{
+    width: 60rem;
+    overflow-x: auto;
+  }
+}
+
+
+.stake-dash th { 
+     padding: 0.75rem; 
+   border: 2px solid #cccccc05; 
+    text-align: left; 
+   
+
+color: #fff;}
+.stake-dash tr:nth-child(even) {
+  background-color: #3B3854; /* light blue */
+}
+
+.stake-dash tr:nth-child(odd) {
+  background-color: #2D2A4D; /* dark blue */
+}
+
+
+    .stake-dash td { 
+     padding: 0.75rem; 
+   border: 2px solid #cccccc18; 
+    text-align: left; }
 
 .stak-pad{
   padding: 0.5rem;
@@ -351,26 +402,19 @@ transition: 0.5s ease-in-out;
     cursor: pointer;
     
 }
-@media all and (max-width: 600px){
-  .taabbllee {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-  }
+.btnact{
+  background-color: #1e1e2d;
+  padding: 3px;
+}
+@media all and (max-width: 1000px){
+ 
   .ul-activity {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
   }
-  .lissh {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-  }
+ 
   .header-dash tr{
     gap: 1rem;
   }
@@ -379,6 +423,10 @@ transition: 0.5s ease-in-out;
   }
   .dashactul{
     width: 100%;
+  }
+  .content-act{
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -396,7 +444,7 @@ transition: 0.5s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
+  background-color:  #1e1e2d;
     padding: 1rem;
    border-bottom: 1px solid #3B3854;
     position: sticky;
