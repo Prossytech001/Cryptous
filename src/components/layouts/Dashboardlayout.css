@@ -76,7 +76,7 @@ transition: 0.5s ease-in-out;
     justify-content: space-between;
     flex-direction: column;
    font-weight: 600;
-    padding: 0.5rem 0.5rem;
+    padding: 1rem 0.5rem;
     background-color: var(--ing);
     height: 100%;
     border-radius: 20px;
@@ -109,7 +109,7 @@ transition: 0.5s ease-in-out;
     justify-content: space-between;
     flex-direction: column;
    background-color: var(--inbs);
-    padding: 0.5rem 0.5rem;
+    padding: 1rem 0.5rem;
     
     height: 100%;
     border-radius: 20px;
@@ -131,7 +131,7 @@ transition: 0.5s ease-in-out;
     justify-content: space-between;
     flex-direction: column;
     background-color: var(--inbs);
-    padding: 0.5rem 0.5rem;
+    padding: 1rem 0.5rem;
    
     height: 100%;
     border-radius: 20px;
@@ -359,7 +359,7 @@ transition: 0.5s ease-in-out;
 }
 @media all and (max-width: 800px){
   .stake-dash{
-    width: 35rem;
+    width: 50rem;
     overflow-x: auto;
   }
   .stakenon{
