@@ -300,13 +300,21 @@ import AdminWithdrawals from './pages/AdminWithdraw';
 import UserHistory from './pages/UserHistory';
 import AdminDepositDetails from './pages/AdminDepositDetails';
 import AdminDeposits from './pages/AdminDeposits';
+
+import AssistantIndicator from './components/AiIndicator/Aiindicator';
 function App() {
   const { isAuthenticated, user } = React.useContext(AuthContext);
 
   return (
+
+    <>
+    <AssistantIndicator />
     <Routes>
+      
       {/* PUBLIC ROUTES */}
       <Route element={<PublicLayout />}>
+      
+       
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -436,6 +444,7 @@ function App() {
 />
 
     </Routes>
+    </>
   );
 }
 

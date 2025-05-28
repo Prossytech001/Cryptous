@@ -1,0 +1,122 @@
+@keyframes rotate-ring {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce-ring {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-rotate-ring {
+  animation: rotate-ring 3s linear infinite;
+}
+
+.animate-bounce-ring {
+  animation: bounce-ring 2s ease-in-out infinite;
+}
+
+.assistant-fixed-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.tooltip-bubble {
+  background-color: #222;
+  color: #fff;
+  padding: 6px 10px;
+ 
+  border-radius: 20px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-popup-box {
+  position: fixed;
+  
+  right: 0;
+  width: 360px;
+  height: 100vh;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.chatinput {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--blue);
+  color: white;
+  padding: 10px 16px;
+  font-weight: bold;
+  
+}
+.shat-h{
+    width: 100%;
+    position: sticky;
+    top: 18px;
+}
+
+.chat-header button {
+  background: none;
+  color: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-iframe {
+  width: 100%;
+  height: calc(100% - 45px);
+  border: none;
+}
+.center-div-ani{
+    width: 70%;
+    height: 70%;
+}
+.center-div-anis{
+    width: 80%;
+    height: 80%;
+}
+@media all and (max-width: 500px) {
+  .assistant-fixed-container {
+    bottom: 0;
+    right: 0;
+  }
+  .chat-popup-box {
+    right: 0;
+    width: 100%;
+  }
+  .center-div-ani{
+    width: 65%;
+    height: 65%;
+}
+.center-div-anis{
+    width: 70%;
+    height: 70%;
+}
+}
