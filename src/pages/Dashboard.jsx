@@ -351,22 +351,14 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import "../components/layouts/Dashboardlayout.css";
 import { FaArrowDown } from "react-icons/fa6";
-import {
-  LineChart, Line, CartesianGrid,  Legend, ResponsiveContainer
-} from 'recharts';
-import {
-  BarChart, Bar, XAxis, YAxis,Tooltip, 
-} from 'recharts';
-
-
-import {
- 
-  PieChart, Pie, Cell
-} from 'recharts';
+import { Link } from "react-router-dom";
 
 import { IoDiamond } from "react-icons/io5";
 import Loader from "../components/Loader/Loader"
-
+import { FaPlus } from "react-icons/fa6";
+import { PiHandWithdraw } from "react-icons/pi";
+import { MdSupportAgent } from "react-icons/md";
+import { LuCircleDollarSign } from "react-icons/lu";
 
 
 const Dashboard = () => {
@@ -580,6 +572,9 @@ const handleStakeClaim = async (stakeId) => {
 };
 
 
+
+
+
   return (
     <div className="p-6">
       <div className="dashs__h1boby flex justify-between items-center mb-6">
@@ -604,15 +599,20 @@ const handleStakeClaim = async (stakeId) => {
 
 
 
-      <div className="funds__dash flex flex-col md:flex-cols-3 gap-4 mb-6">
+      <div className="funds__dash flex  gap-4 mb-6">
         <div className="dash-fund ">
         <div className="dash-fund-text">
           <h2 className="fund-b">Funded Balance</h2>
          
-          <p className="text-gray-600 text-lg">USDT</p>
+          <p className="text-gray-400 text-lg">USDT</p>
           </div>
-          <p className="balance-dash text-white-600">${user  ? user.balance.toFixed(2) : "loading.."}</p>
-          
+          <div className="dashadd">
+          <p className="balance-dash text-white-100">${user  ? user.balance.toFixed(2) : "loading.."}</p>
+          <Link to="/funding" className="bg-blue-600s text-white px-4 py-2 rounded hover:bg-blue-700">
+           <FaPlus className="inline-block mr-1" /> Add Funds
+          </Link>
+          </div>
+
         </div>
         <div className="dash-funds flex ">
         <div className="earnings-dash">
@@ -627,15 +627,52 @@ const handleStakeClaim = async (stakeId) => {
           <h2 className="withdraw-b">Withdrawable Amount</h2>
           <p className="text-gray-600 text-lg">USDT</p>
           </div>
-          <p className="with-b text-purple-600 text-lg">${user.withdrawableBalance.toFixed(2)}</p>
+          <div className="withadd">
+            <p className="with-b text-purple-600 text-lg">${user.withdrawableBalance.toFixed(2)}</p>
+            <Link to="/withdraw" className="bg-blue-600w text-white rounded hover:bg-blue-700">
+              <FaPlus className="inline-block mr-1" /> Add Funds
+            </Link>
+          </div>
+          
         </div>
         </div>
+      </div>
+      <h2 className="text-gray-400 quick-actions text-start font-bold text-xl mb-4">Quick Actions</h2>
+
+      <div className="foutricondisplay">
+        <Link to="/funding" className="dashicons">
+          <div className="conicon">
+            <FaPlus className="text-2xl " />
+          </div>
+          <p className="text-white-100 text-sm">Add Funds</p>
+        </Link>
+        <Link to="/withdraw" className="dashicons">
+          <div className="conicon">
+            <PiHandWithdraw className="text-2xl " />
+          </div>
+          <p className="text-white-100 text-sm">Withdraw</p>
+
+        </Link>
+        <Link to="/support" className="dashicons">
+          <div className="conicon">
+            <MdSupportAgent className="text-2xl " />
+          </div>
+          <p className="text-white-100 text-sm">Support</p>
+
+        </Link>
+        <Link to="/plans" className="dashicons">
+          <div className="conicon">
+            <LuCircleDollarSign className="text-2xl " />
+          </div>
+          <p className="text-white-100 text-sm">Plans</p>
+
+        </Link>
       </div>
 
       <div className="stake-dashe mb-8 text-center">
        </div>
 {/* 📋 My Stakes */}
-      <h2 className="text-white text-center font-bold text-xl mb-4"> My Stakes</h2>
+      <h2 className="text-gray-400  quick-acti text-start font-bold text-xl mb-4"> Daily Investment ROI</h2>
 
 <div className="overflows">
   <table className="stake-dash  rounded-xl overflow-x-auto shadow-md w-full">
@@ -660,12 +697,12 @@ const handleStakeClaim = async (stakeId) => {
 
         return (
           <tr key={stake._id} className=" ">
-            <td className=" text-white">{stake.plan?.name || "-"}</td>
-            <td className=" text-white stakenon">${stake.amount}</td>
-            <td className=" text-white stakenon text-center">{new Date(stake.startDate).toDateString()}</td>
-            <td className=" text-white stakenon">{stake.dailyROI}%</td>
+            <td className=" text-whites">{stake.plan?.name || "-"}</td>
+            <td className=" text-whites stakenon">${stake.amount}</td>
+            <td className=" text-whites stakenon text-center">{new Date(stake.startDate).toDateString()}</td>
+            <td className=" text-whites stakenon">{stake.dailyROI}%</td>
             <td className={`text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</td>
-            <td className="text-white">${stake.earningsSoFar.toFixed(2)}</td>
+            <td className="text-whites">${stake.earningsSoFar.toFixed(2)}</td>
             <td className="">
               <span className={`satus py-1 px-2 rounded-full text-sm font-semibold ${
                 stake.isCompleted ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
@@ -694,6 +731,50 @@ const handleStakeClaim = async (stakeId) => {
 
 
 
+</div>
+<div className="oversflow">
+   {filteredStakes.slice(0, visibleCount).map((stake) => {
+        const today = new Date().toDateString();
+        const lastClaim = new Date(stake.lastClaimDate || stake.startDate).toDateString();
+        const hasClaimedToday = today === lastClaim;
+        const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
+
+        return (
+          <div key={stake._id} className=" headRead">
+          <div className="reward">
+            <p className="rewardname ">{stake.plan?.name || "-"}</p>
+            <p className="  stakenon">${stake.amount}</p>
+            <p className="  ">{new Date(stake.startDate).toDateString()}</p>
+            <p className=" stakenon">{stake.dailyROI}%</p>
+            <p className={`text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</p>
+            </div>
+            <div className="reward2">
+            <p className="text-white">${stake.earningsSoFar.toFixed(2)}</p>
+            <p className="">
+              <span className={`satus py-1 px-2 rounded-full text-sm font-semibold ${
+                stake.isCompleted ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+              }`}>
+                {stake.isCompleted ? "Completed" : "Active"}
+              </span>
+            </p>
+            <td className=" p-3">
+              <button
+                onClick={() => handleStakeClaim(stake._id)}
+                disabled={hasClaimedToday }
+                className={`stak-pad px-3 py-1 rounded text-white text-sm ${
+                  hasClaimedToday || stake.isCompleted
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-600 hover:bg-blue-700"
+                }`}
+              >
+                {hasClaimedToday ? "Claimed" : "Claim ROI"}
+              </button>
+              
+            </td>
+            </div>
+          </div>
+        );
+      })}
 </div>
 
   {filteredStakes.length > 2 && (
@@ -732,14 +813,14 @@ const handleStakeClaim = async (stakeId) => {
   {/* Drawer for Mobile */}
   {drawerOpen && (
     <div className="  h-full bg-gray p-4 shadow-lg overflow-y-auto lg:hidden">
-      <h2 className="text-white font-bold mb-3">Recent Activity</h2>
+      <h2 className="text-white-800 quick-actis  font-bold mb-3">Recent Activity</h2>
       <ActivityList data={activities} />
     </div>
   )}
 
   {/* Desktop List */}
   <div className="hidden lg:block">
-    <h2 className="text-white font-bold mb-3">Recent Activity</h2>
+    <h2 className="text-whites quick-actis font-bold mb-3">Recent Activity</h2>
     <ActivityList data={activities} />
   </div>
 
@@ -761,64 +842,7 @@ const handleStakeClaim = async (stakeId) => {
 </div>
 
 
-    
-<div className="dashboard-activity">
-  <div className="activitydisplay">
-<div className="mb-4">
-  <label className="mr-2 text-white font-medium">Filter:</label>
-   <select
-    value={filter}
-    onChange={(e) => setFilter(e.target.value)}
-    className="bg-dashboard-card border text-white  px-3 py-1 rounded-md"
-  >
-    <option className="last7" value="all text-white-100">All</option>
-    <option className="last7"  value="active">Active</option>
-    <option className="last7"  value="completed">Completed</option>
-  </select>
-</div>
-
-
-
-      <h2 className="text-white font-bold mb-4">📋 Stake History</h2>
-      </div>
-      <div className="overflow-x-auto">
-        <table className="table--dash  bg-white rounded-xl overflow-hidden shadow-md">
-          <thead className="header-dash text-left p-4">
-            <tr>
-              <th className="p-3">Plan</th>
-              <th className="p-3">Amount</th>
-              <th className="p-3">Date</th>
-              <th className="p-3">Daily ROI</th>
-              <th className="p-3">Earnings So Far</th>
-              <th className="p-3">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredStakes.map((stake) => (
-              <tr key={stake._id} className="list-dash  border-b hover:bg-gray-50">
-                <td className=" p-3">{stake.plan?.name || "-"}</td>
-                <td className="p-3">${stake.amount}</td>
-                <td className="p-3">{new Date(stake.startDate).toDateString()}</td>
-                <td className="px-4 py-2">{(stake.dailyROI)}%</td>
-                
-                <td className="p-3">${stake.earningsSoFar.toFixed(2)}</td>
-                <td className="p-3">
-                  <span
-                    className={`satus py-1 rounded-full text-sm font-semibold ${
-                      stake.isCompleted
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-300 text-red-800"
-                    }`}
-                  >
-                    {stake.isCompleted ? "Completed" : "Active"}
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      </div>
+ 
       </div>
     </div>
   );
@@ -841,7 +865,7 @@ const ActivityList = ({ data }) => (
       const colorClass = isPositive
         ? 'text-green-500'
         : isNegative
-        ? 'text-red-500'
+        ? 'text-red-300'
         : 'text-white-500';
 
       return (

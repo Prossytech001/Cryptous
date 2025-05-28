@@ -24,9 +24,17 @@
   --miniheader: 2rem;
   --font-family: "Winky Sans", sans-serif ;
   --inb:#03193d;
-  --inbs: #062454cb;
-  --ing:#ffd75b;
+  --inbs: #041633;
+  --ingee:#ffd75b;
    --ings:#ffd65b2a;
+   --whitegry: #f0f6fb;
+--inbi:#a6bada46;
+   --blue: #690dfd;
+}
+body{
+ 
+ backdrop-filter: blur(100%);
+ 
 }
 
 
