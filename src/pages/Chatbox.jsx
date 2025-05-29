@@ -189,6 +189,7 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
    const messagesEndRef = useRef(null);
+    const api = import.meta.env.VITE_API_URL;
 
 
    useEffect(() => {
@@ -204,7 +205,7 @@ const Chatbot = () => {
     setInput("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/chat", {
+      const res = await axios.post(`${api}/api/chat`, {
         message: input,
       });
 
