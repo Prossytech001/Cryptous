@@ -94,8 +94,10 @@ const AssistantIndicator = () => {
         <div className="assistant-fixed-container" onClick={() => setShowChat(true)}>
           <div className="tooltip-bubble">💬 Ask me anything</div>
           <div className="ring-container w-20 h-20 animate-bounce-ring">
-            <div className="center-div-anis flex justify-center items-center rounded-full p-[6px] animate-rotate-ring bg-[conic-gradient(from_0deg,_#00f0ff,_#87004f,_#ff00c8,_#00f0ff)]">
-              <div className="center-div-ani rounded-full bg-white" />
+            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse shadow-lg">
+              <div className="ai-text flex items-center justify-center center-div-ani rounded-full bg-white" >
+                AI
+                </div>
             </div>
           </div>
         </div>

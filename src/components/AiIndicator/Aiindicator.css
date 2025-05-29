@@ -19,7 +19,7 @@
 .assistant-fixed-container {
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  right: 0px;
   cursor: pointer;
   z-index: 9999;
   display: flex;
@@ -63,6 +63,13 @@
     background: #fff;
     padding: 10px;
     box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+.ai-text{
+    font-size: 14px;
+    color: #662df9;
+    margin: 0;
+    padding: 0;
+    font-weight: 800;
 }
 
 .chat-header {

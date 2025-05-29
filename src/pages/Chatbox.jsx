@@ -214,11 +214,13 @@ const Chatbot = () => {
         { role: "assistant", text: res.data.reply }
       ]);
     } catch (error) {
-      setMessages([
-        ...newMessages,
-        { role: "assistant", text: "❌ Sorry, something went wrong." }
-      ]);
-    } finally {
+  console.error("AI ERROR:", error.response?.data || error.message);
+  const errorMsg = error.response?.data?.error || error.message || "Unknown error";
+  setMessages([
+    ...newMessages,
+    { role: "assistant", text: `❌ Error: ${errorMsg}` }
+  ]);
+} finally {
       setLoading(false);
     }
   };
