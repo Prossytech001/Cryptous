@@ -13,6 +13,10 @@ const AssistantIndicator = () => {
 
 
 
+
+    
+
+
    useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);

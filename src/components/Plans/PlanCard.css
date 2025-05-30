@@ -3,10 +3,10 @@
     flex-direction: column;
     height: auto;
     color: var(--text);
-    background-color: #2D2A4D;
-   
+     background-color: #e0def47d;
+      border: 1.5px solid #c5befa;
     border-radius: 20px;
-    
+    align-items: center;
     justify-content: center;
     padding: 0.7rem;
     width: auto;
@@ -34,13 +34,17 @@
     color: var(--primarycolor);
 }
 .container-PLAN {
-    
+    background-repeat: no-repeat;
+  background-size: cover;
+   background-position: center;
+  background-image: url('../../../public/blockground.jpeg');
     min-height: 100vh;
     place-content: center;
     display: flex;
     place-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 0.7rem;
 
 }
 .plan-btn{
@@ -79,6 +83,9 @@
     border-radius: 5px;
     margin-top: 1rem;
 }
+.plap{
+    place-items: center;
+}
 .select-input{
     width: 100%;
     padding: 0.5rem;
@@ -96,9 +103,7 @@
        width: 100%;
         padding: 1rem;
     }
-    .container-PLAN {
-        padding: 0;
-    }
+    
     .card_hlder{
 display: grid;
         grid-template-columns: 1fr 1fr;
@@ -116,7 +121,7 @@ display: grid;
     flex-direction: row;
     height: auto;
     color: var(--text);
-    background-color: #2D2A4D;
+    
    
     border-radius: 20px;
     
@@ -145,10 +150,5 @@ flex-direction: column;
         width: 100%;
     }
 
-    .plan-btn{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        
-    }
+   
 }

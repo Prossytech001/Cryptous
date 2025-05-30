@@ -122,60 +122,35 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../components/Withdraw/Withdraw.css"
+import withimg from "../../public/usdt.png"
+import {Link} from "react-router-dom";
 
 const WithdrawForm = ({ userBalance }) => {
   const [amount, setAmount] = useState('');
   const [walletAddress, setWalletAddress] = useState('');
   const [error, setError] = useState('');
+  const [withdrawableBalance, setWithdrawableBalance] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const api = import.meta.env.VITE_API_URL;
 
-//   const handleWithdraw = async (e) => {
-//     e.preventDefault();
-//     setError('');
-//     setShowPopup(false);
 
-//     const numAmount = Number(amount);
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const res = await axios.get(`${api}/api/withdraw/balance`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setWithdrawableBalance(res.data.withdrawableBalance);
+      } catch (err) {
+        console.error("Error fetching balance:", err.message);
+      }
+    };
 
-//     if (numAmount < 100 || numAmount > 1000) {
-//       return setError('Amount must be between 100 and 1000');
-//     }
+    fetchBalance();
+  }, []);
 
-//     if (numAmount > userBalance) {
-//       return setError('You do not have enough withdrawable balance');
-//     }
 
-//     try {
-//       const token = localStorage.getItem('authToken');
-//       if (!token) return setError('You must be logged in');
-
-//       await axios.post(
-//         'http://localhost:5000/api/withdraw',
-//         {
-//           amount: numAmount,
-//           walletAddress
-//         },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//             'Content-Type': 'application/json'
-//           }
-//         }
-//       );
-
-//       setAmount('');
-//       setWalletAddress('');
-//       setShowPopup(true);
-
-//       // 🕒 Auto-hide popup after 5 seconds
-//       setTimeout(() => {
-//         setShowPopup(false);
-//       }, 5000);
-//     } catch (err) {
-//       const errMsg = err.response?.data?.message || 'Something went wrong';
-//       setError(errMsg);
-//     }
-//   };
 const handleWithdraw = async (e) => {
   e.preventDefault();
   setError('');
@@ -229,10 +204,25 @@ const handleWithdraw = async (e) => {
 
 
   return (
-    <div>
-    <h2 className='withdraw-containerh2'>Withdraw Funds</h2>
+    <>
+
+    
+    <div >
+   
+    
     <div className="withdraw-container">
-      
+      <div className="withhead">
+       <div className="withimg">
+        <img src={withimg} alt="" className='withimgs'/>
+        <p>USDT (TRC20).</p>
+       </div>
+       
+        <p className="text-white p-amoutwith  flex flex-col text-lg mb-2">
+       <strong>${withdrawableBalance.toFixed(2)}</strong>
+       <Link to="/history" className="back-link">Transaction History</Link>
+      </p>
+      </div>
+     
       <form onSubmit={handleWithdraw} className="withdraw-form">
         <input
           type="number"
@@ -290,6 +280,7 @@ const handleWithdraw = async (e) => {
       `}</style>
     </div>
     </div>
+    </>
   );
 };
 

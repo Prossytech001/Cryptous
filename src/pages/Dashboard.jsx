@@ -576,7 +576,7 @@ const handleStakeClaim = async (stakeId) => {
 
 
   return (
-    <div className="p-6">
+    <div className="dahboader p-6">
       <div className="dashs__h1boby flex justify-between items-center mb-6">
       <h1 className=" dbwel text-3xl text-white font-bold mb-6">Welcome {user ? user.username : "Loading..."}</h1>
       

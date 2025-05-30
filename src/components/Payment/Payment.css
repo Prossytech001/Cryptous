@@ -7,6 +7,10 @@
     place-content: center;
     padding: 20px;
     height: 100vh;
+    background-image: url('../../../public/blockground.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 .payment-ontent{
     display: flex;
@@ -19,16 +23,17 @@
     height: auto;
      padding: 1rem 2rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.032);
-    background-color: #2D2A4D;
+     background-color: #e0def46d;
+      border: 1.5px solid #c5befa;
 }
 .pay-input{
     width: 100%;
           padding: 10px;
           margin-bottom: 10px;
           background: none;
-          border: 2px solid #544ba0;
+          border: 2px solid var(--blue);
           border-radius: 20px;
-          color: #fff;
+          color: var(--inbs);
           outline: none;
 }
 .pay-input:focus{
@@ -40,7 +45,7 @@
     border-radius: 10px;
     padding: 10px;
     border: none;
-    background-color: #544ba0;
+    background-color: var(--blue);
     color: var(--BgWhite);
     font-size: 1.2rem;
     font-weight: 600;

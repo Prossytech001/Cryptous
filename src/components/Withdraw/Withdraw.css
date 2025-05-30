@@ -4,7 +4,14 @@
   flex-direction: column;
    justify-content: center;
   margin: auto;
-  height: 80vh;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+   background-position: center;
+  background-image: url('../../../public/blockground.jpeg');
+}
+.back-link{
+    color: var(--blue);
 }
 .withdraw-containerh2{
     font-size: var(--miniheader);
@@ -12,11 +19,59 @@
     margin-bottom: 1rem;
     text-align: center;
 }
+.withhead{
+    background-color: #e0def458;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 1rem 2rem;
+ 
+    border: 1.5px solid #c5befa;
+    backdrop-filter: blur(50px);
+    margin-bottom: 20px;
+}
+@media all and (max-width: 500px){
+    .withhead{
+        width: 90%;
+        padding: 0.3rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .withimg{
+        flex-direction: column;
+        align-items: center;
+    }
+    .p-amoutwith {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    .withimg p{
+        font-size: auto;
+    }
+}
+.withimg{
+    display: flex;
+    place-items: center;
+}
+.withimg p{
+    
+    color: #efedf7;
+    margin-left: 1rem;
+    font-weight: 600;
+}
+.withimgs{
+    width: 2rem;
+    height: 2rem;
+}
 .withdraw-form {
     border-radius: 20px;
     padding: 1rem 2rem;
-    background-color: #2D2A4D;
-    
+    background-color: #e0def45b;
+     border: 1.5px solid #c5befa;
    width: 50%;
     display: flex;
     flex-direction: column;
@@ -26,16 +81,16 @@
           padding: 10px;
           margin-bottom: 10px;
           background: none;
-          border: 2px solid #544ba0;
+          border: 2px solid var(--blue);
           border-radius: 20px;
-          color: #fff;
+          color: var(--blue);
           outline: none;
 }
 .withdraw-form input:focus{
     border: 3px solid #544ba0;
 }
 .withdraw-form button {
-    background-color: #544ba0;
+    background-color: var(--blue);
     padding: 1rem;
     color: #fff;
     border-radius: 20px;

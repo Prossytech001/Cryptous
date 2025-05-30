@@ -133,7 +133,7 @@ const UserHistory = () => {
           </div>
         </>
       )}
-<div className="dashboard-activity">
+
   <div className="activitydisplay">
 <div className="mb-4">
   <label className="mr-2 text-white font-medium">Filter:</label>
@@ -189,7 +189,7 @@ const UserHistory = () => {
           </tbody>
         </table>
       </div>
-      </div>
+      
       
     </div>
   );

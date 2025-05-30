@@ -4,18 +4,24 @@
    border-radius: 20px;
    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.025);
     padding: 2rem;
-     background-color: var(--inbs);
+     background-color: #f5f4f91a;
+     backdrop-filter: blur(50px);
+      border: 1.5px solid #7b74b1;
     min-height: auto;
     font-family: Arial, sans-serif;
     width: 50%;
     max-width: 800px;
     margin: 0 auto;
     color: #fff;
+    
 
 }
 .profile__page{
     display: flex;
-    
+     background-repeat: no-repeat;
+  background-size: cover;
+ background-position: center;
+  background-image: url('../../../public/blockground.jpeg');
     width: 100%;
     gap: 2rem;
     
@@ -35,7 +41,9 @@
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.041);
-     background-color: var(--inbs);
+     background-color: #f5f4f900;
+     backdrop-filter: blur(20px);
+      border: 1.5px solid #7b74b1;
     min-height: auto;
     font-family: Arial, sans-serif;
     width: auto;

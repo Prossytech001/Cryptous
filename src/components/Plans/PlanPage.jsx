@@ -126,16 +126,16 @@ const handleSubmit = async () => {
             </p>
              </div>
              <div className="plap">
-            <p className=" flex items-center gap-1 text-gray-400 mb-1">
+            <p className=" flex items-center gap-1 text-gray-600 mb-1">
               <FaCircleCheck className="palngood"/>
               Duration: <strong>{plan.durationDays} days</strong>
             </p>
 
-            <p className="flex items-center gap-1 text-gray-400 mb-4">
+            <p className="flex items-center gap-1 text-gray-600 mb-4">
               <FaCircleCheck className="palngood"/> 
                Minimun : ${plan.minInvestment} 
             </p>
-            <p className=" flex items-center gap-1 text-gray-400 mb-4">
+            <p className=" flex items-center gap-1 text-gray-600 mb-4">
               <FaCircleCheck className="palngood"/>
               Maximun : ${plan.maxInvestment}
             </p>

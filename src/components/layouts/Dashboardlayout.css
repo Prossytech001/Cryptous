@@ -1,3 +1,7 @@
+.dahboader{
+  padding: 0.8rem;
+}
+
 .side__button{
 width: 100%;
 background-color: var(--primarycolor);
@@ -723,7 +727,7 @@ font-weight: 500;
   /* Main Content */
   .main-content {
     flex: 1;
-    padding: 0.8rem;
+    
   background-color: var(--BgWhite);
 
     transition: margin-left 0.3s ease;
