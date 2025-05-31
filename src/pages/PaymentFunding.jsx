@@ -4,15 +4,43 @@ import axios from 'axios';
 import "../../src/components/Payment/Payment.css"
 import usdt from "../../public/usdt.png"
 import { FaBars, FaTimes } from "react-icons/fa";
+import Basedcrumb from '../components/Basedcrumb';
 export default function PaymentPage() {
   const [amount, setAmount] = useState('');
   const [paymentData, setPaymentData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [deposits, setDeposits] = useState([]);
   
 
   const api = import.meta.env.VITE_API_URL;
+
+
+ useEffect(() => {
+      const fetchHistory = async () => {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          setLoading(false);
+          return;
+        }
+        try {
+          const res = await axios.get(`${api}/api/history`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          setDeposits(res.data.deposits);
+         
+        } catch (err) {
+          console.error('Failed to fetch history:', err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchHistory();
+    }, []);
+ 
+  
 
   const handleCreatePayment = async () => {
   setLoading(true);
@@ -86,12 +114,18 @@ useEffect(() => {
 
   return (
     <div className="payment-contaier">
+      <Basedcrumb/>
+      <div className="payment__contents">
+        <h1 className='deposit'>Deposit</h1>
+        <div className="paymet__box">
+<div className="payment-img">
       <img src={usdt} alt="" className='usdt-pay'/>
-      <h2 className="text-3xl font-bold text-white mb-6 text-center text-blue-700">Fund Your Account</h2>
+      <h2 className="">Fund Your Account</h2>
+      </div>
       <div className="payment-ontent">
-        
+  
 
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="">
           {/* Left: Instructions */}
           <div className="payment-content">
          {showInstructionPopup && (
@@ -146,8 +180,10 @@ useEffect(() => {
     </div>
   </div>
 )}
-
-            <label className="paymentlabel">Enter amount (USDT)</label>
+            <select name="currency" id="" className="pay-input" >
+              <option value="usdt" className="text-white">USDT (TRC20)</option>
+            </select>
+            <label className="paymentlabels">Enter amount (USDT)</label>
             <input
               type="number"
               placeholder="Amount"
@@ -225,6 +261,33 @@ useEffect(() => {
 
         </div>
       </div>
+      </div>
+      </div>
+       <div className="payment-history">
+          <h3 className='paymentlabel'>Deposit History</h3>
+          <table className='payment-table'>
+            <thead className='payment-thead'>
+              <tr>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {deposits.map((d) => (
+                <tr key={d._id}>
+                  <td>{d.amount.toFixed(2)} USDT</td>
+                  <td>{d.status}</td>
+                  <td>
+  {d.createdAt ? new Date(d.createdAt).toLocaleString() : 'N/A'}
+</td>
+
+                </tr>
+              ))}
+            </tbody>
+          </table>
+     
+        </div>
     </div>
   );
 }

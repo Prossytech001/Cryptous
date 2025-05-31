@@ -1,4 +1,4 @@
-.payment-contaier{
+/* .payment-contaier{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,7 +118,7 @@
 }
 
 /* Add to Payment.css */
-
+/* 
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
@@ -195,4 +195,229 @@
         padding: 0.4rem;
 }
 }
+ */ 
+ .payment-contaier{
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #f4f4f5;
+ }
+ .usdt-pay{
+  height: 2rem;
+  width: 2rem;
+ }
+ .deposit{
+  font-size: var(--miniheader);
+  color: var(--text);
+  font-weight: 800;
+ }
+ .paymet__box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--BgWhite);
+  border-radius: 10px;
+ margin-top: 3rem;
+ padding: 0.7rem;
+ }
+ .pay-input{
+    width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          background: none;
+          border: 1px solid var(--grey);
+          border-radius: 5px;
+          color: var(--grey);
+          outline: none;
+}
+ 
+ .pay-btn {
+   
+    height: 50px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    background-color: var(--blue);
+    color: var(--BgWhite);
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+ .paymentlabels{
+    color: var(--text);
+    font-size: 1.2rem;
+}
+ .or-pay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   flex-direction: column;
+   padding: 10px;
+}
+.payment-img{
+  display: flex;
+  
+  align-items: center;
+}
+.payment-img h2{
+  color: var(--text);
+  font-size: var(--miniheader);
+  font-weight: 400;
+  font-size: var(--p);
 
+}
+.payment-history{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  
+ 
+}
+.paymentlabel{
+  color: var(--text);
+  font-size: var(--miniheader);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.payment-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.payment-table th, .payment-table td {
+  border: 1px solid var(--grey);
+  padding: 8px;
+  text-align: left;
+}
+.payment-thead{
+  background-color: var(--text);
+  color: var(--BgWhite);
+  font-weight: bold;
+}
+/* try to check it out*/
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  
+  
+}
+.popup-overlays {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.692);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  bottom: 0;
+  
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  animation: fadeSlideIn 0.4s ease-out forwards;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
+}
+
+.popup-close:hover {
+  color: red;
+}
+@media all and (max-width: 500px){
+    .popup-overlays {
+ inset: 0;
+  bottom: 0;
+ width: 100%;
+ left: 0;
+
+ 
+  
+}
+.popup-overlay-border{
+    padding-top: 20px;
+}
+.paycopy{
+        background-color: #544ba0;
+        margin: 10px 0;
+        padding: 0.4rem;
+}
+}
+
+
+
+/* Add to Payment.css */
+.or-pay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   flex-direction: column;
+   padding: 10px;
+}
+.address{
+    font-size: var(--p);
+}
+.payment_gateway{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.popup-overlay-border{
+    background-color: #2D2A4D;
+}
+.payamount{
+    color: var(--BgWhite);
+    font-size: 2rem;
+}
+.payamounts{
+    color: rgba(255, 255, 255, 0.623);
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+.payadder{
+    padding: 0.7rem;
+    background-color: #66666627;
+    color: #fff;
+}
+.paycopy{
+        background-color: #544ba0;
+        margin: 10px 0;
+        padding: 0.7rem;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}

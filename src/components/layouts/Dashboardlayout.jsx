@@ -446,7 +446,7 @@ const DashboardLayout = ({ children }) => {
     { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
     { path: '/withdraw', label: 'Withdrawal', icon: <MdOutlineAttachMoney /> },
      { path: '/funding', label: 'Fund Account', icon: <RiFundsBoxFill /> },
-      { path: '/history', label: 'Transaction History', icon: <RiFundsBoxFill /> },
+     
     { path: '/plans', label: 'Plans', icon: <MdOutlineAttachMoney /> },
     { path: '/support', label: 'Support', icon: <MdSupportAgent /> },
    
@@ -500,6 +500,7 @@ const DashboardLayout = ({ children }) => {
       {/* Main Content */}
       <main  className="main-content">
         {children}
+        
       </main>
     </div>
   );

@@ -1,4 +1,4 @@
- .withdraw-container {
+ /* .withdraw-container {
   place-items: center;
   display: flex;
   flex-direction: column;
@@ -103,4 +103,106 @@
     .withdraw-form{
         width: 90%;
     }
+} */
+ .withdraw-container{
+    width: 100%;
+    padding: 0.7rem;
+    background-color: var(--bgcol);
+ }
+ .withdraw-title {
+    font-size: var(--miniheader);
+    color: var(--text);
+    margin: 1rem 0;
+    
+    font-weight: 600;
+}
+.withhead{
+  flex-direction: column;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.withimg{
+    place-items: center;
+}
+.p-amoutwith {
+    place-items: center;
+}
+.withdraw-containers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+.withdraw-form {
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    background-color: var(--BgWhite);
+    
+   width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+ .withdraw-form input {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          background: none;
+          border: 2px solid var(--text);
+          border-radius: 10px;
+          color: var(--text);
+          outline: none;
+}
+.withdraw-form input:focus{
+    border: 3px solid #544ba0;
+}
+.withdraw-form button {
+    background-color: var(--blue);
+    padding: 1rem;
+    color: #fff;
+    border-radius: 20px;
+    transition: 0.4s ease-in-out;
+}
+.withdraw-form button:hover{
+    background-color: #7167c5;
+}
+.withamout{
+    color: var(--blue);
+    font-size: var(--miniheader);
+}
+.withdrawhistory{
+    width: 100%;
+    display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  overflow: auto;
+}
+.detail-with{
+    display: flex;
+    flex-direction: column;
+}
+.withtable{
+    width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.withtable th, .withtable td {
+  border: 1px solid var(--grey);
+  padding: 8px;
+  text-align: left;
+}
+.withtable-thead{
+  background-color: var(--text);
+  color: var(--BgWhite);
+  font-weight: bold;
+}
+.with0-amout-storng{
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    color: #fff;
 }

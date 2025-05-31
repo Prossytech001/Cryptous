@@ -108,7 +108,8 @@ const handleSubmit = async () => {
   return (
     <div className="container-PLAN ">
       
-      <h1 className="absolute top-15  text-3xl text-white font-bold mb-6 text-center">Investment Plans</h1>
+      
+      <h1 className="absolute top-15  text-3xl text-white-500 font-bold mb-6 text-center">Investment Plans</h1>
       
       <div className="card_hlder grid grid-cols-1 md:grid-cols-3 ">
         {Array.isArray(plans) && plans.map((plan) => (
@@ -119,7 +120,7 @@ const handleSubmit = async () => {
             <div className="pamcon">
             <RiShieldStarFill className="planwin"/>
             
-            <h2 className="text-xl text-white font-semibold mb-2">{plan.name}</h2>
+            <h2 className="text-xl text-white--400 font-semibold mb-2">{plan.name}</h2>
             
             <p className="plan-like text-gray-600 mb-1">
               <strong>{(plan.dailyROI).toFixed(2)}% ROI</strong>
@@ -179,7 +180,7 @@ const handleSubmit = async () => {
           </div>
         </div>
       )}
-      
+      <div className="allblue"></div>
     </div>
   );
 };

@@ -377,16 +377,7 @@ function App() {
           </PrivateRoute>
         }
       />
-      <Route
-        path="/history"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <UserHistory />
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
+     
 
       {/* ADMIN ROUTES */}
       <Route path="/admin/login" element={<AdminLogin />} />

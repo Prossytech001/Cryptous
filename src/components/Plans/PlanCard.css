@@ -3,8 +3,7 @@
     flex-direction: column;
     height: auto;
     color: var(--text);
-     background-color: #e0def47d;
-      border: 1.5px solid #c5befa;
+    background-color: var(--BgWhite);
     border-radius: 20px;
     align-items: center;
     justify-content: center;
@@ -37,7 +36,7 @@
     background-repeat: no-repeat;
   background-size: cover;
    background-position: center;
-  background-image: url('../../../public/blockground.jpeg');
+  background-color: var(--bgcol);
     min-height: 100vh;
     place-content: center;
     display: flex;
@@ -93,6 +92,18 @@
     border: 1px solid #80a7fa;
     font-size: var(--p);
     margin-bottom: 1rem;
+}
+.allblue{
+    height: 0rem;
+    width: 100%;
+    background-color: rgba(120, 120, 238, 0.918);
+    
+    bottom: 30%;
+  
+    
+    box-shadow: 0 0 900px 300px rgba(127, 133, 232, 0.669);
+    border-radius: 50%;
+    
 }
 .card_hlder{
     

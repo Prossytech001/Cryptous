@@ -124,13 +124,16 @@ import axios from 'axios';
 import "../components/Withdraw/Withdraw.css"
 import withimg from "../../public/usdt.png"
 import {Link} from "react-router-dom";
+import Basedcrumb from '../components/Basedcrumb';
 
 const WithdrawForm = ({ userBalance }) => {
   const [amount, setAmount] = useState('');
   const [walletAddress, setWalletAddress] = useState('');
   const [error, setError] = useState('');
+   const [withdrawals, setWithdrawals] = useState([]);
   const [withdrawableBalance, setWithdrawableBalance] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
+   const [loading, setLoading] = useState(true);
   const api = import.meta.env.VITE_API_URL;
 
 
@@ -148,6 +151,26 @@ const WithdrawForm = ({ userBalance }) => {
     };
 
     fetchBalance();
+  }, []);
+
+
+  useEffect(() => {
+    const fetchHistory = async () => {
+      try {
+        const token = localStorage.getItem("authToken");
+        const res = await axios.get(`${api}/api/history`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+       
+        setWithdrawals(res.data.withdrawals);
+      } catch (err) {
+        console.error('Failed to fetch history:', err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHistory();
   }, []);
 
 
@@ -204,21 +227,21 @@ const handleWithdraw = async (e) => {
 
 
   return (
-    <>
-
-    
-    <div >
-   
-    
     <div className="withdraw-container">
+
+    <Basedcrumb/>
+    <div >
+   <h1 className='withdraw-title'>Withdraw</h1>
+
+    <div className="withdraw-containers">
       <div className="withhead">
        <div className="withimg">
-        <img src={withimg} alt="" className='withimgs'/>
+        <img src={withimg} alt="" className='usdt-pay'/>
         <p>USDT (TRC20).</p>
        </div>
        
-        <p className="text-white p-amoutwith  flex flex-col text-lg mb-2">
-       <strong>${withdrawableBalance.toFixed(2)}</strong>
+        <p className=" p-amoutwith  flex flex-col text-lg mb-2">
+       <strong className='withamout'>${withdrawableBalance.toFixed(2)}</strong>
        <Link to="/history" className="back-link">Transaction History</Link>
       </p>
       </div>
@@ -241,6 +264,33 @@ const handleWithdraw = async (e) => {
         <button type="submit">Submit Withdrawal</button>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
+
+
+
+
+      <div className="withdrawhistory">
+      <h3>Withdrawals History</h3>
+          <table className='withtable'>
+            <thead className='withtable-thead'>
+              <tr>
+                <th>Details</th>
+                <th>Status</th>
+                <th>Wallet</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {withdrawals.map((w) => (
+                <tr key={w._id}>
+                  <td className='detail-with'><strong className='with0-amout-storng'>{w.amount} USDT </strong> <span>{new Date(w.createdAt).toLocaleString()}</span></td>
+                  <td>{w.status}</td>
+                  <td>{w.walletAddress}</td>
+                  
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
 
       {showPopup && (
         <div className="popup success">
@@ -280,7 +330,7 @@ const handleWithdraw = async (e) => {
       `}</style>
     </div>
     </div>
-    </>
+    </div>
   );
 };
 
