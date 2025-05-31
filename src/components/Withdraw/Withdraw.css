@@ -108,6 +108,7 @@
     width: 100%;
     padding: 0.7rem;
     background-color: var(--bgcol);
+    height: 100vh;
  }
  .withdraw-title {
     font-size: var(--miniheader);

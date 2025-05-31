@@ -180,7 +180,7 @@ const handleSubmit = async () => {
           </div>
         </div>
       )}
-      <div className="allblue"></div>
+     
     </div>
   );
 };
