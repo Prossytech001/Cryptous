@@ -256,8 +256,9 @@
 }
 .payment-img{
   display: flex;
-  
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .payment-img h2{
   color: var(--text);

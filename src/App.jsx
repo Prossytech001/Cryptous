@@ -300,6 +300,10 @@ import AdminWithdrawals from './pages/AdminWithdraw';
 import UserHistory from './pages/UserHistory';
 import AdminDepositDetails from './pages/AdminDepositDetails';
 import AdminDeposits from './pages/AdminDeposits';
+import ChatTest from './pages/ChatTest';
+import AdminChat from './pages/AdminChat';
+import UserNotifications from './pages/UserNotifications';
+import "../src/App.css"; // Import your CSS file for global styles
 
 import AssistantIndicator from './components/AiIndicator/Aiindicator';
 function App() {
@@ -368,11 +372,31 @@ function App() {
         }
       />
       <Route
+        path="/support"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <ChatTest />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/withdraw"
         element={
           <PrivateRoute>
             <DashboardLayout>
               <Withdraw />
+            </DashboardLayout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/notifications"
+        element={
+          <PrivateRoute>
+            <DashboardLayout>
+              <UserNotifications/>
             </DashboardLayout>
           </PrivateRoute>
         }
@@ -433,6 +457,17 @@ function App() {
     </AdminPrivateRoute>
   }
 />
+<Route
+  path="/admin/messages"
+  element={
+    <AdminPrivateRoute>
+      <AdminDashboardLayout>
+        <AdminChat />
+      </AdminDashboardLayout>
+    </AdminPrivateRoute>
+  }
+/>
+
 
     </Routes>
     </>

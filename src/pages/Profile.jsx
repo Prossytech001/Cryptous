@@ -104,6 +104,7 @@ import axios from 'axios';
 import { AuthContext } from '../components/Authcontext';
 import "../components/Profile/Profile.css";
 import profileimg from "../../public/profileimg.svg";
+import Basedcrumb from "../components/Basedcrumb";
 
 const Profile = () => {
   const { user, token } = useContext(AuthContext);
@@ -201,6 +202,7 @@ const Profile = () => {
 
   return (
     <div className="profile__page ">
+      <Basedcrumb/>
       <div className="profile_ii">
         <img src={profileimg} alt=""  className='img_profile'/>
         <div className="profile_list">

@@ -428,6 +428,7 @@ import { MdSupportAgent, MdLogout, MdOutlineAttachMoney } from "react-icons/md";
 import { FaBars, FaTimes } from "react-icons/fa";
 import '../../../src/components/layouts/Dashboardlayout.css';
 import { RiFundsBoxFill } from "react-icons/ri";
+import NotificationBell from '../../pages/NotificationBell';
 
 const DashboardLayout = ({ children }) => {
   const { logout } = useContext(AuthContext);
@@ -461,7 +462,10 @@ const DashboardLayout = ({ children }) => {
         <button className="toggle-button" onClick={() => setSidebarOpen(!isSidebarOpen)}>
           <FaBars />
         </button>
-        <div className="nav-title">Cryptous</div>
+        <div className="nav-title flex items-center gap-2">
+          <NotificationBell />
+          <Link to="/profile"> <CgProfile/></Link>
+          </div>
       </div>
 
       {/* Sidebar */}

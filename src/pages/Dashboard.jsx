@@ -608,8 +608,8 @@ const handleStakeClaim = async (stakeId) => {
           </div>
           <div className="dashadd">
           <p className="balance-dash text-white-100">${user  ? user.balance.toFixed(2) : "loading.."}</p>
-          <Link to="/funding" className="bg-blue-600s text-white px-4 py-2 rounded hover:bg-blue-700">
-           <FaPlus className="inline-block mr-1" /> Add Funds
+          <Link to="/funding" className="bg-blue-600s flex items-center gap-2 text-white rounded hover:bg-blue-700">
+           <FaPlus className=" mr-1" /> Add Funds
           </Link>
           </div>
 
@@ -629,8 +629,8 @@ const handleStakeClaim = async (stakeId) => {
           </div>
           <div className="withadd">
             <p className="with-b text-purple-600 text-lg">${user.withdrawableBalance.toFixed(2)}</p>
-            <Link to="/withdraw" className="bg-blue-600w text-white rounded hover:bg-blue-700">
-              <FaPlus className="inline-block mr-1" /> Add Funds
+            <Link to="/withdraw" className="bg-blue-600w text-white flex item-center gap-2 rounded hover:bg-blue-700">
+              <FaPlus className=" mr-1" />Withdraw
             </Link>
           </div>
           

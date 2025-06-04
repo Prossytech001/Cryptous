@@ -6,7 +6,7 @@
     bottom: 30%;
   
     
-    box-shadow: 0 0 900px 200px rgba(85, 91, 201, 0.669);
+    box-shadow: 0 0 900px 200px rgba(85, 91, 201, 0.282);
     border-radius: 50%;
     
     animation: move 5s linear infinite;
@@ -27,7 +27,7 @@
     align-items: center;
     height: 130vh;
     background-color: var(--BgWhite);
-    position: relative;
+ 
     place-items: center;
 }
 .hero_h1{

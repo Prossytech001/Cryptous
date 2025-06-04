@@ -611,10 +611,11 @@ font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  background-color:  var(--inb);
+  background-color:  var(--blue);
     padding: 1rem;
    border-bottom: 1px solid #3B3854;
     position: sticky;
+    color: var(--blue);
     top: 0;
     z-index: 1000;
   }
@@ -640,7 +641,7 @@ font-weight: 500;
     left: -260px;
     width: 250px;
     height: 100%;
-    background-color: var(--inb);
+    background-color: var(--blue);
     
     transition: left 0.3s ease;
     z-index: 999;
@@ -689,17 +690,17 @@ font-weight: 500;
     border-radius: 8px;
     color: #fff;
     text-decoration: none;
-    background-color: var(--inbs);
+    background-color: #411389;
     transition: background 0.2s ease;
   }
   
   .nav-link:hover {
-    background-color: #9898a14f;
+    background-color: #6445944d;
     color: #f1f1f5;
   }
   
   .nav-link.active {
-    background-color: #e4e4e413;
+    background-color: #6b37c086;
     font-weight: bold;
   }
   
