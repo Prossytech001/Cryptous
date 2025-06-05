@@ -89,11 +89,7 @@ import Threads from '../Threads';
 const Hero = () => {
   return (
     <div className="hero__section">
-      <Threads
-        amplitude={1}
-        distance={0.2}
-        enableMouseInteraction={true}
-      />
+     
       <div className="hero__blues"></div>
       <div className="hero__content">
         <h1 className="hero_h1">
