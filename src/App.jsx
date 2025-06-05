@@ -271,7 +271,7 @@
 // export default App;
 
 import { Routes, Route } from 'react-router-dom';
-import React from 'react';
+import React ,{useEffect, useState}from 'react';
 import { AuthContext } from '../src/components/Authcontext';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
@@ -305,176 +305,369 @@ import AdminChat from './pages/AdminChat';
 import UserNotifications from './pages/UserNotifications';
 import "../src/App.css"; // Import your CSS file for global styles
 import CookieConsentModal from './components/CookieConsentModal/CookieConsentModal';
+import Preloader from './components/Preloader/Preloader';
 
 import AssistantIndicator from './components/AiIndicator/Aiindicator';
-function App() {
-  const { isAuthenticated, user } = React.useContext(AuthContext);
+// function App() {
+//   const { isAuthenticated, user } = React.useContext(AuthContext);
+//   const [loading, setLoading] = useState(true);
 
-  return (
+//   useEffect(() => {
+//     const timeout = setTimeout(() => setLoading(false), 2000); // match preloader
+//     return () => clearTimeout(timeout);
+//   }, []);
 
-    <>
-    <CookieConsentModal/>
-    <AssistantIndicator />
-    <Routes>
+//   return (
+    
+//  {loading ? (
+//   <Preloader />
+// ) : (
+//     <>
+  
+//     <CookieConsentModal/>
+//     <AssistantIndicator />
+//     <Routes>
       
-      {/* PUBLIC ROUTES */}
-      <Route element={<PublicLayout />}>
+//       {/* PUBLIC ROUTES */}
+//       <Route element={<PublicLayout />}>
       
        
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/investmentPlan" element={<Showplan />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="/forget" element={<Forgetpassword />} />
-        <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
-      </Route>
+//         <Route path="/" element={<Homepage />} />
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/signup" element={<Signup />} />
+//         <Route path="/investmentPlan" element={<Showplan />} />
+//         <Route path="/about" element={<About />} />
+//         <Route path="/contact" element={<Contact />} />
+//         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+//         <Route path="/forget" element={<Forgetpassword />} />
+//         <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+//       </Route>
 
-      {/* USER DASHBOARD ROUTES */}
-      <Route
-        path="/dashboard"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <Dashboard />
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <Profile />
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/plans"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <PlanPage />
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/funding"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <PaymentPage />
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/support"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <ChatTest />
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/withdraw"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <Withdraw />
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/notifications"
-        element={
-          <PrivateRoute>
-            <DashboardLayout>
-              <UserNotifications/>
-            </DashboardLayout>
-          </PrivateRoute>
-        }
-      />
+//       {/* USER DASHBOARD ROUTES */}
+//       <Route
+//         path="/dashboard"
+//         element={
+//           <PrivateRoute>
+//             <DashboardLayout>
+//               <Dashboard />
+//             </DashboardLayout>
+//           </PrivateRoute>
+//         }
+//       />
+//       <Route
+//         path="/profile"
+//         element={
+//           <PrivateRoute>
+//             <DashboardLayout>
+//               <Profile />
+//             </DashboardLayout>
+//           </PrivateRoute>
+//         }
+//       />
+//       <Route
+//         path="/plans"
+//         element={
+//           <PrivateRoute>
+//             <DashboardLayout>
+//               <PlanPage />
+//             </DashboardLayout>
+//           </PrivateRoute>
+//         }
+//       />
+//       <Route
+//         path="/funding"
+//         element={
+//           <PrivateRoute>
+//             <DashboardLayout>
+//               <PaymentPage />
+//             </DashboardLayout>
+//           </PrivateRoute>
+//         }
+//       />
+//       <Route
+//         path="/support"
+//         element={
+//           <PrivateRoute>
+//             <DashboardLayout>
+//               <ChatTest />
+//             </DashboardLayout>
+//           </PrivateRoute>
+//         }
+//       />
+//       <Route
+//         path="/withdraw"
+//         element={
+//           <PrivateRoute>
+//             <DashboardLayout>
+//               <Withdraw />
+//             </DashboardLayout>
+//           </PrivateRoute>
+//         }
+//       />
+//       <Route
+//         path="/notifications"
+//         element={
+//           <PrivateRoute>
+//             <DashboardLayout>
+//               <UserNotifications/>
+//             </DashboardLayout>
+//           </PrivateRoute>
+//         }
+//       />
      
 
-      {/* ADMIN ROUTES */}
-      <Route path="/admin/login" element={<AdminLogin />} />
-      <Route
-        path="/admin/dashboard"
-        element={
-          <AdminPrivateRoute>
-            <AdminDashboardLayout>
-              <AdminDashboard />
-                </AdminDashboardLayout>
-              </AdminPrivateRoute>
-        }
-      />
-      <Route
-        path="/admin/withdrawals"
-        element={
-          <AdminPrivateRoute>
-            <AdminDashboardLayout>
-              <AdminWithdrawals />
-            </AdminDashboardLayout>
-          </AdminPrivateRoute>
-        }
-      />
-      <Route path="/admin/users" element={
-        <AdminPrivateRoute>
-            <AdminDashboardLayout>
-        <AdminUsers />    </AdminDashboardLayout>
-        </AdminPrivateRoute>} />
-               <Route path="/admin/users/new" element={
-        <AdminPrivateRoute>
-            <AdminDashboardLayout>
-                <CreateUserForm />
-            </AdminDashboardLayout>
-        </AdminPrivateRoute>} />  
+//       {/* ADMIN ROUTES */}
+//       <Route path="/admin/login" element={<AdminLogin />} />
+//       <Route
+//         path="/admin/dashboard"
+//         element={
+//           <AdminPrivateRoute>
+//             <AdminDashboardLayout>
+//               <AdminDashboard />
+//                 </AdminDashboardLayout>
+//               </AdminPrivateRoute>
+//         }
+//       />
+//       <Route
+//         path="/admin/withdrawals"
+//         element={
+//           <AdminPrivateRoute>
+//             <AdminDashboardLayout>
+//               <AdminWithdrawals />
+//             </AdminDashboardLayout>
+//           </AdminPrivateRoute>
+//         }
+//       />
+//       <Route path="/admin/users" element={
+//         <AdminPrivateRoute>
+//             <AdminDashboardLayout>
+//         <AdminUsers />    </AdminDashboardLayout>
+//         </AdminPrivateRoute>} />
+//                <Route path="/admin/users/new" element={
+//         <AdminPrivateRoute>
+//             <AdminDashboardLayout>
+//                 <CreateUserForm />
+//             </AdminDashboardLayout>
+//         </AdminPrivateRoute>} />  
+//         <Route
+//   path="/admin/deposits"
+//   element={
+//     <AdminPrivateRoute>
+//       <AdminDashboardLayout>
+//         <AdminDeposits />
+//       </AdminDashboardLayout>
+//     </AdminPrivateRoute>
+//   }
+// />
+
+// <Route
+//   path="/admin/deposit/:id"
+//   element={
+//     <AdminPrivateRoute>
+//       <AdminDashboardLayout>
+//         <AdminDepositDetails />
+//       </AdminDashboardLayout>
+//     </AdminPrivateRoute>
+//   }
+// />
+// <Route
+//   path="/admin/messages"
+//   element={
+//     <AdminPrivateRoute>
+//       <AdminDashboardLayout>
+//         <AdminChat />
+//       </AdminDashboardLayout>
+//     </AdminPrivateRoute>
+//   }
+// />
+
+
+//     </Routes>
+   
+//     </>
+//      )}
+//   );
+// }
+
+// export default App;
+
+function App() {
+  const { isAuthenticated, user } = React.useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 2000); // simulate preloader
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return loading ? (
+    <Preloader />
+  ) : (
+    <>
+      <CookieConsentModal />
+      <AssistantIndicator />
+
+      <Routes>
+        {/* PUBLIC ROUTES */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/investmentPlan" element={<Showplan />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/forget" element={<Forgetpassword />} />
+          <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+        </Route>
+
+        {/* USER DASHBOARD ROUTES */}
         <Route
-  path="/admin/deposits"
-  element={
-    <AdminPrivateRoute>
-      <AdminDashboardLayout>
-        <AdminDeposits />
-      </AdminDashboardLayout>
-    </AdminPrivateRoute>
-  }
-/>
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <Dashboard />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <Profile />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/plans"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <PlanPage />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/funding"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <PaymentPage />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/support"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <ChatTest />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/withdraw"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <Withdraw />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <UserNotifications />
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
 
-<Route
-  path="/admin/deposit/:id"
-  element={
-    <AdminPrivateRoute>
-      <AdminDashboardLayout>
-        <AdminDepositDetails />
-      </AdminDashboardLayout>
-    </AdminPrivateRoute>
-  }
-/>
-<Route
-  path="/admin/messages"
-  element={
-    <AdminPrivateRoute>
-      <AdminDashboardLayout>
-        <AdminChat />
-      </AdminDashboardLayout>
-    </AdminPrivateRoute>
-  }
-/>
-
-
-    </Routes>
+        {/* ADMIN ROUTES */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminDashboard />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/withdrawals"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminWithdrawals />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminUsers />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/users/new"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <CreateUserForm />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/deposits"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminDeposits />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/deposit/:id"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminDepositDetails />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/messages"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminChat />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+      </Routes>
     </>
   );
 }
 
 export default App;
-
