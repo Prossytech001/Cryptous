@@ -17,13 +17,35 @@
 
 // export default PublicLayout;
 
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom';
+// import Navbar from '../Navbar/Nav';
+
+// const PublicLayout = () => {
+//   return (
+//     <>
+//       <Navbar />
+//       <main>
+//         <Outlet />
+//       </main>
+//     </>
+//   );
+// };
+
+// export default PublicLayout;
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../Navbar/Nav';
 
 const PublicLayout = () => {
+  const location = useLocation();
+
+  // List of routes where you want to hide the navbar
+  const hideNavbarOnRoutes = ['/login', '/signup', '/forget'];
+
+  const shouldShowNavbar = !hideNavbarOnRoutes.includes(location.pathname);
+
   return (
     <>
-      <Navbar />
+      {shouldShowNavbar && <Navbar />}
       <main>
         <Outlet />
       </main>

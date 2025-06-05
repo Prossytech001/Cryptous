@@ -304,6 +304,7 @@ import ChatTest from './pages/ChatTest';
 import AdminChat from './pages/AdminChat';
 import UserNotifications from './pages/UserNotifications';
 import "../src/App.css"; // Import your CSS file for global styles
+import CookieConsentModal from './components/CookieConsentModal/CookieConsentModal';
 
 import AssistantIndicator from './components/AiIndicator/Aiindicator';
 function App() {
@@ -312,6 +313,7 @@ function App() {
   return (
 
     <>
+    <CookieConsentModal/>
     <AssistantIndicator />
     <Routes>
       

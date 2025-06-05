@@ -5,16 +5,31 @@
     height: 100vh;
     background-color: var(--BgWhite);
 }
+.signup__input:focus {
+  outline: none;
+  border-color: var(--primarycolor);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  transition: 0.2s ease;
+}
+
+.signup__button {
+  transition: all 0.3s ease;
+}
+
+.signup__button:hover {
+  transform: scale(1.02);
+}
+
 .signup-form{
     width: 60%;
     display: flex;
     flex-direction: column;
-    height: 80%;
+    
     align-items: center;
     justify-content: center;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
     background-color: var(--BgWhite);
 }
 .signup__h1{
@@ -66,14 +81,17 @@
     .password__field input {
         padding-right: 40px; /* Adjust this value based on the width of the icon */
     }  
+    .licksign{
+        color: var(--primarycolor);
+    }
 
     @media all and (max-width: 500px){
         .signup-form{
-            width: 90%;
+            width: 100%;
             
         }
         .signup__h1{
-            font-size: var(--header);
+            font-size: 1.2rem;
         }
         .inputsignup{
             font-size: var(--p);
