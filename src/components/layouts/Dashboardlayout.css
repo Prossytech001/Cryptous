@@ -89,7 +89,7 @@ transition: 0.5s ease-in-out;
     
 }
 .dbwel{
-  color: #d1d1e2ce;
+  color: #8d8d8fce;
   font-size: 1rem;
 }
 .dash-fund-text{
@@ -198,6 +198,15 @@ display: flex;
   margin-top: 10px;
   display: flex;
 }
+.fund-b{
+  font-size: 1rem;
+}
+.earning-b{
+   font-size: 1rem;
+}
+.withdraw-b{
+  font-size: 1rem;
+}
 
 }
 
@@ -227,7 +236,7 @@ display: flex;
  
 .foutricondisplay{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   margin-top: 20px;
 }
@@ -641,7 +650,7 @@ font-weight: 500;
     left: -260px;
     width: 250px;
     height: 100%;
-    background-color: var(--blue);
+    background-color: var(--BgWhite);
     
     transition: left 0.3s ease;
     z-index: 999;
@@ -670,7 +679,7 @@ font-weight: 500;
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--blue);
     cursor: pointer;
   }
   
@@ -688,15 +697,15 @@ font-weight: 500;
     gap: 0.75rem;
     padding: 0.6rem 1rem;
     border-radius: 8px;
-    color: #fff;
+    color: #000;
     text-decoration: none;
-    background-color: #411389;
+    background-color: #ffffff;
     transition: background 0.2s ease;
   }
   
   .nav-link:hover {
-    background-color: #6445944d;
-    color: #f1f1f5;
+    background-color: #d2c6e04d;
+    color: #232324;
   }
   
   .nav-link.active {
