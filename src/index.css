@@ -11,13 +11,13 @@
 }
 
 :root {
-  --primarycolor: #0271e8;
+  --primarycolor: #ffb400;
   --blueshover: rgb(134, 134, 240);
   --blueshovers: rgba(215, 215, 244, 0.429);
   --gold: #daba04;
   --text: #333333;
   --grey: #808080;
-  --BgWhite: #FFFFFF;
+  --BgWhite: #ffffff;
   --goldhover:#C29306;
   --header: 3rem;
   --p: 1.1rem;
@@ -34,7 +34,7 @@
    --blues: #690dfd;
 }
 body{
- 
+ background-color: var(--BgWhites);
  backdrop-filter: blur(100%);
  
 }

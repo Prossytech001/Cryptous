@@ -18,7 +18,7 @@
 .nav__elemet{
     position: relative;
     display: flex;
-    
+    color: var(--BgWhite);
 }
 .nav__elemet::after{
    width: 0%;
@@ -39,10 +39,11 @@ left: 0;
 }
 .header__nav{
     transition: box-shadow 0.5s ease, background-color 0.3s ease;
-    padding: 0.5rem 2rem;
-   
-    background-color: var(--BgWhite);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+   z-index: 10;
+    background-color: transparent;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.329);
     
    
 }
@@ -53,6 +54,9 @@ left: 0;
     position: sticky;
     top: 0;
     z-index: 50;
+  }
+  .nav__elemet.scrolled{
+    color: var(--grey);
   }
 .nav__button{
     background-color: var(--primarycolor);
@@ -201,4 +205,31 @@ left: 0;
      .nav__button:hover{
         background-color: var(--grey);
      }
+}
+.hhh{
+    color: #ffffff – White (background)
+
+#6432ff – Purple (accent/highlight)
+
+
+#ffff64 – Light Yellow
+
+#32ffff – Cyan / Aqua
+
+#ff6432 – Bright Orange (possibly button)
+
+#191eff – Deep Blue
+
+#30191e – Dark Maroon/Brown
+
+#ff3019 – Fiery Red-Orange
+
+#f0f5f9 – Soft Gray-Blue (background or card)
+
+#f5f9ff – Off-White (card or page background)
+ #ff6432  #ffffff 
+
+#6432ff  #ff3019 
+
+#f5f9ff, #f0f5f9
 }

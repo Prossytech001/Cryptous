@@ -2,6 +2,7 @@
     width: 100%;
     min-height: auto;
     color: var(--text);
+    background-image: url("https://demo.zytheme.com/cryptech/assets/images/background/6.jpg");
 }
 .why__contents{
     display: flex;
@@ -15,13 +16,14 @@
   font-size: var(--miniheader);
   font-weight: 600;
   text-align: center;
-  
+  color: var(--primarycolor);
 
 }
 .why__p{
     font-size: var(--p);
     font-weight: 500;
     text-align: center;
+    color: rgb(232, 232, 232);
 }
 .why__content{
     display: grid;
@@ -34,20 +36,28 @@
 
 }
 .why__icon{
-    font-size: 5rem;
+    height: 5rem;
+    width: 5rem;
     color: var(--primarycolor);
 }
 .why__cons{
     display: flex;
     justify-content: center;
-    background-color: var(--blueshovers);
+   
     width: 100%;
     padding: 20px;
     gap: 10px;
     border-radius: 20px;
-    border: 1px solid var(--blueshover);
-   
     
+    
+}
+.why_box p{
+    color: rgb(195, 192, 192);
+    
+}
+.why_box h2{
+    color: var(--BgWhite);
+    font-weight: 800;
 }
 .why__cons h2{
     font-size: var(--p);

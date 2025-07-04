@@ -90,7 +90,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`header__nav ${isScrolled ? "scrolled" : ""}`}>
+    <nav className={ `fixed w-full header__nav ${isScrolled ? "scrolled" : ""}`}>
       <div className="flex justify-between items-center">
       <Link to={"/"} className="nav_logo_link">
             <img src={logo} alt="Logo" className="nav__logo" />
@@ -102,18 +102,18 @@ const Navbar = () => {
             <div className="close-icon" onClick={hideSidebar}>
                 <RiCloseFill className='menu-icon'/>
             </div>
-          <Link to="/" className={`nav__elemet ${activeLink === "/" ? "active" : ""}`} onClick={() => { setActiveLink("/"); hideSidebar(); }}><IoHome className="nav-icons-side"/>Home</Link>
+          <Link to="/" className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/" ? "active" : ""}`} onClick={() => { setActiveLink("/"); hideSidebar(); }}><IoHome className="nav-icons-side"/>Home</Link>
            
-          <Link to="/investmentPlan" className={`nav__elemet ${activeLink === "/investmentPlan" ? "active" : ""}`} onClick={() => { setActiveLink("/investmentPlan"); hideSidebar(); }}><FaSackDollar className="nav-icons-side"/>Investment Plan</Link>
+          <Link to="/investmentPlan" className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/investmentPlan" ? "active" : ""}`} onClick={() => { setActiveLink("/investmentPlan"); hideSidebar(); }}><FaSackDollar className="nav-icons-side"/>Investment Plan</Link>
 
           
             
                 
-                <li className="nav__elemet compeny"><p className="header-nav-font">Company</p>
+                <li className={`nav__elemet ${isScrolled ? "scrolled" : ""} compeny`}><p className="header-nav-font">Company</p>
                   <ul className="nav__dropdown">
-                  <Link to="/about" ><li  className={`nav__elemet ${activeLink === "/about" ? "active" : ""}`}  onClick={() => { setActiveLink("/about"); hideSidebar(); }}><RiChatHistoryFill className="nav-icons-side"/>About Us</li></Link>
-                  <Link to="/contact" > <li  className={`nav__elemet ${activeLink === "/contact" ? "active" : ""}`} onClick={() => { setActiveLink("/contact"); hideSidebar(); }}><MdOutlineConnectWithoutContact className="nav-icons-side"/>Contact Us</li></Link>
-                  <Link to="/privacypolicy" ><li  className={`nav__elemet ${activeLink === "/privacypolicy" ? "active" : ""}`} onClick={() => { setActiveLink("/privacypolicy"); hideSidebar(); }}><MdPrivacyTip className="nav-icons-side"/>Privacy Policy</li></Link> 
+                  <Link to="/about" ><li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/about" ? "active" : ""}`}  onClick={() => { setActiveLink("/about"); hideSidebar(); }}><RiChatHistoryFill className="nav-icons-side"/>About Us</li></Link>
+                  <Link to="/contact" > <li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/contact" ? "active" : ""}`} onClick={() => { setActiveLink("/contact"); hideSidebar(); }}><MdOutlineConnectWithoutContact className="nav-icons-side"/>Contact Us</li></Link>
+                  <Link to="/privacypolicy" ><li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/privacypolicy" ? "active" : ""}`} onClick={() => { setActiveLink("/privacypolicy"); hideSidebar(); }}><MdPrivacyTip className="nav-icons-side"/>Privacy Policy</li></Link> 
                   </ul>
                 </li>
               

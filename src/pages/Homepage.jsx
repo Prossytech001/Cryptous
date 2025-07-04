@@ -9,13 +9,18 @@ import TeamSlider from '../components/Teamwork/Teamwork.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 import Trade from '../components/tradingview/Trade.jsx'
 import MarketCapChart from '../components/Marketcap/Mark.jsx'
+import Nextview from "../components/Nextview/Next.jsx"
+import Track from "../components/Track/Treckview.jsx"
+
 
 const Homepage = () => {
   return (
     <div>
-      <Trade/>
+      
       <Hero/>
-      <MarketCapChart/>
+      <Trade/>
+      <Nextview/>
+      <Track/>
       <Why/>
       <How/>
       <InvestmentPlans/>

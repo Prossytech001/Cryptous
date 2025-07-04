@@ -27,6 +27,10 @@ background-position: center;
     text-align: center;
     color: var(--BgWhite);
 }
+.img-cons{
+    height: 50vh;
+    width: 100%;
+}
 .empower-content{
     display: flex;
 
@@ -62,6 +66,9 @@ background-position: center;
     color: var(--text);
     gap: 1rem;
     padding: 2rem;
+}
+.empowers{
+    width: 100%;
 }
 .future-content{
     display: flex;
