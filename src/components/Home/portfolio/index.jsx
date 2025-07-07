@@ -24,14 +24,14 @@ const Portfolio = () => {
             whileInView={{ y: 0, opacity: 1 }}
             initial={{ y: '100%', opacity: 0 }}
             transition={{ duration: 0.6 }}>
-            <p className='sm:text-28 text-18 text-muted mb-4'>
+            <p className='port-p sm:text-28 text-18 text-muted mb-4'>
               Cryptocurrency <span className='text-primary'>Portfolio</span>
             </p>
-            <h2 className='text-white sm:text-40 text-30 mb-4 font-medium'>
+            <h2 className=' port-p text-white sm:text-40 text-30 mb-4 font-medium'>
               Create your crypto portfolio today with Cryp
               <span className='text-primary'>Go</span>!
             </h2>
-            <p className='text-muted/60 text-18'>
+            <p className='port-p text-muted/60 text-18'>
               Coinbase has a variety of features that make it the best
               <br className='md:block hidden' /> place to start trading.
             </p>
@@ -40,8 +40,8 @@ const Portfolio = () => {
               <tbody>
                 {portfolioData.map((item, index) => (
                   <tr key={index} className='border-b border-dark_border/10'>
-                    <td className='py-5'>
-                      <div className='bg-primary/20 p-4 rounded-full w-fit'>
+                    <td className='timeline-img rounded-full flex align-center justify-center py-5'>
+                      <div className=' p-4 rounded-full w-fit'>
                         <img
                           src={item.image}
                           alt={item.title}

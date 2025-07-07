@@ -58,12 +58,12 @@ const Perks = () => {
             Be the first to use our Cryo<span className='text-primary'>go</span>!
           </h2>
 
-          <div className='mt-16 border border-border/20 grid lg:grid-cols-3 sm:grid-cols-2 py-16 gap-10 px-20 rounded-3xl sm:bg-perk bg-dark_grey/35 lg:bg-bottom bg-center bg-no-repeat'>
+          <div className=' park-div mt-16 border border-border/20 grid lg:grid-cols-3 sm:grid-cols-2 py-16 gap-10 px-20 rounded-3xl sm:bg-perk bg-dark_grey/35 lg:bg-bottom bg-center bg-no-repeat'>
             {perksData.map((item, index) => (
               <div
                 key={index}
                 className='text-center flex items-center justify-end flex-col'>
-                <div className='bg-primary/25 backdrop-blur-xs p-4 rounded-full w-fit'>
+                <div className='park-bg  backdrop-blur-xs p-4 rounded-full w-fit'>
                   <img
                     src={item.icon}
                     alt={item.title}
@@ -85,7 +85,7 @@ const Perks = () => {
         </div>
       </div>
 
-      <div className='bg-linear-to-br from-tealGreen to-charcoalGray sm:w-50 w-96 z-0 sm:h-50 h-96 rounded-full sm:-bottom-80 bottom-0 blur-400 absolute sm:-left-48 opacity-60'></div>
+      {/* <div className='bg-linear-to-br from-tealGreen to-charcoalGray sm:w-50 w-96 z-0 sm:h-50 h-96 rounded-full sm:-bottom-80 bottom-0 blur-400 absolute sm:-left-48 opacity-60'></div> */}
     </section>
   )
 }

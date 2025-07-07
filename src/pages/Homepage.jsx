@@ -37,6 +37,7 @@ const Homepage = () => {
       
       <Footer/> */}
       <Heros />
+      <Trade/>
       <Work />
       <TimeLine />
       <Platform />

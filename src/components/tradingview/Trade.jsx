@@ -42,7 +42,7 @@ const MarketCapChart = () => {
       "showSymbolLogo": true,
         "isTransparent": false,
         "displayMode": "adaptive",
-        "colorTheme": "light",
+        "colorTheme": "dark",
         "locale": "en",
     });
 

@@ -153,6 +153,7 @@ body{
 
 html {
   scroll-behavior: smooth;
+ 
 }
 
 section{
@@ -205,6 +206,9 @@ section{
   gap: 10px;
   
 }
+.heros-img{
+  background-image:linear-gradient(rgba(0, 0, 0, 0.671),black), url("/heros-img.jpg");
+}
 .slider-heros{
   padding: 10px;
   border: 2px solid rgba(255, 217, 0, 0);
@@ -214,8 +218,47 @@ section{
 }
 /* Work */
 .worksload{
-  height: 425px;
+  height: auto;
 }
+/* timeline */
+.timeline-head{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.timeline-img{
+  background-color: rgba(255, 217, 0, 0.253);
+  width: auto;
+  height: auto;
+  padding: 20px;
+}
+/* plaform */
+
+.platforms{
+  padding: 30px 30px;
+}
+.plat-btn{
+  padding: 10px ;
+  margin: 20px 0;
+}
+/* porfolio */
+.port-p{
+  margin: 10px 0;
+}
+/* park */
+.park-div{
+  padding: 64px 80px ;
+  margin-top: 30px;
+}
+.park-bg{
+  padding: 10px ;
+  background-color: #daba04;
+}
+
+
 
 
 

@@ -216,21 +216,21 @@ const Hero = () => {
   }
 
   return (
-    <section  className=' relative flex  items-center h-screen md:pt-40 md:pb-28  p-[40px] overflow-hidden z-1' id='main-banner'>
+    <section  className='heros-img relative flex  items-center h-screen md:pt-40 md:pb-28  p-[40px] overflow-hidden z-1' id='main-banner'>
       <div className='container px-4'>
-        <div className='flex w-full items-center  justify-between'>
+        <div className='flex w-full  justify-between'>
           <motion.div {...leftAnimation} className=' flex flex-col justify-center   lg:col-span-5 col-span-12'>
-            <div className='flex gap-6 items-center lg:justify-start justify-center mb-5 mt-24'>
+            <div className='flex gap-6 items-center lg:justify-start  mb-5 mt-24'>
               {/* <img src={iconBag} alt='icon' width={40} height={40} /> */}
               <p className='text-white sm:text-28 text-18 mb-0'>
                 Smart. Secure.  <span className='text-primary'>Rewarding.</span>
               </p>
             </div>
-            <h1 className='font-medium  md:text-70 text-54 lg:text-start text-center text-white mb-10'>
+            <h1 className='font-medium  md:text-70 text-54 lg:text-start  text-white mb-10'>
              Grow Your   <span className='text-primary'>Wealth</span>  with{' '}
               <span className='text-primary'>Cryptous</span>!
             </h1>
-            <div className='flex items-center md:justify-start justify-center gap-8'>
+            <div className='flex items-center md:justify-start  gap-8'>
               <button
                 className='hero-btns bg-primary border border-primary rounded-lg text-21 font-medium hover:bg-transparent hover:text-primary text-darkmode py-2 px-7 z-50'
                >

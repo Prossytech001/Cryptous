@@ -310,11 +310,12 @@ const TimeLine = () => {
           <motion.div
             initial='initial'
             animate={inView ? 'animate' : 'initial'}
-            variants={topAnimation}>
+            variants={topAnimation}
+            className='timeline-head '>
             <p className='text-muted sm:text-28 text-18 mb-9'>
               Development <span className='text-primary'>timeline</span>
             </p>
-            <h2 className='text-white  sm:text-30 text-center text-20 font-medium lg:w-4/5 mb-20'>
+            <h2 className='text-white  sm:text-40 text-20 font-medium  mb-20'>
               We can enter at any point or help you all the way through the
               development cycle.
             </h2>
@@ -343,7 +344,7 @@ const TimeLine = () => {
                     Map the project&apos;s scope and architecture
                   </p>
                 </div>
-                <div className='backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
+                <div className='timeline-img backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
                   <img
                     src='/images/timeline/icon-planning.svg'
                     alt='Planning'
@@ -355,7 +356,7 @@ const TimeLine = () => {
 
               {/* Refinement */}
               <div className='absolute top-36 lg:right-0 -right-20 w-72 flex items-center gap-6'>
-                <div className='bg-light_grey/45 backdrop-blur-xs p-6 h-fit rounded-full'>
+                <div className='timeline-img backdrop-blur-xs p-6 h-fit rounded-full'>
                   <img
                     src='/images/timeline/icon-refinement.svg'
                     alt='Refinement'
@@ -379,7 +380,7 @@ const TimeLine = () => {
                     Build a working prototype to test your product
                   </p>
                 </div>
-                <div className='bg-light_grey/45 backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
+                <div className='timeline-img backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
                   <img
                     src='/images/timeline/icon-prototype.svg'
                     alt='Prototype'
@@ -391,7 +392,7 @@ const TimeLine = () => {
 
               {/* Support */}
               <div className='absolute bottom-36 lg:right-0 -right-20 w-72 flex items-center gap-6'>
-                <div className='bg-light_grey/45 backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
+                <div className='timeline-img backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
                   <img
                     src='/images/timeline/icon-support.svg'
                     alt='Support'
@@ -414,7 +415,7 @@ const TimeLine = () => {
             <div className='grid sm:grid-cols-2 gap-8 md:hidden'>
               {timelineData.map((item, index) => (
                 <div key={index} className='flex items-center gap-6'>
-                  <div className='bg-light_grey/45 p-6 rounded-full'>
+                  <div className='timeline-img p-6 rounded-full'>
                     <img
                       src={item.icon}
                       alt={item.title}
