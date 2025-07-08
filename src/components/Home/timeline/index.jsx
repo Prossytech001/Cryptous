@@ -313,11 +313,10 @@ const TimeLine = () => {
             variants={topAnimation}
             className='timeline-head '>
             <p className='text-muted sm:text-28 text-18 mb-9'>
-              Development <span className='text-primary'>timeline</span>
+             How It <span className='text-primary'>Works</span>
             </p>
             <h2 className='text-white  sm:text-40 text-20 font-medium  mb-20'>
-              We can enter at any point or help you all the way through the
-              development cycle.
+             Turn Crypto Into Passive Profit in Minutes
             </h2>
           </motion.div>
 
@@ -339,9 +338,9 @@ const TimeLine = () => {
               {/* Planning */}
               <div className='absolute top-36 lg:left-0 -left-20 w-72 flex items-center gap-6'>
                 <div className='text-right'>
-                  <h5 className='text-muted text-28 mb-3'>Planning</h5>
+                  <h5 className='text-muted text-28 mb-3'>Create an Account</h5>
                   <p className='text-18 text-muted/60'>
-                    Map the project&apos;s scope and architecture
+                    Sign up in seconds using your email and start your journey
                   </p>
                 </div>
                 <div className='timeline-img backdrop-blur-xs px-6 py-2 h-fit rounded-full'>
@@ -365,9 +364,9 @@ const TimeLine = () => {
                   />
                 </div>
                 <div className='text-left'>
-                  <h5 className='text-muted text-28 mb-3'>Refinement</h5>
+                  <h5 className='text-muted text-28 mb-3'>Choose a Plan</h5>
                   <p className='text-18 text-muted/60'>
-                    Refine and improve your solution
+                    Browse our flexible investment plans designed for all levels.
                   </p>
                 </div>
               </div>

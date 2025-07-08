@@ -7,7 +7,7 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 const InvestmentPlans = () => {
   return (
     <section className="invest__container">
-      <h2 className="">💸 Investment Plans</h2>
+      <h2 className="">Investment Plans</h2>
       <p className="invest__h1">Choose the right plan for your goals.</p>
       <div className="invest__content">
         {investmentPlans.map((plan) => (
@@ -15,7 +15,7 @@ const InvestmentPlans = () => {
             key={plan.id}
             className="income__card"
           >
-            <h3 className="">{plan.name}</h3>
+            <div className="nam-tille">{plan.name}</div>
             <p className=""><span className="invest-p">{plan.roi}</span>wk</p>
             <ul className="invest-ul">
               <li className="invatheader"><strong></strong> {plan.description}</li>

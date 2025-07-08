@@ -17,7 +17,7 @@ const AboutPage = () => {
         <div className="empower">
         <h2 className=" em-h1 ">Empowering Your Financial Future</h2>
         <p className="text-lg leading-relaxed">
-          At <span className="font-semibold text-blue-800">Cryptous Investments</span>, we believe that everyone deserves access to simple, secure, and rewarding investment opportunities.
+          At <span className="font-semibold text-yellow-600">Cryptous Investments</span>, we believe that everyone deserves access to simple, secure, and rewarding investment opportunities.
           We are a forward-thinking crypto investment platform dedicated to helping individuals grow their wealth through professionally designed staking plans and consistent daily returns.
         </p>
         </div>

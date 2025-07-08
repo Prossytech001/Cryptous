@@ -123,16 +123,16 @@ const Work = () => {
           <motion.div
             {...bottomAnimation}
             className='lg:col-span-7 col-span-12'>
-            <p className='sm:text-28 text-18 text-white'>
+            <p className='worllod sm:text-28 text-18 text-white'>
               Work with <span className='text-primary'>us</span>
             </p>
-            <h2 className='sm:text-40 text-30 text-white font-medium'>
+            <h2 className=' worllod sm:text-40 text-30 text-white font-medium'>
               Successfully launch your blockchain project.
             </h2>
             <div className='grid md:grid-cols-2 gap-7 mt-11'>
               {services.map((service, index) => (
-                <div key={index} className='flex items-center gap-5'>
-                  <div className='px-5 py-5 bg-light_grey/30 rounded-full'>
+                <div key={index} className=' worllod flex items-center gap-5'>
+                  <div className=' worllods px-5 py-5 bg-light_grey/30 rounded-full'>
                     <img
                       src={service.icon}
                       alt={`${service.text} icon`}

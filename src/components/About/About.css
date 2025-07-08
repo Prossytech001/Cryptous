@@ -13,7 +13,7 @@
     align-items: center;
     min-height: 50vh;
     width: 100%;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.671)),url("../../../public/aboutsky.jpeg");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.63), rgba(0, 0, 0, 0.671)),url("/aboutsky.jpeg");
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
@@ -46,7 +46,7 @@ background-position: center;
     font-size: var(--header);
     font-weight: 600;
     
-    color: var(--text);
+    color: white;
 }
 .mission-content{
     text-align: center;

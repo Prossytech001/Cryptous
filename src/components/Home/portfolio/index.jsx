@@ -40,8 +40,8 @@ const Portfolio = () => {
               <tbody>
                 {portfolioData.map((item, index) => (
                   <tr key={index} className='border-b border-dark_border/10'>
-                    <td className='timeline-img rounded-full flex align-center justify-center py-5'>
-                      <div className=' p-4 rounded-full w-fit'>
+                    <td className=' rounded-full flex align-center justify-center '>
+                      <div className=' worllod rounded-full w-fit'>
                         <img
                           src={item.image}
                           alt={item.title}

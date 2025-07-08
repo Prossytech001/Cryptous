@@ -208,6 +208,8 @@ section{
 }
 .heros-img{
   background-image:linear-gradient(rgba(0, 0, 0, 0.671),black), url("/heros-img.jpg");
+  background-position: center;
+  background-size: cover;
 }
 .slider-heros{
   padding: 10px;
@@ -218,7 +220,14 @@ section{
 }
 /* Work */
 .worksload{
-  height: auto;
+  height: 300px;
+}
+.worllod{
+  margin: 20px 0;
+}
+.worllods{
+  padding: 10px ;
+  background-color: #daba0467;
 }
 /* timeline */
 .timeline-head{

@@ -2,8 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: var(--BgWhite);
+    height: auto;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.731),rgba(0, 0, 0, 0.877)), url("/heros-img.jpg");
+    background-position: center;
+    background-size: cover;
+    
 }
 .signup__input:focus {
   outline: none;
@@ -21,16 +24,16 @@
 }
 
 .signup-form{
-    width: 60%;
+   
     display: flex;
     flex-direction: column;
-    
+    background-color: #0d0d0d;
     align-items: center;
     justify-content: center;
     padding: 2rem;
     border-radius: 10px;
     
-    background-color: var(--BgWhite);
+   
 }
 .signup__h1{
     font-size: var(--header);
@@ -53,7 +56,7 @@
 .signup__button{
     background-color: var(--primarycolor);
     color: var(--BgWhite);
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 5px;
     font-size: var(--p);
     font-weight: 600;
@@ -67,7 +70,7 @@
 
 .password__field {
     position: relative;
-    width: 100%;
+   
   }
   .password__field svg {
     position: absolute;
@@ -84,6 +87,81 @@
     .licksign{
         color: var(--primarycolor);
     }
+    /* From Uiverse.io by Satwinder04 */ 
+/* Input container */
+.input-container {
+  position: relative;
+  margin: 10px;
+  width: 100%;
+}
+
+/* Input field */
+.input-fieldss {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ecc0c0;
+  outline: none;
+  background-color: transparent;
+  color: white;
+}
+.input-fieldsss{
+    color: black;
+    display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ecc0c0;
+  outline: none;
+  background-color: transparent;
+  
+}
+
+.input-fieldsss:focus + .input-label {
+  top: -20px;
+  font-size: 12px;
+  color: #007bff;
+}
+.input-fieldsss:focus + .input-label + .input-highlight {
+  width: 100%;
+}
+
+/* Input label */
+.input-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  color: rgba(204, 204, 204, 0);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Input highlight */
+.input-highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #007bff;
+  transition: all 0.3s ease;
+}
+
+/* Input field:focus styles */
+.input-fieldss:focus + .input-label {
+  top: -20px;
+  font-size: 12px;
+  color: #007bff;
+}
+
+.input-fieldss:focus + .input-label + .input-highlight {
+  width: 100%;
+}
+
 
     @media all and (max-width: 500px){
         .signup-form{
@@ -100,3 +178,13 @@
             font-size: var(--p);
         }
     }
+    .password-toggle{
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 0;
+    }
+
+
+
+    

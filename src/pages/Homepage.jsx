@@ -33,17 +33,19 @@ const Homepage = () => {
       <InvestmentPlans/>
       <Trusted/>
       <Counters/>
-      <TeamSlider/>
+      <TeamSlider/> */}
       
-      <Footer/> */}
+      
       <Heros />
       <Trade/>
       <Work />
       <TimeLine />
+      <InvestmentPlans/>
       <Platform />
       <Portfolio />
       <Upgrade />
       <Perks />
+      <Footer/>
     </div>
   )
 }

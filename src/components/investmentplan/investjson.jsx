@@ -3,7 +3,7 @@ const investmentPlans = [
     {
       id: 1,
       name: "Starter Plan",
-      roi: "5% ",
+      roi: "100% ",
       duration: "1 Month",
       minDeposit: "$50",
       maxDeposit: "$499",
@@ -13,7 +13,7 @@ const investmentPlans = [
     {
       id: 2,
       name: "Premium Plan",
-      roi: "7% ",
+      roi: "500% ",
       duration: "3 Months",
       minDeposit: "$500",
       maxDeposit: "$4,999",
@@ -23,7 +23,7 @@ const investmentPlans = [
     {
       id: 3,
       name: "Pro Plan",
-      roi: "10% ",
+      roi: "1000% ",
       duration: "6 Months",
       minDeposit: "$5,000",
       maxDeposit: "Unlimited",
