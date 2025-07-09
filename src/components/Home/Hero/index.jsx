@@ -169,7 +169,8 @@ import { Icon } from '@iconify/react'
 import BuyCrypto from './buy-form'
 import SellCrypto from './sell-form'
 import CardSlider from './slider'
-// import { Link } from 'react-router-dom' // Use this if you're using react-router
+
+import { Link } from 'react-router-dom' // Use this if you're using react-router
 import bannerImage from '/images/hero/banner-images.png' // Update as needed
 // import playStore from '../assets/images/hero/playstore.png'
 // import appleStore from '../assets/images/hero/applestore.png'
@@ -231,16 +232,20 @@ const Hero = () => {
               <span className='text-primary'>Cryptous</span>!
             </h1>
             <div className='flex items-center md:justify-start  gap-8'>
+              <Link to="/signup">
               <button
                 className='hero-btns bg-primary border border-primary rounded-lg text-21 font-medium hover:bg-transparent hover:text-primary text-darkmode py-2 px-7 z-50'
                >
                 Get Started
               </button>
+              </Link>
+              <a href="#investmentPlan">
               <button
                 className='hero-btns bg-transparent border border-primary rounded-lg text-21 font-medium hover:bg-primary hover:text-darkmode text-primary py-2 px-7'
               >
                 View Plan
               </button>
+              </a>
             </div>
             {/* <div className='flex items-center md:justify-start justify-center gap-12 mt-20'>
               <a href='#' className='hover:scale-110 duration-300'>

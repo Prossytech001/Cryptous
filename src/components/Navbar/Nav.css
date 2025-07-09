@@ -50,7 +50,7 @@ left: 0;
 
 .header__nav.scrolled {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    background-color: #ffffff; /* or use semi-transparent if navbar is normally transparent */
+    background-color: #111111; /* or use semi-transparent if navbar is normally transparent */
     position: sticky;
     top: 0;
     z-index: 50;
@@ -67,6 +67,7 @@ left: 0;
     font-weight: 600;
     transition: all 0.3s ease;
     border: none;
+    margin-left: 10px;
 }
 .nav__dropdown{
     position: absolute;
@@ -95,7 +96,21 @@ left: 0;
 .loader{
     background-color: #ffffff1e;
 }
+.elements{
+    display: flex;
+    gap: 20px;
+}
+
 @media All and (max-width: 1000px){
+    .elements{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+    .element-btn{
+        width: 100%;
+        
+    }
     .nav__elemets__container{
         position: fixed;
         width: 301px;
@@ -104,10 +119,10 @@ left: 0;
         top: 0;
         right: -100%;
         z-index: 2;
-        background-color: var(--primarycolor);
+        background-color: black;
         align-items: start;
         color: var(--BgWhite);
-       
+       justify-content: space-between;
         gap: rem;
         transition: right  1s ease-in-out;
         display: flex;
@@ -120,7 +135,7 @@ left: 0;
       .xx2{
         display: flex;
         font-size: 1.5rem;
-        color: var(--primarycolor);
+        color:  var(--BgWhite);
     }
     .close-icon{
         display: flex;
@@ -164,7 +179,7 @@ left: 0;
         align-items: center;
         gap: 1rem;
         font-size: 1.5rem;
-        color: var(--BgWhite);
+        color: var(--primarycolor);
     }
     .nav__elemet{
         position: relative;
@@ -201,6 +216,7 @@ left: 0;
       display: flex;
       justify-content: center;
       background-color: var(--text);
+      margin-bottom: 20px;
     }
      .nav__button:hover{
         background-color: var(--grey);

@@ -63,11 +63,10 @@ const Upgrade = () => {
           <div>
             <p className='text-primary sm:text-28 text-18 mb-3'>Upgrade</p>
             <h2 className='text-white sm:text-40 text-30 font-medium mb-5'>
-              Upgrade Your Storage Layer
+              Upgrade Your Investment Experience
             </h2>
             <p className='text-muted/60 text-18 mb-7'>
-              Get faster, safer, more affordable cloud object storage with no
-              central point of failure.
+              Enhance performance, security, and value with Cryptous’s next-gen financial infrastructure.
             </p>
             <div className='grid sm:grid-cols-2 lg:w-70% text-nowrap sm:gap-10 gap-5'>
               {upgradeData.map((item, index) => (

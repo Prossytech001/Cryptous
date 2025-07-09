@@ -25,14 +25,14 @@ const Portfolio = () => {
             initial={{ y: '100%', opacity: 0 }}
             transition={{ duration: 0.6 }}>
             <p className='port-p sm:text-28 text-18 text-muted mb-4'>
-              Cryptocurrency <span className='text-primary'>Portfolio</span>
+              Build Your Cryptocurrency <span className='text-primary'>Portfolio</span>
             </p>
             <h2 className=' port-p text-white sm:text-40 text-30 mb-4 font-medium'>
-              Create your crypto portfolio today with Cryp
-              <span className='text-primary'>Go</span>!
+              Start investing with Cryp<span className='text-primary'>tous</span> a trusted platform for growing your digital wealth.
+             
             </h2>
             <p className='port-p text-muted/60 text-18'>
-              Coinbase has a variety of features that make it the best
+              Cryptous has a variety of features that make it the best
               <br className='md:block hidden' /> place to start trading.
             </p>
 

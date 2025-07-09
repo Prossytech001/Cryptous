@@ -52,10 +52,10 @@ background-position: center;
     text-align: center;
     font-size: var(--p);
     font-weight: 500;
-    border-radius: 20px;
+    
     padding: 1rem;
-    background-color: var(--blueshovers);
-    border: 1px solid var(--blueshover);
+    background-color: var(--gold);
+   width: 100%;
 }
 .whychoose-content{
     display: flex;

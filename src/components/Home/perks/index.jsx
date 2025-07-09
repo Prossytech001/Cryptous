@@ -55,7 +55,7 @@ const Perks = () => {
             Always By <span className='text-primary'>your side</span>
           </p>
           <h2 className='text-white sm:text-40 text-30 font-medium'>
-            Be the first to use our Cryo<span className='text-primary'>go</span>!
+            Be the first to use our Cryo<span className='text-primary'>tous</span>!
           </h2>
 
           <div className=' park-div mt-16 border border-border/20 grid lg:grid-cols-3 sm:grid-cols-2 py-16 gap-10 px-20 rounded-3xl sm:bg-perk bg-dark_grey/35 lg:bg-bottom bg-center bg-no-repeat'>

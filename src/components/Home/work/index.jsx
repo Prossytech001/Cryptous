@@ -104,30 +104,30 @@ const Work = () => {
   const services = [
     {
       icon: '/images/icons/icon-consulting.svg',
-      text: 'Blockchain Consulting',
+      text: 'Crypto Investment Advisory',
     },
     {
       icon: '/images/icons/icon-blockchain.svg',
-      text: 'Blockchain Solutions',
+      text: 'Blockchain-Based Investment Plans',
     },
     {
       icon: '/images/icons/icon-Services.svg',
-      text: 'Custom Development',
+      text: 'Custom Crypto Solutions',
     },
   ]
 
   return (
-    <section className='md:pt-28' id='work'>
+    <section className='md:pt-28' id='about'>
       <div className='container px-4 mx-auto'>
         <div ref={ref} className='grid grid-cols-12 items-center'>
           <motion.div
             {...bottomAnimation}
             className='lg:col-span-7 col-span-12'>
             <p className='worllod sm:text-28 text-18 text-white'>
-              Work with <span className='text-primary'>us</span>
+              Invest with<span className='text-primary'>us</span>
             </p>
             <h2 className=' worllod sm:text-40 text-30 text-white font-medium'>
-              Successfully launch your blockchain project.
+              Secure your financial future through blockchain-powered investments.
             </h2>
             <div className='grid md:grid-cols-2 gap-7 mt-11'>
               {services.map((service, index) => (

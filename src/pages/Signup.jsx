@@ -1178,7 +1178,7 @@ const countries = [
 
 
   return (
-    <section className="signup__container">
+    <section className="signup__container h-full">
       <form onSubmit={handleSignup} className="signup-form">
         <h2 className="signup__h1">Create Account</h2>
 
@@ -1195,6 +1195,7 @@ const countries = [
 </div> */}
 
         <div className="input-container">
+          
           
           <input name="firstName" placeholder="First Name" value={form.firstName} onChange={handleChange} required className='w-full input-fieldss rounded-md border bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary' />
           <label for="firstName" class="input-label">First Name</label>

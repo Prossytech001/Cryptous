@@ -251,23 +251,23 @@ export const pricedeta = [
 export const portfolioData = [
   {
     image: "/images/portfolio/icon-wallet.svg",
-    title: "Manage your portfolio",
+    title: "Smart Portfolio Management",
   },
   {
     image: "/images/portfolio/icon-vault.svg",
-    title: "Vault protection",
+    title: "Advanced Vault Protection",
   },
   {
     image: "/images/portfolio/icon-mobileapp.svg",
-    title: "Mobile apps",
+    title: " Seamless Mobile Experience",
   },
 ]
 
 export const upgradeData = [
-  { title: "100% Secure" },
-  { title: "A Fraction of the Cost" },
-  { title: "More Durable" },
-  { title: "Easier to Use" },
+  { title: "100% Secure Transactions" },
+  { title: "Low Fees, High Value" },
+  { title: "Maximized Returns" },
+  { title: "User-Friendly Platform" },
 ]
 
 export const perksData = [
@@ -279,14 +279,14 @@ export const perksData = [
   },
   {
     icon: "/images/perks/icon-community.svg",
-    title: "Community",
-    text: "Join the conversations on our worldwide OKEx communities",
+    title: "1M+ users",
+    text: "Join the conversations on our worldwide communities",
     space: "lg:mt-14",
   },
   {
     icon: "/images/perks/icon-academy.svg",
-    title: "Academy",
-    text: "Learn blockchain and<br /> crypto for free.",
+    title: "5+ country",
+    text: "Invest in our application<br /> and smile.",
     space: "lg:mt-4",
   },
 ]

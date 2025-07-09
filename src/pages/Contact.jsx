@@ -93,7 +93,7 @@ const Contact = () => {
             </div>
       <form onSubmit={handleSubmit} className="form-spas space-y-5">
         <div>
-          <label className="block font-semibold mb-2">Name</label>
+          <label className="block labelinput font-semibold mb-2">Name</label>
           <input
             name="name"
             type="text"
@@ -104,7 +104,7 @@ const Contact = () => {
           />
         </div>
         <div>
-          <label className="block font-semibold mb-2">Email</label>
+          <label className="block labelinput font-semibold mb-2">Email</label>
           <input
             name="email"
             type="email"
@@ -115,7 +115,7 @@ const Contact = () => {
           />
         </div>
         <div>
-          <label className="block font-semibold mb-2">Subject</label>
+          <label className="block labelinput font-semibold mb-2">Subject</label>
           <input
             name="subject"
             type="text"
@@ -126,14 +126,14 @@ const Contact = () => {
           />
         </div>
         <div>
-          <label className="block font-semibold mb-2">Message</label>
+          <label className="block labelinput font-semibold mb-2">Message</label>
           <textarea
             name="message"
             rows="5"
             value={formData.message}
             onChange={handleChange}
             required
-            className="w-full p-3 border border-gray-300 rounded"
+            className=" inputss w-full p-3 border border-gray-300 rounded"
           />
         </div>
         <button

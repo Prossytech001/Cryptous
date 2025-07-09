@@ -279,6 +279,9 @@ import axios from "axios";
 import { AuthContext } from "../components/Authcontext.jsx";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -318,6 +321,26 @@ const Login = () => {
 
   const goBack = () => navigate(-1);
 
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+  try {
+    const res = await axios.post(`${api}/api/auth/google`, {
+      credential: credentialResponse.credential,
+    });
+
+    const { user, token } = res.data;
+    localStorage.setItem("authToken", token);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    login(user, token);
+
+    navigate("/dashboard");
+  } catch (error) {
+    console.error("Google login failed", error);
+    setMessage({ type: "error", text: "❌ Google login failed" });
+  }
+};
+
+
   return (
     <div className="signup__container">
       {/* ⬅ Back Button */}
@@ -355,22 +378,26 @@ const Login = () => {
             {message.text}
           </div>
         )}
-
+        
+          <div className='input-container'>
         <input
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="signup__input inputsignup"
+          className=" input-fieldss"
           required
         />
+        <label for="email" class="input-label">Email</label>
+  <span class="input-highlight"></span>
+        </div>
 
-        <div className="password__field" style={{ position: "relative" }}>
+        <div className="input-container" style={{ position: "relative" }}>
           <input
             placeholder="Password"
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="signup__password inputsignup"
+            className="signup__password inputsignup input-fieldss"
             required
           />
           <span
@@ -386,6 +413,8 @@ const Login = () => {
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
+          <label for="password" class="input-label">Phone Number</label>
+  <span class="input-highlight"></span>
         </div>
 
         <div className="forget" style={{ margin: "10px 0" }}>
@@ -397,9 +426,17 @@ const Login = () => {
         <button type="submit" className="signup__button" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
+        <div className="google-login-wrapper text-white" style={{ marginTop: "20px", textAlign: "center" }}>
+  <p style={{ marginBottom: "10px" }}>or login with</p>
+  <GoogleLogin
+    onSuccess={handleGoogleSuccess}
+    onError={() => setMessage({ type: "error", text: "❌ Google login failed" })}
+  />
+</div>
 
-        <p style={{ marginTop: "15px" }}>
-          Don’t have an account? <Link to="/signup">Sign up</Link>
+
+        <p style={{ marginTop: "15px" }} className="text-white">
+          Don’t have an account? <Link to="/signup" className="text-yellow-500">Sign up</Link>
         </p>
       </form>
     </div>
