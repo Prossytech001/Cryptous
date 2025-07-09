@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120vh;
+    height: 110vh;
     overflow: auto;
     scrollbar-width: none;
     background-image:linear-gradient(rgba(0, 0, 0, 0.731),rgba(0, 0, 0, 0.877)), url("/heros-img.jpg");
@@ -26,7 +26,7 @@
 }
 
 .signup-form{
-    
+   
     display: flex;
     flex-direction: column;
     background-color: #0d0d0d;
@@ -104,7 +104,7 @@
   padding: 10px;
   font-size: 16px;
   border: none;
-  border-bottom: 2px solid #ecc0c0;
+  border-bottom: 2px solid #ecc308;
   outline: none;
   background-color: transparent;
   color: white;
@@ -166,7 +166,9 @@
 
 
     @media all and (max-width: 500px){
-        
+        .signup-form{
+            width: 100%;
+        }
         .signup__h1{
             font-size: 1.2rem;
         }
