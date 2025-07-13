@@ -1,351 +1,5 @@
 
 
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
-
-// const Dashboard = () => {
-//   const [userData, setUserData] = useState(null);
-
-//   useEffect(() => {
-//     const fetchUserData = async () => {
-//       try {
-//         const token = localStorage.getItem('authToken');
-//         if (!token) {
-//           console.log('User not authenticated');
-//           return;
-//         }
-
-//         const response = await axios.get('http://localhost:5000/api/users/me', {
-//           headers: {
-//             'Authorization': `Bearer ${token}`,
-//           },
-//         });
-
-//         setUserData(response.data); // Set the user data fetched from the API
-//       } catch (error) {
-//         console.error('Error fetching user data:', error);
-//       }
-//     };
-
-//     fetchUserData();
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>Welcome to your Dashboard</h1>
-//       {userData ? (
-//         <div>
-//           <h2>{userData.username}</h2>
-//           <p>{userData.email}</p>
-//           {/* Display other user-specific information */}
-//         </div>
-//       ) : (
-//         <p>Loading user data...</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// const Dashboard = () => {
-//   const [userData, setUserData] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     const fetchUserData = async () => {
-//       try {
-//         const token = localStorage.getItem('authToken'); // Get the token from localStorage
-//         const response = await axios.get('http://localhost:5000/api/users/me', {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-//         setUserData(response.data);
-//         setLoading(false);
-//       } catch (err) {
-//         console.error('Error fetching user data:', err);
-//         setError('Error fetching user data');
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchUserData();
-//   }, []);
-
-//   if (loading) return <div>Loading...</div>;
-//   if (error) return <div>{error}</div>;
-
-//   return (
-//     <div>
-//       <h1>Welcome to your Dashboard, {userData.username}</h1>
-//       <p>Balance: {userData.balance}</p>
-//       {/* Display other user data here */}
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
-
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// const Dashboard = () => {
-//   const [userStats, setUserStats] = useState({});
-//   const [userData, setUserData] = useState(null);
-//   const [stakes, setStakes] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [filter, setFilter] = useState("all");
-//   const api = import.meta.env.VITE_API_URL; // Use the environment variable for the API URL
-
-//   const token = localStorage.getItem('authToken');
-
-//   useEffect(() => {
-//     const fetchDashboardData = async () => {
-//       try {
-//         const userRes = await axios.get(`${api}/api/users/me`, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-    
-//         const stakeRes = await axios.get(`${api}/api/stakes/mine`, {
-//           headers: { Authorization: `Bearer ${token}` },
-//         });
-    
-//         setUserStats(userRes.data);
-//         setUserData(userRes.data);
-//         setStakes(stakeRes.data);
-//         setLoading(false);
-//       } catch (err) {
-//         console.error('Dashboard fetch error:', err);
-//         setError('Error loading dashboard');
-//         setLoading(false);
-//       }
-//     };
-    
-
-//     fetchDashboardData();
-//   }, []);
-
-//   if (loading) return <div className="text-center mt-10">Loading...</div>;
-//   if (error) return <div className="text-center mt-10 text-red-500">{error}</div>;
-//   // const filteredStakes = stakes.filter((stake) => {
-//   //   if (filter === "all") return true;
-//   //   if (filter === "active") return stake.status === "active";
-//   //   if (filter === "completed") return stake.status === "completed";
-//   //   return true;
-//   // });
-
-//   const filteredStakes = stakes.filter((stake) => {
-//     if (filter === "all") return true;
-//     if (filter === "active") return !stake.isCompleted;
-//     if (filter === "completed") return stake.isCompleted;
-//     return true;
-//   });
-  
-  
-
-//   return (
-//     <div className="max-w-5xl mx-auto mt-10 p-4">
-
-// <div className="max-w-4xl mx-auto mt-10 space-y-6">
-//       <h1 className="text-3xl font-bold">Dashboard</h1>
-
-//       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-//         <div className="bg-white shadow p-6 rounded-xl">
-//           <h2 className="text-gray-600 text-sm">Total Balance</h2>
-//           <p className="text-center text-lg mb-6">Balance: ${userData.balance?.toFixed(2)}</p>
-
-//         </div>
-
-//         <div className="bg-white shadow p-6 rounded-xl">
-//           <h2 className="text-gray-600 text-sm">Total Earnings</h2>
-//           <p className="text-2xl font-bold text-green-600">${userStats.totalEarnings?.toFixed(2)}</p>
-//         </div>
-
-//         <div className="bg-white shadow p-6 rounded-xl">
-//           <h2 className="text-gray-600 text-sm">Withdrawable Balance</h2>
-//           <p className="text-2xl font-bold text-blue-600">${userStats.withdrawableBalance?.toFixed(2)}</p>
-//         </div>
-//       </div>
-//     </div>
-//       <h1 className="text-3xl font-bold mb-4 text-center">Welcome, {userData.username}</h1>
-//       <p className="text-center text-lg mb-6">Balance: ${userData.balance}</p>
-
-//       <h2 className="text-2xl font-semibold mb-3">My Stakes</h2>
-//       <div className="mb-4">
-//   <label className="mr-2 font-medium">Filter:</label>
-//   <select
-//     value={filter}
-//     onChange={(e) => setFilter(e.target.value)}
-//     className="border px-3 py-1 rounded-md"
-//   >
-//     <option value="all">All</option>
-//     <option value="active">Active</option>
-//     <option value="completed">Completed</option>
-//   </select>
-// </div>
-
-
-//       {stakes.length === 0 ? (
-//         <p className="text-gray-600">You have no stakes yet.</p>
-//       ) : (
-//         <div className="overflow-x-auto">
-//           <table className="w-full table-auto border-collapse shadow">
-//             {/* <thead>
-//               <tr className="bg-blue-600 text-white">
-//                 <th className="px-4 py-2">Plan</th>
-//                 <th className="px-4 py-2">Amount</th>
-//                 <th className="px-4 py-2">ROI</th>
-//                 <th className="px-4 py-2">Duration</th>
-//                 <th className="px-4 py-2">Start</th>
-//                 <th className="px-4 py-2">Status</th>
-//               </tr>
-//             </thead> */}
-
-// <thead>
-//   <tr className="bg-blue-600 text-white">
-//     <th className="px-4 py-2">Plan</th>
-//     <th className="px-4 py-2">Amount</th>
-//     <th className="px-4 py-2">ROI</th>
-//     <th className="px-4 py-2">Duration</th>
-//     <th className="px-4 py-2">Start</th>
-//     <th className="px-4 py-2">Status</th>
-//     <th className="px-4 py-2">Earned</th>
-//     <th className="px-4 py-2">Progress</th>
-//   </tr>
-// </thead>
-
-//             {/* <tbody>
-//               {stakes.map((stake) => (
-//                 <tr key={stake._id} className="border-b hover:bg-gray-50">
-//                   <td className="px-4 py-2">{stake.plan?.name || 'N/A'}</td>
-//                   <td className="px-4 py-2">${stake.amount}</td>
-//                   <td className="px-4 py-2">{(stake.dailyROI * 100).toFixed(2)}%</td>
-//                   <td className="px-4 py-2">{stake.durationDays} days</td>
-//                   <td className="px-4 py-2">{new Date(stake.startDate).toLocaleDateString()}</td>
-//                   <td className="px-4 py-2">
-//                     {stake.isCompleted ? (
-//                       <span className="text-green-600 font-medium">Completed</span>
-//                     ) : (
-//                       <span className="text-yellow-600 font-medium">Active</span>
-//                     )}
-//                   </td>
-//                 </tr>
-//               ))}
-//             </tbody> */}
-//             {/* <tbody>
-//   {filteredStakes.map((stake) => {
-//     const now = new Date();
-//     const start = new Date(stake.startDate);
-//     const end = new Date(start);
-//     end.setDate(start.getDate() + stake.durationDays);
-
-//     const totalDays = stake.durationDays;
-//     // const elapsedDays = Math.min(
-//     //   Math.floor((now - start) / (1000 * 60 * 60 * 24)),
-//     //   totalDays
-//     // );
-
-//     const TEST_MODE = true; // toggle to false in production
-
-// const elapsed = TEST_MODE
-//   ? Math.floor((now - start) / (1000 * 60)) // minutes as days
-//   : Math.floor((now - start) / (1000 * 60 * 60 * 24)); // real days
-
-// const elapsedDays = Math.min(elapsed, totalDays);
-//     const progress = (elapsedDays / totalDays) ;
-//     const earned = (stake.amount * stake.dailyROI ).toFixed(2);
-
-//     return (
-//       <tr key={stake._id} className="border-b hover:bg-gray-50">
-//         <td className="px-4 py-2">{stake.plan?.name || 'N/A'}</td>
-//         <td className="px-4 py-2">${stake.amount}</td>
-//         <td className="px-4 py-2">{(stake.dailyROI)}%</td>
-//         <td className="px-4 py-2">{stake.durationDays} days</td>
-//         <td className="px-4 py-2">{start.toLocaleDateString()}</td>
-//         <td className="px-4 py-2">
-//           {stake.isCompleted ? (
-//             <span className="text-green-600 font-medium">Completed</span>
-//           ) : (
-//             <span className="text-yellow-600 font-medium">Active</span>
-//           )}
-//         </td>
-//         <td className="px-4 py-2">${earned}</td>
-//         <td className="px-4 py-2 w-40">
-//           <div className="w-full bg-gray-200 rounded-full h-2.5">
-//             <div
-//               className="bg-green-500 h-2.5 rounded-full"
-//               style={{ width: `${progress}%` }}
-//             ></div>
-//           </div>
-//           <small>{elapsedDays}/{totalDays} days</small>
-//         </td>
-//       </tr>
-//     );
-//   })}
-// </tbody> */}
-// <tbody>
-//   {filteredStakes.map((stake) => {
-//     const now = new Date();
-//     const start = new Date(stake.startDate);
-
-//     const totalDays = stake.durationDays;
-
-//     const TEST_MODE = true; // toggle to false in production
-
-//     const elapsed = TEST_MODE
-//       ? Math.floor((now - start) / (1000 * 60)) // 1 min = 1 day
-//       : Math.floor((now - start) / (1000 * 60 * 60 * 24)); // real days
-
-//     const elapsedDays = Math.min(elapsed, totalDays);
-//     const progress = (elapsedDays / totalDays) * 100;
-
-//     const earned = (stake.amount * stake.dailyROI / 100 ).toFixed(2);
-
-//     return (
-//       <tr key={stake._id} className="border-b hover:bg-gray-50">
-//         <td className="px-4 py-2">{stake.plan?.name || 'N/A'}</td>
-//         <td className="px-4 py-2">${stake.amount}</td>
-//         <td className="px-4 py-2">{(stake.dailyROI)}%</td>
-//         <td className="px-4 py-2">{stake.durationDays} days</td>
-//         <td className="px-4 py-2">{start.toLocaleDateString()}</td>
-//         <td className="px-4 py-2">
-//           {stake.isCompleted ? (
-//             <span className="text-green-600 font-medium">Completed</span>
-//           ) : (
-//             <span className="text-yellow-600 font-medium">Active</span>
-//           )}
-//         </td>
-//         <td className="px-4 py-2">${earned}</td>
-//         <td className="px-4 py-2 w-40">
-//           <div className="w-full bg-gray-200 rounded-full h-2.5">
-//             <div
-//               className="bg-green-500 h-2.5 rounded-full"
-//               style={{ width: `${progress}%` }}
-//             ></div>
-//           </div>
-//           <small>{elapsedDays}/{totalDays} days</small>
-//         </td>
-//       </tr>
-//     );
-//   })}
-// </tbody>
-
-//           </table>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -359,6 +13,8 @@ import { FaPlus } from "react-icons/fa6";
 import { PiHandWithdraw } from "react-icons/pi";
 import { MdSupportAgent } from "react-icons/md";
 import { LuCircleDollarSign } from "react-icons/lu";
+import CandlestickChart from "../components/CandlestickChart";
+import ReactApexChart from 'react-apexcharts';
 
 
 const Dashboard = () => {
@@ -571,12 +227,48 @@ const handleStakeClaim = async (stakeId) => {
   }
 };
 
+// apexchart
+
+const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
+
+  const options = {
+    chart: {
+      type: 'line',
+      sparkline: { enabled: true },
+     dropShadow: {
+      colors: "#00ffff",
+      enabled: true,
+      top: 3,
+      left: 3,
+      blur: 4,
+      opacity: 1.2,
+    },
+    },
+    stroke: {
+      curve: 'smooth',
+      width: 3,
+      heigth: 100,
+    },
+    fill: {
+      type: 'gradient',
+      opacity: 0.5, // ✅ 50% transparent
+    colors: "#00ffff",
+      gradient: {
+        shadeIntensity: 18.5,
+        opacityFrom: 1.4,
+        opacityTo: 0,
+        stops: [0, 100, 100],
+      },
+    },
+    colors: ['#0fffff'],
+    tooltip: { enabled: false },
+  };
 
 
 
 
   return (
-    <div className="dahboader p-6">
+    <section className="dahboaders p-6">
       <div className="dashs__h1boby flex justify-between items-center mb-6">
       <h1 className=" dbwel text-3xl text-white font-bold mb-6">Welcome {user ? user.username : "Loading..."}</h1>
       
@@ -592,211 +284,109 @@ const handleStakeClaim = async (stakeId) => {
 
 
       </div>
+
+
+      <div className="dashlayout">
      
 
 {/* 👇 Show More Button */}
+<div className="dashaside">
 
 
 
 
-      <div className="funds__dash flex  gap-4 mb-6">
-        <div className="dash-fund ">
-        <div className="dash-fund-text">
-          <h2 className="fund-b">Funded Balance</h2>
+      <div className="wg-card-dash">
+        <div className="wg-card  ">
+        <div className="flex items-center justify-between">
+          <h2 className="card1-span">Funded Balance</h2>
          
-          <p className="text-gray-400 text-lg">USDT</p>
+         
+          <p className=""><svg width="20px" height="45px" viewBox="-3.2 -3.2 38.40 38.40" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g fill="none" fill-rule="evenodd"> <circle cx="16" cy="16" r="16" fill="#26A17B"></circle> <path fill="#FFF" d="M17.922 17.383v-.002c-.11.008-.677.042-1.942.042-1.01 0-1.721-.03-1.971-.042v.003c-3.888-.171-6.79-.848-6.79-1.658 0-.809 2.902-1.486 6.79-1.66v2.644c.254.018.982.061 1.988.061 1.207 0 1.812-.05 1.925-.06v-2.643c3.88.173 6.775.85 6.775 1.658 0 .81-2.895 1.485-6.775 1.657m0-3.59v-2.366h5.414V7.819H8.595v3.608h5.414v2.365c-4.4.202-7.709 1.074-7.709 2.118 0 1.044 3.309 1.915 7.709 2.118v7.582h3.913v-7.584c4.393-.202 7.694-1.073 7.694-2.116 0-1.043-3.301-1.914-7.694-2.117"></path> </g> </g></svg></p>
           </div>
-          <div className="dashadd">
-          <p className="balance-dash text-white-100">${user  ? user.balance.toFixed(2) : "loading.."}</p>
-          <Link to="/funding" className="bg-blue-600s flex items-center gap-2 text-white rounded hover:bg-blue-700">
+          <div className="flex items-center justify-between">
+          <p className="text-content">${user  ? user.balance.toFixed(2) : "loading.."}</p>
+          {/* <Link to="/funding" className="bg-blue-600s flex items-center gap-2 text-white rounded hover:bg-blue-700">
            <FaPlus className=" mr-1" /> Add Funds
-          </Link>
+          </Link> */}
+           <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height={30}
+        width={40}
+      />
           </div>
 
         </div>
-        <div className="dash-funds flex ">
-        <div className="earnings-dash">
-        <div className="dash-fund-text">
-          <h2 className="earning-b text-xl font-semibold">Total Earnings</h2>
-          <p className="text-gray-600 text-lg">USDT</p>
+       
+        <div className="wg-card">
+        <div className="flex items-center justify-between">
+          <h2 className="card1-span">Total Earnings</h2>
+          <p className="text-gray-600 text-lg"><svg width="20px" height="45px" viewBox="-3.2 -3.2 38.40 38.40" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g fill="none" fill-rule="evenodd"> <circle cx="16" cy="16" r="16" fill="#26A17B"></circle> <path fill="#FFF" d="M17.922 17.383v-.002c-.11.008-.677.042-1.942.042-1.01 0-1.721-.03-1.971-.042v.003c-3.888-.171-6.79-.848-6.79-1.658 0-.809 2.902-1.486 6.79-1.66v2.644c.254.018.982.061 1.988.061 1.207 0 1.812-.05 1.925-.06v-2.643c3.88.173 6.775.85 6.775 1.658 0 .81-2.895 1.485-6.775 1.657m0-3.59v-2.366h5.414V7.819H8.595v3.608h5.414v2.365c-4.4.202-7.709 1.074-7.709 2.118 0 1.044 3.309 1.915 7.709 2.118v7.582h3.913v-7.584c4.393-.202 7.694-1.073 7.694-2.116 0-1.043-3.301-1.914-7.694-2.117"></path> </g> </g></svg></p>
           </div>
-          <p className="earn-b text-lg">${user.totalEarnings.toFixed(2)}</p>
+         <div className="flex items-center justify-between">
+          <p className="text-content">${user.totalEarnings.toFixed(2)}</p>
+         <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height={30}
+        width={40}
+        
+      />
+      </div>
         </div>
-        <div className="withdrawable-dash">
-        <div className="dash-fund-text">
-          <h2 className="withdraw-b">Withdrawable Amount</h2>
-          <p className="text-gray-600 text-lg">USDT</p>
+        <div className="wg-card ">
+        <div className="flex items-center justify-between">
+          <h2 className="card1-span">Withdrawable </h2>
+          <p className="text-gray-600 text-lg"><svg width="20px" height="45px" viewBox="-3.2 -3.2 38.40 38.40" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g fill="none" fill-rule="evenodd"> <circle cx="16" cy="16" r="16" fill="#96651e"></circle> <path fill="#FFF" d="M17.922 17.383v-.002c-.11.008-.677.042-1.942.042-1.01 0-1.721-.03-1.971-.042v.003c-3.888-.171-6.79-.848-6.79-1.658 0-.809 2.902-1.486 6.79-1.66v2.644c.254.018.982.061 1.988.061 1.207 0 1.812-.05 1.925-.06v-2.643c3.88.173 6.775.85 6.775 1.658 0 .81-2.895 1.485-6.775 1.657m0-3.59v-2.366h5.414V7.819H8.595v3.608h5.414v2.365c-4.4.202-7.709 1.074-7.709 2.118 0 1.044 3.309 1.915 7.709 2.118v7.582h3.913v-7.584c4.393-.202 7.694-1.073 7.694-2.116 0-1.043-3.301-1.914-7.694-2.117"></path> </g> </g></svg></p>
           </div>
-          <div className="withadd">
-            <p className="with-b text-purple-600 text-lg">${user.withdrawableBalance.toFixed(2)}</p>
-            <Link to="/withdraw" className="bg-blue-600w text-white flex item-center gap-2 rounded hover:bg-blue-700">
+          <div className="flex items-center justify-between">
+            <p className="text-content">${user.withdrawableBalance.toFixed(2)}</p>
+            {/* <Link to="/withdraw" className="bg-blue-600w text-white flex item-center gap-2 rounded hover:bg-blue-700">
               <FaPlus className=" mr-1" />Withdraw
-            </Link>
+            </Link> */}
+             <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+         height={30}
+        width={40}
+        
+      />
           </div>
           
         </div>
-        </div>
-      </div>
-      <h2 className="text-gray-400 quick-actions text-start font-bold text-xl mb-4">Quick Actions</h2>
-
-      <div className="foutricondisplay">
-        <Link to="/funding" className="dashicons">
-          <div className="conicon">
-            <FaPlus className="text-2xl " />
-          </div>
-          <p className="text-white-100 text-sm">Add Funds</p>
-        </Link>
-        <Link to="/withdraw" className="dashicons">
-          <div className="conicon">
-            <PiHandWithdraw className="text-2xl " />
-          </div>
-          <p className="text-white-100 text-sm">Withdraw</p>
-
-        </Link>
-        <Link to="/support" className="dashicons">
-          <div className="conicon">
-            <MdSupportAgent className="text-2xl " />
-          </div>
-          <p className="text-white-100 text-sm">Support</p>
-
-        </Link>
-        <Link to="/plans" className="dashicons">
-          <div className="conicon">
-            <LuCircleDollarSign className="text-2xl " />
-          </div>
-          <p className="text-white-100 text-sm">Plans</p>
-
-        </Link>
+       
       </div>
 
-      <div className="stake-dashe mb-8 text-center">
-       </div>
-{/* 📋 My Stakes */}
-      <h2 className="text-gray-400  quick-acti text-start font-bold text-xl mb-4"> Daily Investment ROI</h2>
-
-<div className="overflows">
-  <table className="stake-dash  rounded-xl overflow-x-auto shadow-md w-full">
-    <thead className=" text-left p-4">
-      <tr>
-        <th className=" ">Plan</th>
-        <th className="stakenon">Amount</th>
-        <th className="stakenon">Date</th>
-        <th className="stakenon">Daily ROI</th>
-        <th className="">Next Earning</th>
-        <th className="">Earnings So Far</th>
-        <th className="">Status</th>
-        <th className="">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {filteredStakes.slice(0, visibleCount).map((stake) => {
-        const today = new Date().toDateString();
-        const lastClaim = new Date(stake.lastClaimDate || stake.startDate).toDateString();
-        const hasClaimedToday = today === lastClaim;
-        const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
-
-        return (
-          <tr key={stake._id} className=" ">
-            <td className=" text-whites">{stake.plan?.name || "-"}</td>
-            <td className=" text-whites stakenon">${stake.amount}</td>
-            <td className=" text-whites stakenon text-center">{new Date(stake.startDate).toDateString()}</td>
-            <td className=" text-whites stakenon">{stake.dailyROI}%</td>
-            <td className={`text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</td>
-            <td className="text-whites">${stake.earningsSoFar.toFixed(2)}</td>
-            <td className="">
-              <span className={`satus py-1 px-2 rounded-full text-sm font-semibold ${
-                stake.isCompleted ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-              }`}>
-                {stake.isCompleted ? "Completed" : "Active"}
-              </span>
-            </td>
-            <td className=" p-3">
-              <button
-                onClick={() => handleStakeClaim(stake._id)}
-                disabled={hasClaimedToday || stake.isCompleted}
-                className={`stak-pad px-3 py-1 rounded text-white text-sm ${
-                  hasClaimedToday || stake.isCompleted
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-600 hover:bg-blue-700"
-                }`}
-              >
-                {hasClaimedToday ? "Claimed" : "Claim ROI"}
-              </button>
-            </td>
-          </tr>
-        );
-      })}
-    </tbody>
-  </table>
 
 
 
-</div>
-<div className="oversflow">
-   {filteredStakes.slice(0, visibleCount).map((stake) => {
-        const today = new Date().toDateString();
-        const lastClaim = new Date(stake.lastClaimDate || stake.startDate).toDateString();
-        const hasClaimedToday = today === lastClaim;
-        const { text, ready } = getCountdownParts(stake.lastClaimDate || stake.startDate);
+      <div className="shadow-nones ">
+        {/* <div className="tradcon flex items-center">
+      <img
+    src="https://w7.pngwing.com/pngs/113/18/png-transparent-tether-hd-logo-thumbnail.png"
+    alt="USDT"
+    className="w-10 h-10 mr-2"
+  />
+  <h2 className="text-xl font-semibold text-gray-800">
+    USDT/BTC
+  </h2>
+  </div> */}
+      <CandlestickChart />
+    </div>
 
-        return (
-          <div key={stake._id} className=" headRead">
-          <div className="reward">
-            <p className="rewardname ">{stake.plan?.name || "-"}</p>
-            <p className="  stakenon">${stake.amount}</p>
-            <p className="  ">{new Date(stake.startDate).toDateString()}</p>
-            <p className=" stakenon">{stake.dailyROI}%</p>
-            <p className={`text-sm ${ready ? "text-green-500" : "text-yellow-500"}`}>{text}</p>
-            </div>
-            <div className="reward2">
-            <p className="text-white">${stake.earningsSoFar.toFixed(2)}</p>
-            <p className="">
-              <span className={`satus py-1 px-2 rounded-full text-sm font-semibold ${
-                stake.isCompleted ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-              }`}>
-                {stake.isCompleted ? "Completed" : "Active"}
-              </span>
-            </p>
-            <td className=" p-3">
-              <button
-                onClick={() => handleStakeClaim(stake._id)}
-                disabled={hasClaimedToday }
-                className={`stak-pad px-3 py-1 rounded text-white text-sm ${
-                  hasClaimedToday || stake.isCompleted
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-600 hover:bg-blue-700"
-                }`}
-              >
-                {hasClaimedToday ? "Claimed" : "Claim ROI"}
-              </button>
-              
-            </td>
-            </div>
-          </div>
-        );
-      })}
-</div>
 
-  {filteredStakes.length > 2 && (
-  <div className="text-center mt-4">
-    <button
-      onClick={handleToggleUsers}
-      className="user-see-more-btn bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600"
-    >
-      {visibleCount >= filteredStakes.length ? 'See Less' : 'See More'}
-      <FaArrowDown className="ml-2" />
-    </button>
-  </div>
-)}
-
-      <div className="content-act flex flex-col md:flex-row gap-4 justify-between">
+      </div>
+      <div className="dashaside2">
     {/* Recent Activity Section */}
-<div className="dashboard-activity1 text-white ">
+<div className=" card-bg text-white ">
   <div className="flex justify-between items-center mb-4">
     <select
       value={filters}
       onChange={(e) => setFilters(e.target.value)}
-      className="bg-dashboard-card p-2 rounded text-white"
+      className="bg-dashboard-cards p-2 rounded text-white"
     >
       <option className="last7" value="7">Last 7 Days</option>
       <option className="last7" value="30">Last 30 Days</option>
@@ -813,14 +403,14 @@ const handleStakeClaim = async (stakeId) => {
   {/* Drawer for Mobile */}
   {drawerOpen && (
     <div className="  h-full bg-gray p-4 shadow-lg overflow-y-auto lg:hidden">
-      <h2 className="text-white-800 quick-actis  font-bold mb-3">Recent Activity</h2>
+      <h2 className="text-white-800   font-bold mb-3">Transaction History</h2>
       <ActivityList data={activities} />
     </div>
   )}
 
   {/* Desktop List */}
-  <div className="hidden lg:block">
-    <h2 className="text-whites quick-actis font-bold mb-3">Recent Activity</h2>
+  <div className=" trx-history-div hidden lg:block">
+    <h2 className="transac font-bold mb-3">Transaction History</h2>
     <ActivityList data={activities} />
   </div>
 
@@ -839,12 +429,12 @@ const handleStakeClaim = async (stakeId) => {
       Next
     </button>
   </div>
-</div>
 
-
- 
       </div>
-    </div>
+      </div>
+      </div>
+      
+    </section>
   );
 };
 
@@ -869,10 +459,10 @@ const ActivityList = ({ data }) => (
         : 'text-white-500';
 
       return (
-        <li key={i} className="dashactul  flex justify-between border-b border-gray-700 ">
+        <li key={i} className="card-body flex justify-between border-b border-gray-800 ">
           <div>
-            <p className="font-medium">{item.type}</p>
-            <p className="text-sm ">
+            <p className="text-truncate font-medium">{item.type}</p>
+            <p className="date-span ">
               {new Date(item.date).toDateString()}
             </p>
           </div>

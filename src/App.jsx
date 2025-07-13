@@ -552,6 +552,9 @@ function App() {
             </PrivateRoute>
           }
         />
+
+
+        
         <Route
           path="/funding"
           element={

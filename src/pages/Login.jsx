@@ -359,7 +359,7 @@ const Login = () => {
         </button>
       </div>
 
-      <form onSubmit={handleLogin} className="signup-form">
+      <form onSubmit={handleLogin} className="signup-forms">
         <h2 className="signup__h1">Login</h2>
 
         {message.text && (
@@ -384,7 +384,7 @@ const Login = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className=" input-fieldss"
+          className="w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary"
           required
         />
         <label for="email" class="input-label">Email</label>
@@ -397,7 +397,7 @@ const Login = () => {
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="signup__password inputsignup input-fieldss"
+            className="w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary"
             required
           />
           <span

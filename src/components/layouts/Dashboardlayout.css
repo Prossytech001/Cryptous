@@ -620,7 +620,7 @@ font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  background-color:  var(--blue);
+  background-color:  var(--bs-body-bg);
     padding: 1rem;
    border-bottom: 1px solid #3B3854;
     position: sticky;
@@ -650,7 +650,7 @@ font-weight: 500;
     left: -260px;
     width: 250px;
     height: 100%;
-    background-color: var(--BgWhite);
+    background-color: var(--bs-body-bg);
     
     transition: left 0.3s ease;
     z-index: 999;
@@ -666,6 +666,7 @@ font-weight: 500;
     flex-direction: column;
     height: 100%;
     padding: 1rem;
+    background-color: var(--bs-body-bg);
   }
   
   /* Close Button */
@@ -699,17 +700,17 @@ font-weight: 500;
     border-radius: 8px;
     color: #000;
     text-decoration: none;
-    background-color: #ffffff;
+    background-color: var(--bs-secondary-bg);
     transition: background 0.2s ease;
   }
   
   .nav-link:hover {
-    background-color: #d2c6e04d;
+    background-color: #3737384d;
     color: #232324;
   }
   
   .nav-link.active {
-    background-color: #6b37c086;
+    background-color: #4646464d;
     font-weight: bold;
   }
   
