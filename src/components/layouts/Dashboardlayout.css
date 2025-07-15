@@ -680,7 +680,7 @@ font-weight: 500;
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--blue);
+    color: var(--White);
     cursor: pointer;
   }
   
@@ -700,7 +700,7 @@ font-weight: 500;
     border-radius: 8px;
     color: #000;
     text-decoration: none;
-    background-color: var(--bs-secondary-bg);
+   
     transition: background 0.2s ease;
   }
   
@@ -716,6 +716,7 @@ font-weight: 500;
   
   .nav-icon {
     font-size: 1.2rem;
+    color: var(--Kumera);
   }
   
   /* Logout */

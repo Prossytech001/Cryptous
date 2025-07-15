@@ -116,7 +116,8 @@ useEffect(() => {
     <div className="payment-contaier">
       <Basedcrumb/>
       <div className="payment__contents">
-        <h1 className='deposit'>Deposit</h1>
+       
+        <h1 className="dashboard-heading-h  mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-columns-gap plan-icon"><path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"></path></svg>Deposit</h1>
         <div className="paymet__box">
 <div className="payment-img">
       <img src={usdt} alt="" className='usdt-pay'/>
@@ -142,7 +143,7 @@ useEffect(() => {
           
       </span>
 
-      <div className="p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-900 rounded-xl shadow">
+      <div className="p-4 bg-yel00 border-l-4 border-yellow-500 text-white rounded-xl shadow">
         <div className="flex items-start gap-3">
           <div>
             <h2 className="text-lg font-semibold">Important Funding Instruction</h2>
@@ -167,7 +168,7 @@ useEffect(() => {
           marginTop: '16px',
           width: '100%',
           padding: '12px',
-          backgroundColor: '#2D2A4D',
+          backgroundImage: 'linear-gradient(90deg,var( --Kumera),var(--Bronzetone))',
           color: 'white',
           borderRadius: '8px',
           fontWeight: 'bold',
@@ -275,10 +276,10 @@ useEffect(() => {
             </thead>
             <tbody>
               {deposits.map((d) => (
-                <tr key={d._id}>
-                  <td>{d.amount.toFixed(2)} USDT</td>
-                  <td>{d.status}</td>
-                  <td>
+                <tr key={d._id} className='tabletr'>
+                  <td className='fund-usdt'>{d.amount.toFixed(2)} USDT</td>
+                  <td ><p className='fund-usdts'>{d.status}</p></td>
+                  <td className='fund-usdtss'>
   {d.createdAt ? new Date(d.createdAt).toLocaleString() : 'N/A'}
 </td>
 

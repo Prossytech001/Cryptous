@@ -3,30 +3,36 @@
     flex-direction: column;
     height: auto;
     color: var(--text);
-    background-color: var(--BgWhite);
+    background-color: var(--bs-secondary-bg);
     border-radius: 20px;
-    align-items: center;
-    justify-content: center;
+    
+    
     padding: 0.7rem;
     width: auto;
     margin-top: 2rem;
     
+    
+}
+.text-held{
+    font-size: 30px;
+    color: var(--White);
+    text-align: left;
 }
 .pamcon{
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+   
 }
 .planwin{
     font-size: 3rem;
-    color: var(--primarycolor);
+    color: var(--Bronzetone);
 }
 .plan-like{
-    background-image: linear-gradient(90deg, #48a2f7, #544ba7);
-    padding: 0.5rem;
+    font-size: var(--header);
+    padding: 0.1rem;
     border-radius: 5px;
-    margin: 1rem 0;
+    margin: 0.4rem 0;
     color: var(--BgWhite);
 }
 .palngood{
@@ -36,23 +42,22 @@
     background-repeat: no-repeat;
   background-size: cover;
    background-position: center;
-  background-color: var(--bgcol);
+  background-color: var(--bs-body-bg);
     min-height: 100vh;
     place-content: center;
     display: flex;
-    place-items: center;
+   
     justify-content: center;
     flex-direction: column;
     padding: 0.7rem;
 
 }
 .plan-btn{
-    background-color: var(--primarycolor);
-   padding: 0.5rem;
-    font-size: var(--p);
-    color: var(--BgWhite);
-    border-radius: 20px;
-    margin-top: 1rem;
+   background-image:linear-gradient(to left,var(--Bronzetone),var(--Kumera));
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: 300;
+    letter-spacing: .4px;
 }
 .pop-con{
     background-color: rgba(37, 37, 37, 0.521);
@@ -82,8 +87,8 @@
     border-radius: 5px;
     margin-top: 1rem;
 }
-.plap{
-    place-items: center;
+.plap p{
+    margin: 5px 0;
 }
 .select-input{
     width: 100%;
@@ -106,16 +111,36 @@
     
 }
 .card_hlder{
-    
+    width: 100%;
     gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.phight{
+     background-image: linear-gradient(to left,var(--Bronzetone),var(--Kumera));
+    width: 100%;
+    height: 40px;
+    margin: 20px 0;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--White);
 }
 @media (max-width: 668px) {
     .Plan_card{
-       width: 100%;
-        padding: 1rem;
+       width: 90%;
+        padding: 2rem;
+       
+    }
+    .container-PLAN {
+        
     }
     
-    .card_hlder{
+    /* .card_hlder{
 display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -124,10 +149,10 @@ display: grid;
         width: 100%;
         place-items: center;
         
-    }
+    } */
 }
 @media (max-width: 400px){
-.Plan_card{
+/* .Plan_card{
     display: flex;
     flex-direction: row;
     height: auto;
@@ -138,10 +163,10 @@ display: grid;
     
     justify-content: center;
     position: relative;
-    width: 100%;
     
     
-}
+    
+} */
 .plap{
     width: 100%;
     display: flex;

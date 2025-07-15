@@ -288,7 +288,7 @@ const TradingViewChart = () => {
       locale: "en",
       colorTheme: "dark",
       gridLineColor: "#3a3939",
-      trendLineColor: "#2196F3",
+      trendLineColor: "#96651e",
       fontColor: "#ffffff",
       underLineColor: "#3a3939",
       isTransparent: true,

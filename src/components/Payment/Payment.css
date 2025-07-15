@@ -199,8 +199,10 @@
  .payment-contaier{
   width: 100%;
   padding: 0.7rem;
-  background-color: #f4f4f5;
+  background-color: var(--bs-body-bg);
   height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
  }
  .usdt-pay{
   height: 2rem;
@@ -215,7 +217,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--BgWhite);
+  background-color: var(--bs-secondary-bg);
   border-radius: 10px;
  margin-top: 3rem;
  padding: 0.7rem;
@@ -225,7 +227,7 @@
           padding: 10px;
           margin-bottom: 10px;
           background: none;
-          border: 1px solid var(--grey);
+         border: 1px solid var( --Kumera);
           border-radius: 5px;
           color: var(--grey);
           outline: none;
@@ -237,7 +239,7 @@
     border-radius: 10px;
     padding: 10px;
     border: none;
-    background-color: var(--blue);
+     background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
     color: var(--BgWhite);
     font-size: 1.2rem;
     font-weight: 600;
@@ -277,7 +279,8 @@
 }
 .paymentlabel{
   color: var(--text);
-  font-size: var(--miniheader);
+  font-size: var(--p);
+
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -287,14 +290,34 @@
   margin-top: 1rem;
 }
 .payment-table th, .payment-table td {
-  border: 1px solid var(--grey);
+ 
+  
   padding: 8px;
   text-align: left;
 }
+.fund-usdt{
+   color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
+}
+.fund-usdtss{
+  color: var(--White);
+}
+.fund-usdts{
+  background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
+  text-align: center;
+  width: 50%;
+  border-radius: 20px;
+  color: var(--White);
+
+}
 .payment-thead{
-  background-color: var(--text);
-  color: var(--BgWhite);
-  font-weight: bold;
+ display: table-header-group;
+  color: var(--White);
+   border: none;
+    padding: 5px 12px; 
+    border-radius: 20px; 
+    background-color: var(--bs-secondary-bg);
 }
 /* try to check it out*/
 @keyframes fadeSlideIn {
@@ -332,13 +355,16 @@
 }
 
 .popup-content {
-  background-color: white;
+  background-color: var(--bs-secondary-bg);
   border-radius: 12px;
   padding: 24px;
   max-width: 600px;
   width: 100%;
   position: relative;
   animation: fadeSlideIn 0.4s ease-out forwards;
+}
+.bg-yel00{
+  background-color: var(--bs-body-bg);
 }
 
 .popup-close {
@@ -363,6 +389,15 @@
 
  
   
+}
+.fund-usdts{
+  background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
+  text-align: center;
+  width: 100%;
+  border-radius: 20px;
+  color: var(--White);
+  padding: 5px;
+
 }
 .popup-overlay-border{
     padding-top: 20px;
@@ -394,7 +429,7 @@
     justify-content: center;
 }
 .popup-overlay-border{
-    background-color: #2D2A4D;
+    background-color: var(--bs-secondary-bg);
 }
 .payamount{
     color: var(--BgWhite);
@@ -411,7 +446,7 @@
     color: #fff;
 }
 .paycopy{
-        background-color: #544ba0;
+       background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
         margin: 10px 0;
         padding: 0.7rem;
 }

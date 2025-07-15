@@ -443,13 +443,12 @@ const DashboardLayout = ({ children }) => {
 
   const navLinks = [
     { path: '/dashboard', label: 'Dashboard', icon: <AiFillDashboard /> },
-    { path: '/profile', label: 'Profile', icon: <CgProfile /> },
-    { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
-    { path: '/withdraw', label: 'Withdrawal', icon: <MdOutlineAttachMoney /> },
      { path: '/funding', label: 'Fund Account', icon: <RiFundsBoxFill /> },
-     
+    { path: '/withdraw', label: 'Withdrawal', icon: <MdOutlineAttachMoney /> },
+     { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
     { path: '/plans', label: 'Plans', icon: <MdOutlineAttachMoney /> },
     { path: '/support', label: 'Support', icon: <MdSupportAgent /> },
+     { path: '/profile', label: 'Profile', icon: <CgProfile /> },
    
 
    
@@ -487,7 +486,7 @@ const DashboardLayout = ({ children }) => {
                 className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
               >
                 <span className="nav-icon">{link.icon}</span>
-                <span>{link.label}</span>
+                <span className='nav-elements'>{link.label}</span>
               </Link>
             ))}
           </nav>

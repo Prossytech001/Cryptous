@@ -109,7 +109,7 @@ const handleSubmit = async () => {
     <div className="container-PLAN ">
       
       
-      <h1 className="absolute top-15  text-3xl text-white-500 font-bold mb-6 text-center">Investment Plans</h1>
+      <h1 className="dashboard-heading-h"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-columns-gap plan-icon"><path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"></path></svg>Investment Plans</h1>
       
       <div className="card_hlder grid grid-cols-1 md:grid-cols-3 ">
         {Array.isArray(plans) && plans.map((plan) => (
@@ -120,29 +120,37 @@ const handleSubmit = async () => {
             <div className="pamcon">
             <RiShieldStarFill className="planwin"/>
             
-            <h2 className="text-xl text-white--400 font-semibold mb-2">{plan.name}</h2>
+            <h2 className="phight">{plan.name}</h2>
             
             <p className="plan-like text-gray-600 mb-1">
-              <strong>{(plan.dailyROI).toFixed(2)}% ROI</strong>
+              <strong>{(plan.dailyROI).toFixed(2)}%</strong>
             </p>
              </div>
              <div className="plap">
-            <p className=" flex items-center gap-1 text-gray-600 mb-1">
+            <p className=" flex items-center gap-1 text-white mb-1">
               <FaCircleCheck className="palngood"/>
               Duration: <strong>{plan.durationDays} days</strong>
             </p>
 
-            <p className="flex items-center gap-1 text-gray-600 mb-4">
+            <p className="flex items-center gap-1 text-white mb-4">
               <FaCircleCheck className="palngood"/> 
                Minimun : ${plan.minInvestment} 
             </p>
-            <p className=" flex items-center gap-1 text-gray-600 mb-4">
+            <p className=" flex items-center gap-1 text-white mb-4">
               <FaCircleCheck className="palngood"/>
               Maximun : ${plan.maxInvestment}
             </p>
+             <p className=" flex items-center gap-1 text-white mb-4">
+              <FaCircleCheck className="palngood"/>
+             Daily Payout
+            </p>
+             <p className=" flex items-center gap-1 text-white mb-4">
+              <FaCircleCheck className="palngood"/>
+              Topup Available
+            </p>
             <button
               onClick={() => handleInvestClick(plan)}
-              className="plan-btn bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full"
+              className="plan-btn"
             >
               Invest Now
             </button>

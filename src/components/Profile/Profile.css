@@ -4,7 +4,7 @@
    border-radius: 20px;
    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.025);
     padding: 2rem;
-    background-color: var(--BgWhite);
+    background-color: var(--bs-secondary-bg);
     min-height: auto;
     font-family: Arial, sans-serif;
     width: 50%;
@@ -16,11 +16,19 @@
 }
 .profile__page{
     display: flex;
-  background-color: var(--bgcol);
+    flex-direction: column;
+ background-color: var(--bs-body-bg);
     width: 100%;
     padding: 0.7rem;
     gap: 2rem;
     
+}
+.profile__pagess{
+     display: flex;
+ background-color: var(--bs-body-bg);
+    width: 100%;
+    padding: 0.7rem;
+    gap: 2rem;
 }
 .img_profile{
     width: 70%;
@@ -37,7 +45,7 @@
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.041);
-    background-color: var(--BgWhite);
+    background-color: var(--bs-secondary-bg);
     min-height: auto;
     font-family: Arial, sans-serif;
     width: auto;
@@ -47,13 +55,15 @@
     height: 100vh;
    
    
-    color: var(--primarycolor);
+    
 }
 .profile_label {
     font-size: var(--p);
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: var(--inbs);
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
 }
 .profile__h3{
     font-size: var(--miniheader);
@@ -71,20 +81,27 @@
     border: 1px solid #ccc;
     font-size: var(--p);
     margin-bottom: 1rem;
-    color: var(--inbs);
+     color: var(--White);
+    
 }
 .profile__h2{
-    font-size: 1.9rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
     display: flex;
-   color: var(--inbs);
+     color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
+   
 }
 .profile__p{
     font-size: var(--p);
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
+     color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
    
 }
 .profile_span{
@@ -108,7 +125,7 @@
     padding: 0.5rem;
 }
 .profile_btn{
-   
+    background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
     color: var(--BgWhite);
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -122,6 +139,10 @@
 }
 @media (max-width: 768px) {
     .profile__page {
+        display: flex;
+        flex-direction: column;
+    }
+    .profile__pagess{
         display: flex;
         flex-direction: column;
     }

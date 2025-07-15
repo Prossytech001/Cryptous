@@ -203,8 +203,10 @@ const Profile = () => {
   return (
     <div className="profile__page ">
       <Basedcrumb/>
+      <h1 className="dashboard-heading-h"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-columns-gap plan-icon"><path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"></path></svg>Profile & Setting</h1>
+      <div className='profile__pagess'> 
       <div className="profile_ii">
-        <img src={profileimg} alt=""  className='img_profile'/>
+       
         <div className="profile_list">
           <h2 className="profile__h2">Welcome to your profile</h2>
           <p className="profile__p"><span className='profile_span'>Username:</span> {formData.username}</p>
@@ -215,7 +217,7 @@ const Profile = () => {
      
       </div>
       <div className="profile_pages">
-      <h2 className="text-3xl font-bold mb-6">Profile</h2>
+      <h2 className="text-3xl text-white font-bold mb-6">Profile</h2>
 
       {message && <div className="profile__green mb-4 p-3 bg-green-100 text-green-800 rounded">{message}</div>}
       {error && <div className="profile__red mb-4 p-3 bg-red-100 text-red-800 rounded">{error}</div>}
@@ -280,6 +282,7 @@ const Profile = () => {
           Change Password
         </button>
       </form>
+      </div>
       </div>
     </div>
   );
