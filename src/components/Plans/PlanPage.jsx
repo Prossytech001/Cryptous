@@ -6,7 +6,7 @@ import "../../components/Plans/PlanCard.css"
 import { RiShieldStarFill } from "react-icons/ri";
 import { FaCircleCheck } from "react-icons/fa6";
 import Loader from "../../components/Loader/Loader";
-import Breadcrumb from "../basedcrumb";
+import Breadcrumb from "../Basedcrumb";
 
 
 const PlanPage = () => {
