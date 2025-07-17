@@ -124,7 +124,7 @@ import axios from 'axios';
 import "../components/Withdraw/Withdraw.css"
 import withimg from "../../public/usdt.png"
 import {Link} from "react-router-dom";
-import Basedcrumb from '../components/Basedcrumb';
+import Breadcrumb from '../components/basedcrumb';
 
 const WithdrawForm = ({ userBalance }) => {
   const [amount, setAmount] = useState('');
@@ -229,14 +229,14 @@ const handleWithdraw = async (e) => {
   return (
     <div className="withdraw-container">
 
-    <Basedcrumb/>
+    <Breadcrumb/>
     <div >
    
-    <h1 className="dashboard-heading-h"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-columns-gap plan-icon"><path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"></path></svg>Withdraw</h1>
+    
 
     <div className="withdraw-containers">
       <div className="withhead">
-       <div className="withimg">
+       <div className="withimg flex flex-col items-center justify-center">
         <img src={withimg} alt="" className='usdt-pay'/>
         <p>USDT (TRC20).</p>
        </div>

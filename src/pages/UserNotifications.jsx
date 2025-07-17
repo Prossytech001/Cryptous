@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Basedcrumb from "../components/Basedcrumb";
+import Breadcrumb from "../components/basedcrumb";
 
 const UserNotifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -38,10 +38,10 @@ const UserNotifications = () => {
 
 
   return (
-    <div className="notify-con w-full" style={{ maxWidth: 600, margin: "auto", padding: 20 }}>
-      <Basedcrumb />
+    <div className="notify-con w-full" style={{  margin: "auto", padding: 20 }}>
+      <Breadcrumb />
       
-      <h1 className="dashboard-heading-h"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-columns-gap plan-icon"><path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"></path></svg>Your Notifications</h1>
+      
       {notifications.length === 0 && <p className="message-notify">No notifications yet.</p>}
      
       {notifications.map((note) => (

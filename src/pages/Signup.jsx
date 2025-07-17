@@ -1039,14 +1039,222 @@
 // };
 
 // export default Signup;
+// import { useState, useContext } from "react";
+// import axios from "axios";
+// import { AuthContext } from "../components/Authcontext.jsx";
+// import { FaEye, FaEyeSlash } from "react-icons/fa";
+// import { jwtDecode } from "jwt-decode";
+// import { Link, useNavigate } from "react-router-dom";
+// import "../components/Signup.css";
+// import { GoogleLogin } from '@react-oauth/google';
+
+// const Signup = () => {
+//   const [form, setForm] = useState({
+//     firstName: "",
+//     lastName: "",
+//     username: "",
+//     country: "",
+//     phone: "",
+//     email: "",
+//     password: "",
+//   });
+
+//   const [agreed, setAgreed] = useState(false);
+//   const [showPassword, setShowPassword] = useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const [message, setMessage] = useState({ type: "", text: "" });
+
+//   const { login } = useContext(AuthContext);
+//   const navigate = useNavigate();
+//   const api = import.meta.env.VITE_API_URL;
+
+//   const handleChange = (e) => {
+//     setForm({ ...form, [e.target.name]: e.target.value });
+//   };
+
+ 
+//   const handleSignup = async (e) => {
+//   e.preventDefault();
+
+//   if (!agreed) {
+//     return setMessage({ type: "error", text: "You must agree to the terms." });
+//   }
+
+//   const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+//   if (!strongPassword.test(form.password)) {
+//     return setMessage({
+//       type: "error",
+//       text: "Password must be at least 8 characters with uppercase, lowercase, number, and special character.",
+//     });
+//   }
+
+//   try {
+//     setLoading(true);
+//     setMessage({ type: "", text: "" });
+
+//     const res = await axios.post(`${api}/api/auth/signup`, form);
+
+//     // ✅ Set token in localStorage
+//     localStorage.setItem("authToken", res.data.token);
+
+//     // ✅ Set token globally in Axios
+//     axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
+
+//     // ✅ Update context
+//     login(res.data.user, res.data.token);
+
+//     setMessage({ type: "success", text: "✅ Signup successful! Redirecting..." });
+//     setTimeout(() => navigate("/dashboard"), 1500);
+//   } catch (err) {
+//     const errMsg = err.response?.data?.message || "Signup failed. Try again.";
+//     setMessage({ type: "error", text: `❌ ${errMsg}` });
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+
+//  const handleGoogleSuccess = async (credentialResponse) => {
+//   try {
+//     const res = await axios.post(`${api}/api/auth/google`, {
+//       credential: credentialResponse.credential,
+//     });
+
+//     const { user, token } = res.data;
+//     localStorage.setItem("authToken", token);
+//     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // ✅ add this line
+//     login(user, token);
+//     navigate("/dashboard");
+//   } catch (error) {
+//     console.error("Google login failed", error);
+//     setMessage({ type: "error", text: "Google login failed" });
+//   }
+// };
+
+// const countries = [
+//   { code: "US", name: "United States" },
+//   { code: "NG", name: "Nigeria" },
+//   { code: "GB", name: "United Kingdom" },
+//   { code: "CA", name: "Canada" },
+//   { code: "FR", name: "France" },
+//   { code: "DE", name: "Germany" },
+//   { code: "IN", name: "India" },
+//   { code: "CN", name: "China" },
+//   { code: "JP", name: "Japan" },
+//   { code: "ZA", name: "South Africa" },
+//   // Add more or import a full list
+// ];
+
+
+//   return (
+//     <section className="signup__container h-full">
+//       <form onSubmit={handleSignup} className="signup-form">
+//         <h2 className="signup__h1">Create Account</h2>
+
+//         {message.text && (
+//           <div className={`signup-message ${message.type}`}>
+//             {message.text}
+//           </div>
+//         )}
+
+//         {/* <div class="input-container">
+//   <input placeholder="Enter text" class="input-fieldss" type="text"/>
+//   <label for="input-field" class="input-label">Enter text</label>
+//   <span class="input-highlight"></span>
+// </div> */}
+
+//         <div className="input-container">
+          
+          
+//           <input name="firstName" placeholder="First Name" value={form.firstName} onChange={handleChange} required className='w-full input-fieldss rounded-md border bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary' />
+//           <label for="firstName" class="input-label">First Name</label>
+//   <span class="input-highlight"></span>
+//            </div>
+//              <div className='input-container'>
+//           <input name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleChange} required className='w-full input-fieldss rounded-md border  bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
+//           <label for="lastName" class="input-label">Last Name</label>
+//   <span class="input-highlight"></span>
+//        </div>
+//          <div className='input-container'>
+// <input name="username" placeholder="Username" value={form.username} onChange={handleChange} required className='w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
+//          <label for="userName" class="input-label">UserName</label>
+//   <span class="input-highlight"></span>
+//         </div>
+//         <div className='input-container'>
+//           <label for="country" class="text-white">country</label>
+//         <select name="country" value={form.country} onChange={handleChange} required className='w-full input-fieldsss text-white bg-black'>
+//   <option value="" className="input-fieldsss">Select Country</option>
+//   {countries.map((c) => (
+//     <option key={c.code} value={c.name}>{c.name}</option>
+//   ))}
+// </select>
+
+ 
+//         </div>
+//         <div className='input-container'>
+//         <input name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required className='w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
+//           <label for="phone" class="input-label">Phone Number</label>
+//   <span class="input-highlight"></span>
+//          </div>
+//          <div className='input-container'>
+//          <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required className='w-full input-fieldss  rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
+//          <label for="email" class="input-label">Phone Number</label>
+//   <span class="input-highlight"></span>
+//          </div>
+         
+//         <div className="input-container" style={{ position: "relative" }}>
+//           <input
+//             type={showPassword ? "text" : "password"}
+//             name="password"
+//             placeholder="Password"
+//             value={form.password}
+//             onChange={handleChange}
+//             required
+//             className='w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'
+//           />
+//           <span onClick={() => setShowPassword(!showPassword)} className="password-toggle">
+//             {showPassword ? <FaEyeSlash /> : <FaEye />}
+//           </span>
+//         </div>
+
+//         <div className="agree-checkbox">
+//           <label className="text-white">
+//             <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
+//             I agree to the <a href="/terms" target="_blank" rel="noopener noreferrer">terms and conditions</a>
+//           </label>
+//         </div>
+
+//         <button type="submit" className="signup__button" disabled={loading}>
+//           {loading ? "Creating..." : "Sign Up"}
+//         </button>
+
+//         <div className="google-login-wrapper">
+//            <span className="z-1 relative my-8 block text-center before:content-[''] before:absolute before:h-px before:w-40% before:bg-dark_border/60 before:left-0 before:top-3 after:content-[''] after:absolute after:h-px after:w-40% after:bg-dark_border/60 after:top-3 after:right-0">
+//         <span className='text-body-secondary relative z-10 inline-block px-3 text-base text-white'>
+//           OR
+//         </span>
+//       </span>
+//           <GoogleLogin onSuccess={handleGoogleSuccess} onError={() => console.log("Google Sign-In Failed")} />
+//         </div>
+
+//         <p className="signup-link-text text-white">
+//           Already have an account? <Link to="/login" className="licksign">Login</Link>
+//         </p>
+//       </form>
+//     </section>
+//   );
+// };
+
+// export default Signup;
 import { useState, useContext } from "react";
 import axios from "axios";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import { AuthContext } from "../components/Authcontext.jsx";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { jwtDecode } from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 import "../components/Signup.css";
-import { GoogleLogin } from '@react-oauth/google';
 
 const Signup = () => {
   const [form, setForm] = useState({
@@ -1058,7 +1266,6 @@ const Signup = () => {
     email: "",
     password: "",
   });
-
   const [agreed, setAgreed] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -1072,114 +1279,62 @@ const Signup = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // const handleSignup = async (e) => {
-  //   e.preventDefault();
-
-  //   if (!agreed) {
-  //     return setMessage({ type: "error", text: "You must agree to the terms." });
-  //   }
-
-  //   const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
-  //   if (!strongPassword.test(form.password)) {
-  //     return setMessage({
-  //       type: "error",
-  //       text: "Password must be at least 8 characters with uppercase, lowercase, number, and special character.",
-  //     });
-  //   }
-
-  //   try {
-  //     setLoading(true);
-  //     setMessage({ type: "", text: "" });
-
-  //     const res = await axios.post(`${api}/api/auth/signup`, form);
-  //     localStorage.setItem("authToken", res.data.token);
-  //     login(res.data.user, res.data.token);
-
-  //     setMessage({ type: "success", text: "✅ Signup successful! Redirecting..." });
-  //     setTimeout(() => navigate("/dashboard"), 1500);
-  //   } catch (err) {
-  //     const errMsg = err.response?.data?.message || "Signup failed. Try again.";
-  //     setMessage({ type: "error", text: `❌ ${errMsg}` });
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   const handleSignup = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    if (!agreed)
+      return setMessage({ type: "error", text: "You must agree to the terms." });
 
-  if (!agreed) {
-    return setMessage({ type: "error", text: "You must agree to the terms." });
-  }
+    const strongPassword =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+    if (!strongPassword.test(form.password))
+      return setMessage({
+        type: "error",
+        text: "Password must be at least 8 characters with uppercase, lowercase, number, and special character.",
+      });
 
-  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
-  if (!strongPassword.test(form.password)) {
-    return setMessage({
-      type: "error",
-      text: "Password must be at least 8 characters with uppercase, lowercase, number, and special character.",
-    });
-  }
+    try {
+      setLoading(true);
+      setMessage({ type: "", text: "" });
+      const res = await axios.post(`${api}/api/auth/signup`, form);
 
-  try {
-    setLoading(true);
-    setMessage({ type: "", text: "" });
+      localStorage.setItem("authToken", res.data.token);
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${res.data.token}`;
+      login(res.data.user, res.data.token);
 
-    const res = await axios.post(`${api}/api/auth/signup`, form);
+      setMessage({
+        type: "success",
+        text: "✅ Signup successful! Redirecting...",
+      });
+      setTimeout(() => navigate("/dashboard"), 1500);
+    } catch (err) {
+      const errMsg = err.response?.data?.message || "Signup failed. Try again.";
+      setMessage({ type: "error", text: `❌ ${errMsg}` });
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    // ✅ Set token in localStorage
-    localStorage.setItem("authToken", res.data.token);
-
-    // ✅ Set token globally in Axios
-    axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
-
-    // ✅ Update context
-    login(res.data.user, res.data.token);
-
-    setMessage({ type: "success", text: "✅ Signup successful! Redirecting..." });
-    setTimeout(() => navigate("/dashboard"), 1500);
-  } catch (err) {
-    const errMsg = err.response?.data?.message || "Signup failed. Try again.";
-    setMessage({ type: "error", text: `❌ ${errMsg}` });
-  } finally {
-    setLoading(false);
-  }
-};
-
-
- const handleGoogleSuccess = async (credentialResponse) => {
-  try {
-    const res = await axios.post(`${api}/api/auth/google`, {
-      credential: credentialResponse.credential,
-    });
-
-    const { user, token } = res.data;
-    localStorage.setItem("authToken", token);
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // ✅ add this line
-    login(user, token);
-    navigate("/dashboard");
-  } catch (error) {
-    console.error("Google login failed", error);
-    setMessage({ type: "error", text: "Google login failed" });
-  }
-};
-
-const countries = [
-  { code: "US", name: "United States" },
-  { code: "NG", name: "Nigeria" },
-  { code: "GB", name: "United Kingdom" },
-  { code: "CA", name: "Canada" },
-  { code: "FR", name: "France" },
-  { code: "DE", name: "Germany" },
-  { code: "IN", name: "India" },
-  { code: "CN", name: "China" },
-  { code: "JP", name: "Japan" },
-  { code: "ZA", name: "South Africa" },
-  // Add more or import a full list
-];
-
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const res = await axios.post(`${api}/api/auth/google`, {
+        credential: credentialResponse.credential,
+      });
+      const { user, token } = res.data;
+      localStorage.setItem("authToken", token);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      login(user, token);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Google login failed", error);
+      setMessage({ type: "error", text: "Google login failed" });
+    }
+  };
 
   return (
     <section className="signup__container h-full">
-      <form onSubmit={handleSignup} className="signup-form">
+      <form onSubmit={handleSignup} className="form">
         <h2 className="signup__h1">Create Account</h2>
 
         {message.text && (
@@ -1188,52 +1343,97 @@ const countries = [
           </div>
         )}
 
-        {/* <div class="input-container">
-  <input placeholder="Enter text" class="input-fieldss" type="text"/>
-  <label for="input-field" class="input-label">Enter text</label>
-  <span class="input-highlight"></span>
-</div> */}
+        {/* Name & Username Inputs */}
+        {["firstName", "lastName", "username", "email"].map((field) => (
+          <div className="inputForm" key={field}>
+            
+            <input
+              name={field}
+              placeholder={field === "email" ? "Email" : field}
+              type={field === "email" ? "email" : "text"}
+              value={form[field]}
+              onChange={handleChange}
+              required
+              className="input"
+            />
+            <label htmlFor={field} className="input-label">
+              {field.charAt(0).toUpperCase() + field.slice(1)}
+            </label>
+            <span className="input-highlight"></span>
+          </div>
+        ))}
 
+        {/* Phone Input with Country */}
         <div className="input-container">
-          
-          
-          <input name="firstName" placeholder="First Name" value={form.firstName} onChange={handleChange} required className='w-full input-fieldss rounded-md border bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary' />
-          <label for="firstName" class="input-label">First Name</label>
-  <span class="input-highlight"></span>
-           </div>
-             <div className='input-container'>
-          <input name="lastName" placeholder="Last Name" value={form.lastName} onChange={handleChange} required className='w-full input-fieldss rounded-md border  bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
-          <label for="lastName" class="input-label">Last Name</label>
-  <span class="input-highlight"></span>
-       </div>
-         <div className='input-container'>
-<input name="username" placeholder="Username" value={form.username} onChange={handleChange} required className='w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
-         <label for="userName" class="input-label">UserName</label>
-  <span class="input-highlight"></span>
-        </div>
-        <div className='input-container'>
-          <label for="country" class="text-white">country</label>
-        <select name="country" value={form.country} onChange={handleChange} required className='w-full input-fieldsss text-white bg-black'>
-  <option value="" className="input-fieldsss">Select Country</option>
-  {countries.map((c) => (
-    <option key={c.code} value={c.name}>{c.name}</option>
-  ))}
-</select>
+          <label htmlFor="phone" className="text-white">
+            Phone Number
+          </label>
+          {/* <PhoneInput
+            country={"ng"}
+            value={form.phone}
+            onChange={(phone, countryData) =>
+              setForm({
+                ...form,
+                phone,
+                country: countryData.name,
+              })
+            }
+            inputProps={{
+              name: "phone",
+              required: true,
+              autoFocus: false,
+            }}
+            placeholder="Enter phone number"
+            enableSearch
+            containerClass="phone-container"
+            inputClass="phone-input"
+            buttonClass="phone-button"
+            dropdownClass="phone-dropdown"
+          /> */}
+          <PhoneInput
+  country={"ng"}
+  value={form.phone}
+  onChange={(phone, countryData) =>
+    setForm({
+      ...form,
+      phone,
+      country: countryData.name,
+    })
+  }
+  inputProps={{
+    name: "phone",
+    required: true,
+    autoFocus: false,
+  }}
+  placeholder="Enter phone number"
+  enableSearch
+  containerStyle={{
+    width: "100%",
+  }}
+  inputStyle={{
+    width: "100%",
+    borderRadius: "0.7rem",
+    border: "1.5px solid #96651e",
+    backgroundColor: "transparent",
+    padding: "1.55rem  3.5rem",
+    fontSize: "1rem",
+    color: "#fff",
+  }}
+  buttonStyle={{
+    backgroundColor: "",
+    borderRight: "1px solid #333",
+   
+  }}
+  dropdownStyle={{
+    backgroundColor: "#000",
+    color: "#fff",
+  }}
+/>
 
- 
         </div>
-        <div className='input-container'>
-        <input name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required className='w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
-          <label for="phone" class="input-label">Phone Number</label>
-  <span class="input-highlight"></span>
-         </div>
-         <div className='input-container'>
-         <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required className='w-full input-fieldss  rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'/>
-         <label for="email" class="input-label">Phone Number</label>
-  <span class="input-highlight"></span>
-         </div>
-         
-        <div className="input-container" style={{ position: "relative" }}>
+
+        {/* Password Input */}
+        <div className="inputForm" style={{ position: "relative" }}>
           <input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -1241,35 +1441,61 @@ const countries = [
             value={form.password}
             onChange={handleChange}
             required
-            className='w-full input-fieldss rounded-md border border-dark_border/60 bg-transparent px-5 py-3 text-base text-white placeholder:text-grey focus:border-primary dark:focus:border-primary'
+            className="input"
           />
-          <span onClick={() => setShowPassword(!showPassword)} className="password-toggle">
+          <span
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+             
+              fontSize:"20px",
+              cursor: "pointer",
+              color: "#555",
+            }}
+          >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
 
+        {/* Terms Checkbox */}
         <div className="agree-checkbox">
           <label className="text-white">
-            <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
-            I agree to the <a href="/terms" target="_blank" rel="noopener noreferrer">terms and conditions</a>
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+            />
+            I agree to the{" "}
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              terms and conditions
+            </a>
           </label>
         </div>
 
-        <button type="submit" className="signup__button" disabled={loading}>
+        <button type="submit" className="button-submit" disabled={loading}>
           {loading ? "Creating..." : "Sign Up"}
         </button>
 
+        {/* Google Login */}
         <div className="google-login-wrapper">
-           <span className="z-1 relative my-8 block text-center before:content-[''] before:absolute before:h-px before:w-40% before:bg-dark_border/60 before:left-0 before:top-3 after:content-[''] after:absolute after:h-px after:w-40% after:bg-dark_border/60 after:top-3 after:right-0">
-        <span className='text-body-secondary relative z-10 inline-block px-3 text-base text-white'>
-          OR
-        </span>
-      </span>
-          <GoogleLogin onSuccess={handleGoogleSuccess} onError={() => console.log("Google Sign-In Failed")} />
+          <span className="separator">
+            <span>OR</span>
+          </span>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={() => console.error("Google Sign-In Failed")}
+          />
         </div>
 
         <p className="signup-link-text text-white">
-          Already have an account? <Link to="/login" className="licksign">Login</Link>
+          Already have an account?{" "}
+          <Link to="/login" className="licksign">
+            Login
+          </Link>
         </p>
       </form>
     </section>

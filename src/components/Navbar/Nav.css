@@ -94,7 +94,7 @@ left: 0;
     display: none;
 }
 .loader{
-    background-color: #ffffff1e;
+    background-color: var(--bs-body-bg);
 }
 .elements{
     display: flex;
