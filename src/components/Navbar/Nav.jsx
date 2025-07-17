@@ -104,20 +104,22 @@ const Navbar = () => {
                 <RiCloseFill className='menu-icon'/>
             </div>
            
-          <Link to="/" className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/" ? "active" : ""}`} onClick={() => { setActiveLink("/"); hideSidebar(); }}><IoHome className="nav-icons-side"/>Home</Link>
+          <Link to="/" className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/" ? "active" : ""}`} onClick={() => { setActiveLink("/"); hideSidebar(); }}>Home</Link>
            
-          <a href="#investmentPlan" className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/investmentPlan" ? "active" : ""}`} onClick={() => { setActiveLink("/investmentPlan"); hideSidebar(); }}><FaSackDollar className="nav-icons-side"/>Investment Plan</a>
+          <a href="#investmentPlan" className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "#investmentPlan" ? "active" : ""}`} onClick={() => { setActiveLink("/investmentPlan"); hideSidebar(); }}> Investment Plan</a>
 
-          <a href="#about" ><li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/about" ? "active" : ""}`}  onClick={() => { setActiveLink("/about"); hideSidebar(); }}><RiChatHistoryFill className="nav-icons-side"/>About</li></a>
+          <a href="#about" ><li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "#about" ? "active" : ""}`}  onClick={() => { setActiveLink("/about"); hideSidebar(); }}>About</li></a>
+           <a href="#howtiwork" ><li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "#howtiwork" ? "active" : ""}`}  onClick={() => { setActiveLink("/about"); hideSidebar(); }}>How it Work</li></a>
+            <a href="#upgrade" ><li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "#about" ? "active" : ""}`}  onClick={() => { setActiveLink("#upgrade"); hideSidebar(); }}> Upgrade</li></a>
             </div>
                 
-                {/* <li className={`nav__elemet ${isScrolled ? "scrolled" : ""} compeny`}><p className="header-nav-font">Company</p>
-                  <ul className="nav__dropdown">
+                <li className={`nav__elemet ${isScrolled ? "scrolled" : ""} compeny`}><p className="header-nav-font">Company</p>
+                  <ul className="nav__dropdow">
                   
                   <Link to="/contact" > <li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/contact" ? "active" : ""}`} onClick={() => { setActiveLink("/contact"); hideSidebar(); }}><MdOutlineConnectWithoutContact className="nav-icons-side"/>Contact Us</li></Link>
-                  <Link to="/privacypolicy" ><li  className={`nav__elemet ${isScrolled ? "scrolled" : ""} ${activeLink === "/privacypolicy" ? "active" : ""}`} onClick={() => { setActiveLink("/privacypolicy"); hideSidebar(); }}><MdPrivacyTip className="nav-icons-side"/>Privacy Policy</li></Link> 
+                  
                   </ul>
-                </li> */}
+                </li>
               <div className="element-btn">
               <Link to="/signup" className="nav__button" onClick={() => { setActiveLink("/signup"); hideSidebar(); }}> Sign Up</Link>
               <Link to="/login" className="nav__button" onClick={() => { setActiveLink("/login"); hideSidebar(); }}>Login</Link>

@@ -304,7 +304,7 @@ const TimeLine = () => {
   }
 
   return (
-    <section className='md:pt-40 pt-9' id='development'>
+    <section className='md:pt-40 pt-9' id='howtiwork'>
       <div className='container lg:px-16 px-4'>
         <div className='text-center' ref={ref}>
           <motion.div

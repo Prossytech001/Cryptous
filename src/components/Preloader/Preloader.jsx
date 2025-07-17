@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../public/cryptoimg/Cryptologo.png"; // adjust path to your logo
 import "./Preloader.css";
+import Loader from "../Loader/Loader";
 
 const Preloader = () => {
   const [fade, setFade] = useState(false);
@@ -13,7 +14,7 @@ const Preloader = () => {
 
   return (
     <div className={`preloader ${fade ? "preloader--hide" : ""}`}>
-      <img src={logo} alt="Loading..." className="preloader__logo" />
+     <Loader/>
     </div>
   );
 };

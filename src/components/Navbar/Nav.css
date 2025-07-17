@@ -44,6 +44,8 @@ left: 0;
     background-color: transparent;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(128, 128, 128, 0.329);
+    width: 100%;
+    left: 0;
     
    
 }
@@ -122,7 +124,7 @@ left: 0;
         background-color: black;
         align-items: start;
         color: var(--BgWhite);
-       justify-content: space-between;
+      
         gap: rem;
         transition: right  1s ease-in-out;
         display: flex;
