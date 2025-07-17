@@ -104,7 +104,7 @@ import axios from 'axios';
 import { AuthContext } from '../components/Authcontext';
 import "../components/Profile/Profile.css";
 import profileimg from "../../public/profileimg.svg";
-import Breadcrumb from '../components/basedcrumb';
+import Breadcrumb from '../components/Basedcrumb';
 
 const Profile = () => {
   const { user, token } = useContext(AuthContext);

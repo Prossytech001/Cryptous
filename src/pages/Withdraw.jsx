@@ -124,7 +124,7 @@ import axios from 'axios';
 import "../components/Withdraw/Withdraw.css"
 import withimg from "../../public/usdt.png"
 import {Link} from "react-router-dom";
-import Breadcrumb from '../components/basedcrumb';
+import Breadcrumb from '../components/Basedcrumb';
 
 const WithdrawForm = ({ userBalance }) => {
   const [amount, setAmount] = useState('');

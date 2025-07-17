@@ -4,7 +4,7 @@ import axios from 'axios';
 import "../../src/components/Payment/Payment.css"
 import usdt from "../../public/usdt.png"
 import { FaBars, FaTimes } from "react-icons/fa";
-import Breadcrumb from '../components/basedcrumb';
+import Breadcrumb from '../components/Basedcrumb';
 export default function PaymentPage() {
   const [amount, setAmount] = useState('');
   const [paymentData, setPaymentData] = useState(null);

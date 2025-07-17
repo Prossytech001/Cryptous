@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Breadcrumb from "../components/basedcrumb";
+import Breadcrumb from "../components/Basedcrumb";
 
 const UserNotifications = () => {
   const [notifications, setNotifications] = useState([]);
