@@ -264,7 +264,7 @@ const ForgotPassword = () => {
 
         <button
           type="submit"
-          className="res-btn"
+          className="res-btn "
           disabled={isCooldown}
         >
           {isCooldown ? `Wait ${timer}s` : 'Send Reset Link'}

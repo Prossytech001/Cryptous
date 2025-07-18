@@ -22,6 +22,6 @@ height: 100vh;
     background-color: var(--primarycolor);
     height: 50px;
     width: 100%;
-    color: var(--BgWhite);
+    color: var(--White);
     font-size: var(--p);
 }
