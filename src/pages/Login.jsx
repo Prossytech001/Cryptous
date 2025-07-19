@@ -281,6 +281,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
+import Loader from "../components/Loader/Loader.jsx"
 
 
 const Login = () => {
@@ -562,7 +563,7 @@ const Login = () => {
 
       
        <button type="submit" className="button-submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
+          {loading ? <Loader/> : "Login"}
         </button>
 
       <p className="p">Don't have an account? <Link to="/signup"  className="span">Sign Up</Link></p>

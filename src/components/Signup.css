@@ -20,6 +20,13 @@
 .signup__button {
   transition: all 0.3s ease;
 }
+.signup-message{
+  background-color: rgb(240, 125, 58);
+  padding: 10px ;
+  color: red;
+  text-align: center;
+  font-style: italic;
+}
 
 .signup__button:hover {
   transform: scale(1.02);

@@ -402,20 +402,20 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
       <option className="last7" value="90">Last 90 Days</option>
     </select>
     <button
-      onClick={() => setDrawerOpen(!drawerOpen)}
-      className="btnact lg:hidden px-4 py-1 rounded"
+     
+      className="btnact  px-4 py-1 rounded"
     >
-      {drawerOpen ? 'Close' : 'Show'} Recent
+      Recent
     </button>
   </div>
 
   {/* Drawer for Mobile */}
-  {drawerOpen && (
+  
     <div className="  h-full bg-gray p-4 shadow-lg overflow-y-auto lg:hidden">
       <h2 className="text-white-800   font-bold mb-3">Transaction History</h2>
       <ActivityList data={activities} />
     </div>
-  )}
+ 
 
   {/* Desktop List */}
   <div className=" trx-history-div hidden lg:block">
