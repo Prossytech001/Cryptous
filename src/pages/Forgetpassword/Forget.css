@@ -17,6 +17,7 @@ height: 100vh;
     border: 2px solid var(--primarycolor);
     margin-bottom: 20px;
     padding: 20px;
+    color: white;
 }
 .res-btn{
     background-color: var(--primarycolor);

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120vh;
+    height: 150vh;
     overflow: auto;
     scrollbar-width: none;
     background-image:linear-gradient(rgba(0, 0, 0, 0.731),rgba(0, 0, 0, 0.877)), url("/heros-img.jpg");
@@ -31,6 +31,26 @@
 .signup__button:hover {
   transform: scale(1.02);
 }
+.password-rules {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px;
+}
+
+.password-rules li {
+  font-size: 14px;
+  margin-bottom: 5px;
+  transition: color 0.2s ease-in-out;
+}
+
+.password-rules .valid {
+  color: green;
+}
+
+.password-rules .invalid {
+  color: red;
+}
+
 
 .signup-form{
    

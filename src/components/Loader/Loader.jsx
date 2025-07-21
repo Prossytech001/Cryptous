@@ -5,7 +5,7 @@ import loaderAnimation from '../../assets/loader.json'; // path to your lottie f
 
 const Loader = () => {
   return (
-    <div className="loader  fixed inset-0 flex items-center justify-center  z-0">
+    <div className="loader  fixed inset-0 flex items-center justify-center  z-100">
       <Lottie animationData={loaderAnimation} loop={true} style={{ width: 200, height: 200 }} />
     </div>
   );

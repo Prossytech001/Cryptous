@@ -427,13 +427,13 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
   <div className="flex justify-end gap-2 mt-4">
     <button
       onClick={() => setPage((p) => Math.max(p - 1, 1))}
-      className="btn"
+      className="btnn"
     >
       Prev
     </button>
     <button
       onClick={() => setPage((p) => (p < totalPages ? p + 1 : p))}
-      className="btn"
+      className="btnn"
     >
       Next
     </button>
