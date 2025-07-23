@@ -15,6 +15,7 @@ import { MdSupportAgent } from "react-icons/md";
 import { LuCircleDollarSign } from "react-icons/lu";
 import CandlestickChart from "../components/CandlestickChart";
 import ReactApexChart from 'react-apexcharts';
+import ReferralSection from "../components/ReferralSection";
 
 
 const Dashboard = () => {
@@ -440,8 +441,11 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
   </div>
 
       </div>
+         <ReferralSection referralCode={user.referralCode} user={user} />
       </div>
       </div>
+   
+
       
     </section>
   );
