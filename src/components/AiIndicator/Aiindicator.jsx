@@ -527,10 +527,207 @@
 
 
 
+// import { useState, useRef, useEffect } from "react";
+// import "../AiIndicator/Aiindicator.css";
+// import axios from "axios";
+// import { FaRobot, FaTimes } from "react-icons/fa";
+
+// const AssistantIndicator = () => {
+//   const [showChat, setShowChat] = useState(false);
+//   const [messages, setMessages] = useState([]);
+//   const [input, setInput] = useState("");
+//   const [loading, setLoading] = useState(false);
+//   const messagesEndRef = useRef(null);
+//   const api = import.meta.env.VITE_API_URL;
+
+//   // Drag state
+//   const iconRef = useRef(null);
+//   const [position, setPosition] = useState({ x: 20, y: 80 });
+//   const [dragging, setDragging] = useState(false);
+//   const offset = useRef({ x: 0, y: 0 });
+
+//   useEffect(() => {
+//     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+//   }, [messages, loading]);
+
+//   const handleAsk = async () => {
+//     if (!input.trim()) return;
+
+//     const newMessages = [...messages, { role: "user", text: input }];
+//     setMessages(newMessages);
+//     setLoading(true);
+//     setInput("");
+
+//     try {
+//       const res = await axios.post(`${api}/api/chat`, { message: input });
+//       setMessages([...newMessages, { role: "assistant", text: res.data.reply }]);
+//     } catch (error) {
+//       setMessages([...newMessages, { role: "assistant", text: "❌ Sorry, something went wrong." }]);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const renderMessage = (msg, i) => {
+//     const isUser = msg.role === "user";
+//     const avatar = isUser
+//       ? "https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+//       : "https://cdn-icons-png.flaticon.com/512/4712/4712107.png";
+
+//     return (
+//       <div
+//         key={i}
+//         style={{
+//           display: "flex",
+//           justifyContent: isUser ? "flex-end" : "flex-start",
+//           alignItems: "flex-start",
+//           marginBottom: 10,
+//         }}
+//       >
+//         {!isUser && <img src={avatar} alt="avatar" style={{ width: 30, height: 30, borderRadius: "50%", marginRight: 8 }} />}
+//         <div
+//           style={{
+//             background: isUser ? "#690dfd" : "#f1f1f1",
+//             color: isUser ? "#ffffff" : "#000000",
+//             padding: 10,
+//             borderRadius: 10,
+//             maxWidth: "75%",
+//           }}
+//         >
+//           {msg.text}
+//         </div>
+//         {isUser && <img src={avatar} alt="avatar" style={{ width: 30, height: 30, borderRadius: "50%", marginLeft: 8 }} />}
+//       </div>
+//     );
+//   };
+
+//   // Drag functions
+//   const startDrag = (e) => {
+//     setDragging(true);
+//     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+//     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+//     offset.current = {
+//       x: clientX - position.x,
+//       y: clientY - position.y,
+//     };
+//   };
+
+//   const onDrag = (e) => {
+//     if (!dragging) return;
+//     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+//     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+//     setPosition({
+//       x: clientX - offset.current.x,
+//       y: clientY - offset.current.y,
+//     });
+//   };
+
+//   const stopDrag = () => {
+//     setDragging(false);
+//   };
+
+//   return (
+//     <>
+//       {!showChat && (
+//         <div
+//           className="assistant-fixed-container"
+//           ref={iconRef}
+//           onMouseDown={startDrag}
+//           onMouseMove={onDrag}
+//           onMouseUp={stopDrag}
+//           onTouchStart={startDrag}
+//           onTouchMove={onDrag}
+//           onTouchEnd={stopDrag}
+//           onClick={() => !dragging && setShowChat(true)}
+//           style={{
+//             position: "fixed",
+//             left: position.x,
+//             top: position.y,
+//             zIndex: 1000,
+//             cursor: "grab",
+//             transition: dragging ? "none" : "transform 0.1s ease",
+//           }}
+//         >
+//           <div className="tooltip-bubble">💬 Ask anything</div>
+//           <div className="ring-container w-20 h-20 animate-bounce-ring">
+//             <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse shadow-lg">
+//               <div className="ai-text flex items-center justify-center center-div-ani rounded-full bg-white">
+//                 <FaRobot size={20} />
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       )}
+
+//       {showChat && (
+//         <div className="chat-popup-box">
+//           <div className="shat-h">
+//             <div className="chat-header">
+//               <span>🔮 Ask Assistant</span>
+//               <button onClick={() => setShowChat(false)}>×</button>
+//             </div>
+//           </div>
+
+//           <div
+//             style={{
+//               maxHeight: 400,
+//               overflowY: "auto",
+//               marginBottom: 20,
+//               background: "#f9f9f9",
+//               padding: 10,
+//               borderRadius: 5,
+//             }}
+//           >
+//             {messages.map(renderMessage)}
+//             {loading && (
+//               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+//                 <img
+//                   src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png"
+//                   alt="typing"
+//                   style={{ width: 30, height: 30, borderRadius: "50%" }}
+//                 />
+//                 <em>AI is typing...</em>
+//               </div>
+//             )}
+//             <div ref={messagesEndRef} />
+//           </div>
+
+//           <div className="chatinput flex justify-between items-center p-4">
+//             <input
+//               type="text"
+//               placeholder="Ask about our platform..."
+//               value={input}
+//               onChange={(e) => setInput(e.target.value)}
+//               onKeyDown={(e) => e.key === "Enter" && handleAsk()}
+//               style={{ width: "100%", padding: 10, borderRadius: 5, border: "1px solid #ccc" }}
+//             />
+//             <button
+//               onClick={handleAsk}
+//               style={{
+//                 padding: 10,
+//                 background: "#2D2A4D",
+//                 color: "white",
+//                 borderRadius: 5,
+//                 border: "none",
+//                 cursor: "pointer",
+//               }}
+//               disabled={loading}
+//             >
+//               Send
+//             </button>
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// export default AssistantIndicator;
+
 import { useState, useRef, useEffect } from "react";
 import "../AiIndicator/Aiindicator.css";
 import axios from "axios";
-import { FaRobot, FaTimes } from "react-icons/fa";
+import { FaRobot } from "react-icons/fa";
 
 const AssistantIndicator = () => {
   const [showChat, setShowChat] = useState(false);
@@ -541,10 +738,10 @@ const AssistantIndicator = () => {
   const api = import.meta.env.VITE_API_URL;
 
   // Drag state
-  const iconRef = useRef(null);
-  const [position, setPosition] = useState({ x: 20, y: 80 });
+  const [position, setPosition] = useState({ x: 200, y: 400 });
   const [dragging, setDragging] = useState(false);
   const offset = useRef({ x: 0, y: 0 });
+  const dragTimeout = useRef(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -552,7 +749,6 @@ const AssistantIndicator = () => {
 
   const handleAsk = async () => {
     if (!input.trim()) return;
-
     const newMessages = [...messages, { role: "user", text: input }];
     setMessages(newMessages);
     setLoading(true);
@@ -561,7 +757,7 @@ const AssistantIndicator = () => {
     try {
       const res = await axios.post(`${api}/api/chat`, { message: input });
       setMessages([...newMessages, { role: "assistant", text: res.data.reply }]);
-    } catch (error) {
+    } catch {
       setMessages([...newMessages, { role: "assistant", text: "❌ Sorry, something went wrong." }]);
     } finally {
       setLoading(false);
@@ -580,28 +776,19 @@ const AssistantIndicator = () => {
         style={{
           display: "flex",
           justifyContent: isUser ? "flex-end" : "flex-start",
-          alignItems: "flex-start",
           marginBottom: 10,
         }}
       >
-        {!isUser && <img src={avatar} alt="avatar" style={{ width: 30, height: 30, borderRadius: "50%", marginRight: 8 }} />}
-        <div
-          style={{
-            background: isUser ? "#690dfd" : "#f1f1f1",
-            color: isUser ? "#ffffff" : "#000000",
-            padding: 10,
-            borderRadius: 10,
-            maxWidth: "75%",
-          }}
-        >
+        {!isUser && <img src={avatar} alt="avatar" style={avatarStyle} />}
+        <div style={{ ...bubbleStyle, background: isUser ? "#690dfd" : "#f1f1f1", color: isUser ? "#fff" : "#000" }}>
           {msg.text}
         </div>
-        {isUser && <img src={avatar} alt="avatar" style={{ width: 30, height: 30, borderRadius: "50%", marginLeft: 8 }} />}
+        {isUser && <img src={avatar} alt="avatar" style={avatarStyle} />}
       </div>
     );
   };
 
-  // Drag functions
+  // Drag Handlers
   const startDrag = (e) => {
     setDragging(true);
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -610,10 +797,13 @@ const AssistantIndicator = () => {
       x: clientX - position.x,
       y: clientY - position.y,
     };
+    // prevent accidental open
+    dragTimeout.current = setTimeout(() => setDragging(true), 0);
   };
 
   const onDrag = (e) => {
     if (!dragging) return;
+    e.preventDefault();
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     setPosition({
@@ -623,7 +813,12 @@ const AssistantIndicator = () => {
   };
 
   const stopDrag = () => {
-    setDragging(false);
+    clearTimeout(dragTimeout.current);
+    setTimeout(() => setDragging(false), 50);
+  };
+
+  const handleClick = () => {
+    if (!dragging) setShowChat(true);
   };
 
   return (
@@ -631,21 +826,22 @@ const AssistantIndicator = () => {
       {!showChat && (
         <div
           className="assistant-fixed-container"
-          ref={iconRef}
           onMouseDown={startDrag}
           onMouseMove={onDrag}
           onMouseUp={stopDrag}
+          onMouseLeave={stopDrag}
           onTouchStart={startDrag}
           onTouchMove={onDrag}
           onTouchEnd={stopDrag}
-          onClick={() => !dragging && setShowChat(true)}
+          onClick={handleClick}
           style={{
             position: "fixed",
             left: position.x,
             top: position.y,
             zIndex: 1000,
             cursor: "grab",
-            transition: dragging ? "none" : "transform 0.1s ease",
+            touchAction: "none",
+            transition: dragging ? "none" : "all 0.15s ease-out",
           }}
         >
           <div className="tooltip-bubble">💬 Ask anything</div>
@@ -668,24 +864,11 @@ const AssistantIndicator = () => {
             </div>
           </div>
 
-          <div
-            style={{
-              maxHeight: 400,
-              overflowY: "auto",
-              marginBottom: 20,
-              background: "#f9f9f9",
-              padding: 10,
-              borderRadius: 5,
-            }}
-          >
+          <div style={chatBoxStyle}>
             {messages.map(renderMessage)}
             {loading && (
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png"
-                  alt="typing"
-                  style={{ width: 30, height: 30, borderRadius: "50%" }}
-                />
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" alt="typing" style={avatarStyle} />
                 <em>AI is typing...</em>
               </div>
             )}
@@ -699,20 +882,9 @@ const AssistantIndicator = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleAsk()}
-              style={{ width: "100%", padding: 10, borderRadius: 5, border: "1px solid #ccc" }}
+              style={inputStyle}
             />
-            <button
-              onClick={handleAsk}
-              style={{
-                padding: 10,
-                background: "#2D2A4D",
-                color: "white",
-                borderRadius: 5,
-                border: "none",
-                cursor: "pointer",
-              }}
-              disabled={loading}
-            >
+            <button onClick={handleAsk} disabled={loading} style={buttonStyle}>
               Send
             </button>
           </div>
@@ -722,5 +894,42 @@ const AssistantIndicator = () => {
   );
 };
 
-export default AssistantIndicator;
+// Styles
+const avatarStyle = {
+  width: 30,
+  height: 30,
+  borderRadius: "50%",
+};
 
+const bubbleStyle = {
+  padding: 10,
+  borderRadius: 10,
+  maxWidth: "75%",
+};
+
+const chatBoxStyle = {
+  maxHeight: 400,
+  overflowY: "auto",
+  marginBottom: 20,
+  background: "#f9f9f9",
+  padding: 10,
+  borderRadius: 5,
+};
+
+const inputStyle = {
+  width: "100%",
+  padding: 10,
+  borderRadius: 5,
+  border: "1px solid #ccc",
+};
+
+const buttonStyle = {
+  padding: 10,
+  background: "#2D2A4D",
+  color: "white",
+  borderRadius: 5,
+  border: "none",
+  cursor: "pointer",
+};
+
+export default AssistantIndicator;
