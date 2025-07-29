@@ -129,8 +129,8 @@
     /* From Uiverse.io by Satwinder04 */ 
 /* Input container */
 .input-container {
-  position: relative;
-  margin: 10px;
+ 
+  
   width: 100%;
 }
 
@@ -291,7 +291,7 @@
 .inputForm {
   border: 1.5px solid var(--Kumera);
   border-radius: 10px;
-  height: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
   padding-left: 10px;

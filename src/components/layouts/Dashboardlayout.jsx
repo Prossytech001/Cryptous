@@ -419,7 +419,7 @@
 
 
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useState,useEffect } from 'react';
 import { AuthContext } from '../Authcontext';
 import { AiFillDashboard } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
@@ -429,12 +429,40 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import '../../../src/components/layouts/Dashboardlayout.css';
 import { RiFundsBoxFill } from "react-icons/ri";
 import NotificationBell from '../../pages/NotificationBell';
+import axios from "axios";
+
 
 const DashboardLayout = ({ children }) => {
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+ const API = import.meta.env.VITE_API_URL;
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get(`${API}/api/users/me`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+        setUser(res.data);
+      } catch (err) {
+        console.error("Error fetching user", err);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  const getInitial = (name) => {
+    if (!name) return "";
+    return name.charAt(0).toUpperCase();
+  };
+
 
   const handleLogout = () => {
     logout();
@@ -448,6 +476,7 @@ const DashboardLayout = ({ children }) => {
      { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
     { path: '/plans', label: 'Plans', icon: <MdOutlineAttachMoney /> },
     { path: '/support', label: 'Support', icon: <MdSupportAgent /> },
+    { path: '/reward', label: 'reward', icon: <MdSupportAgent /> },
      { path: '/profile', label: 'Profile', icon: <CgProfile /> },
    
 
@@ -462,8 +491,20 @@ const DashboardLayout = ({ children }) => {
           <FaBars />
         </button>
         <div className="nav-title flex items-center gap-2">
+          <Link to="/notifications">
           <NotificationBell />
-          <Link to="/profile"> <CgProfile/></Link>
+          </Link>
+          <Link to="/profile" className='flex items-center'>
+         {user && (
+        <>
+          
+          <span className="text-white user-header-h1 font-medium capitalize">{user.username}</span>
+          <div className="user-header w-8 h-8 rounded-full  flex items-center justify-center text-black font-bold text-lg">
+            {getInitial(user.username)}
+          </div>
+        </>
+      )}
+      </Link>
           </div>
       </div>
 

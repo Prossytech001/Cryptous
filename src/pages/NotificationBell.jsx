@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { HiMiniBellAlert } from "react-icons/hi2";
 
 const NotificationBell = () => {
   const [count, setCount] = useState(0);
@@ -25,7 +26,7 @@ const NotificationBell = () => {
 
   return (
     <div style={{ position: "relative", cursor: "pointer" }}>
-      🔔
+      <HiMiniBellAlert/>
       {count > 0 && (
         <span style={{
           
@@ -35,7 +36,7 @@ const NotificationBell = () => {
           color: "white",
           borderRadius: "50%",
           padding: "2px 6px",
-          fontSize: 12
+          fontSize: 17
         }}>{count}</span>
       )}
     </div>

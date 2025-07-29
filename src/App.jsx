@@ -306,8 +306,8 @@ import UserNotifications from './pages/UserNotifications';
 import "../src/App.css"; // Import your CSS file for global styles
 import CookieConsentModal from './components/CookieConsentModal/CookieConsentModal';
 import Preloader from './components/Preloader/Preloader';
-
-import AssistantIndicator from './components/AiIndicator/Aiindicator';
+import ReferralRewards from './pages/ReferralRewards';
+// import AssistantIndicator from './components/AiIndicator/Aiindicator';
 // function App() {
 //   const { isAuthenticated, user } = React.useContext(AuthContext);
 //   const [loading, setLoading] = useState(true);
@@ -505,7 +505,7 @@ function App() {
   ) : (
     <>
       <CookieConsentModal />
-      <AssistantIndicator />
+      {/* <AssistantIndicator /> */}
 
       <Routes>
         {/* PUBLIC ROUTES */}
@@ -595,6 +595,17 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/reward"
+          element={
+            <PrivateRoute>
+              <DashboardLayout>
+                <ReferralRewards/>
+              </DashboardLayout>
+            </PrivateRoute>
+          }
+        />
+
 
         {/* ADMIN ROUTES */}
         <Route path="/admin/login" element={<AdminLogin />} />

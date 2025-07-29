@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Edu+AU+VIC+WA+NT+Arrows:wght@611&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 .input-field{
     border: 2px solid var(--grey);
     border-radius: 4px;
@@ -102,8 +104,7 @@
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    display: flex
-;
+    display: flex;
     padding: 24px;
     flex-direction: column;
     gap: 24px;
@@ -178,10 +179,11 @@
 }
 .dashboard-heading-h {
     color: var(--White);
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
     display: flex;
     gap: 10px;
+    margin: 10px 0;
 }
 .btn1s {
     background-image:linear-gradient(to left,var(--Bronzetone),var(--Kumera));
@@ -294,6 +296,73 @@
 }
 .iconshare:hover{
     color: var(--Bronzetone);
+}
+/* referral */
+
+.referral-contain{
+    background-color: var(--bs-body-bg);
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.reward-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+}
+.amount-reward{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.first-amount-reward{
+    font-size: 60px;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(90deg,var( --Kumera),var(--Bronzetone));
+    margin-bottom: 20px;
+}
+.Total-Referral-Reward{
+    color: var(--White);
+    font-size: 17px;
+}
+.referral-user{
+clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 0 100%, 0% 50%, 0 0);
+background-image: linear-gradient(var(--Bronzetone),var(--Kumera));
+width: 10rem;
+color: var(--White);
+padding-left: 10px;
+}
+.referred-users-content{
+    background-color: var(--bs-secondary-bg);
+    height: auto;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+.invest_icons{
+    font-size: 20px;
+    margin-right: 5px;
+    color: var(--Bronzetone);
+}
+.cap-user{
+    margin-top: 10px;
+}
+/* top nav */
+.user-header{
+    background-image: linear-gradient(var(--Bronzetone),var(--Kumera));
+    color: white;
+
+}
+.user-header-h1{
+     font-family: "Lobster Two", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
 }
 
 

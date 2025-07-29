@@ -28,66 +28,124 @@ const Signup = () => {
 
 
    const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    country: "",
-    phone: "",
-    referralCode,
-    email: "",
-    password: "",
-  });
+  firstName: "",
+  lastName: "",
+  username: "",
+  country: "",
+  phone: "",
+  referralCode: "", // ✅
+  email: "",
+  password: "",
+});
 
- useEffect(() => {
+
+//  useEffect(() => {
+//   const queryParams = new URLSearchParams(location.search);
+//   const ref = queryParams.get('ref');
+//   if (ref) {
+//     setReferralCode(ref);
+//     setForm(prev => ({ ...prev, referralCode: ref }));
+//   }
+// }, [location.search]);
+// In Signup.jsx
+useEffect(() => {
   const queryParams = new URLSearchParams(location.search);
   const ref = queryParams.get('ref');
   if (ref) {
     setReferralCode(ref);
-    setForm(prev => ({ ...prev, referralCode: ref }));
+    setForm(prev => ({
+      ...prev,
+      referralCode: ref,
+    }));
   }
 }, [location.search]);
+
+
+
 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // const handleSignup = async (e) => {
+  //   e.preventDefault();
+  //   if (!agreed)
+  //     return setMessage({ type: "error", text: "You must agree to the terms." });
+
+  //   const strongPassword =
+  //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+  //   if (!strongPassword.test(form.password))
+  //     return setMessage({
+  //       type: "error",
+  //       text: "Password must be at least 8 characters with uppercase, lowercase, number, and special character.",
+  //     });
+
+  //   try {
+  //     setLoading(true);
+  //     setMessage({ type: "", text: "" });
+  //     const res = await axios.post(`${api}/api/auth/signup`, form);
+
+  //     localStorage.setItem("authToken", res.data.token);
+  //     axios.defaults.headers.common[
+  //       "Authorization"
+  //     ] = `Bearer ${res.data.token}`;
+  //     login(res.data.user, res.data.token);
+
+  //     setMessage({
+  //       type: "success",
+  //       message: "✅ Signup successful! Redirecting...",
+  //     });
+  //     setTimeout(() => navigate("/dashboard"), 1500);
+  //   } catch (err) {
+  //     const errMsg = err.response?.data?.message || "Signup failed. Try again.";
+  //     setMessage({ type: "error", text: `❌ ${errMsg}` });
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   const handleSignup = async (e) => {
-    e.preventDefault();
-    if (!agreed)
-      return setMessage({ type: "error", text: "You must agree to the terms." });
+  e.preventDefault();
+  if (!agreed)
+    return setMessage({ type: "error", text: "You must agree to the terms." });
 
-    const strongPassword =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
-    if (!strongPassword.test(form.password))
-      return setMessage({
-        type: "error",
-        text: "Password must be at least 8 characters with uppercase, lowercase, number, and special character.",
-      });
+  // Strong password validation
+  const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+  if (!strongPassword.test(form.password))
+    return setMessage({
+      type: "error",
+      text: "Password must be at least 8 characters with uppercase, lowercase, number, and special character.",
+    });
 
-    try {
-      setLoading(true);
-      setMessage({ type: "", text: "" });
-      const res = await axios.post(`${api}/api/auth/signup`, form);
+  try {
+    setLoading(true);
+    setMessage({ type: "", text: "" });
 
-      localStorage.setItem("authToken", res.data.token);
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${res.data.token}`;
-      login(res.data.user, res.data.token);
+    // Ensure referralCode is included in the request body
+    const formData = {
+      ...form,
+      referralCode: referralCode || form.referralCode || null,
+    };
 
-      setMessage({
-        type: "success",
-        message: "✅ Signup successful! Redirecting...",
-      });
-      setTimeout(() => navigate("/dashboard"), 1500);
-    } catch (err) {
-      const errMsg = err.response?.data?.message || "Signup failed. Try again.";
-      setMessage({ type: "error", text: `❌ ${errMsg}` });
-    } finally {
-      setLoading(false);
-    }
-  };
+    const res = await axios.post(`${api}/api/auth/signup`, formData);
+
+    localStorage.setItem("authToken", res.data.token);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${res.data.token}`;
+    login(res.data.user, res.data.token);
+
+    setMessage({
+      type: "success",
+      message: "✅ Signup successful! Redirecting...",
+    });
+    setTimeout(() => navigate("/dashboard"), 1500);
+  } catch (err) {
+    const errMsg = err.response?.data?.message || "Signup failed. Try again.";
+    setMessage({ type: "error", text: `❌ ${errMsg}` });
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
@@ -185,7 +243,7 @@ const Signup = () => {
             dropdownClass="phone-dropdown"
           /> */}
           <PhoneInput
-  country={"ng"}
+  country={"us"}
   value={form.phone}
   onChange={(phone, countryData) =>
     setForm({
@@ -214,7 +272,7 @@ const Signup = () => {
     color: "#fff",
   }}
   buttonStyle={{
-    backgroundColor: "",
+    backgroundColor: "transperent",
     borderRight: "1px solid #333",
    
   }}
@@ -225,7 +283,7 @@ const Signup = () => {
 />
 
         </div>
-<input type="hidden" name="referralCode" value={referralCode} />
+{/* <input type="hidden" name="referralCode" value={referralCode} /> */}
 
         {/* Password Input */}
 <div className="inputForm" style={{ position: "relative" }}>
