@@ -621,7 +621,7 @@ font-weight: 500;
     align-items: center;
     justify-content: space-between;
   background-color:  var(--bs-body-bg);
-    padding: 0.5rem;
+    padding: 1rem;
    border-bottom: 1px solid #3B3854;
     position: sticky;
     color: var(--blue);

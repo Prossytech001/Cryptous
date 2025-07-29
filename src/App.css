@@ -352,6 +352,9 @@ padding-left: 10px;
 .cap-user{
     margin-top: 10px;
 }
+.profile-top-nav{
+    gap: 5px;
+}
 /* top nav */
 .user-header{
     background-image: linear-gradient(var(--Bronzetone),var(--Kumera));
@@ -362,7 +365,7 @@ padding-left: 10px;
      font-family: "Lobster Two", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 
