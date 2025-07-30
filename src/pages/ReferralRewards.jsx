@@ -65,7 +65,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-
+import ReferralSection from "../components/ReferralSection";
 const ReferralRewards = () => {
   const [totalReward, setTotalReward] = useState(null); // Changed to null for clarity
   const [referredUsers, setReferredUsers] = useState([]);
@@ -101,7 +101,7 @@ const ReferralRewards = () => {
        <h1 className="dashboard-heading-h  mb-6"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-columns-gap plan-icon"><path fill-rule="evenodd" d="M6 1H1v3h5V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H1zm14 12h-5v3h5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5zM6 8H1v7h5V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H1zm14-6h-5v7h5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1h-5z"></path></svg>Reward Dashboard </h1>
        <div className="reward-content">
 
-      
+      <svg width="64px" height="64px" viewBox="0 0 64 64" id="Flat" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><rect height="48" rx="2" ry="2" style="fill:#c1272d" width="58" x="3" y="8"></rect><rect height="6" style="fill:#ffcd62" width="58" x="3" y="29"></rect><rect height="48" style="fill:#ffcd62" width="6" x="29" y="8"></rect><path d="M32,20.686h0A8,8,0,0,0,32,32h0a8,8,0,0,0,0-11.314Z" style="fill:#ef4037"></path><path d="M32,32h0a8,8,0,0,1-11.314,0h0A8,8,0,0,1,32,32Z" style="fill:#ef4037"></path><path d="M43.314,32h0A8,8,0,0,1,32,32h0a8,8,0,0,1,11.314,0Z" style="fill:#ef4037"></path><path d="M32,32h0a8,8,0,0,0,0,11.314h0A8,8,0,0,0,32,32Z" style="fill:#ef4037"></path><path d="M40,24h0a0,0,0,0,1,0,0v0a8,8,0,0,1-8,8h0a0,0,0,0,1,0,0v0A8,8,0,0,1,40,24Z" style="fill:#ffac00"></path><path d="M24,24h0a8,8,0,0,1,8,8v0a0,0,0,0,1,0,0h0a8,8,0,0,1-8-8v0A0,0,0,0,1,24,24Z" style="fill:#ffac00"></path><path d="M32,32h0a8,8,0,0,1,8,8v0a0,0,0,0,1,0,0h0a8,8,0,0,1-8-8v0A0,0,0,0,1,32,32Z" style="fill:#ffac00"></path><path d="M32,32h0a0,0,0,0,1,0,0v0a8,8,0,0,1-8,8h0a0,0,0,0,1,0,0v0A8,8,0,0,1,32,32Z" style="fill:#ffac00"></path></g></svg>
        <img src="./cryptoimg/reward.png" alt="" width="150" height="150"/>
 
       {loading ? (
@@ -128,12 +128,13 @@ const ReferralRewards = () => {
                 ))}
               </ul>
             ) : (
-              <p>No referrals yet.</p>
+              <p className="no-reward">No referrals yet.</p>
             )}
           </div>
         </div>
       )}
        </div>
+        <ReferralSection />
     </div>
   );
 };

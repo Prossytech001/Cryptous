@@ -43,6 +43,36 @@
      justify-content: center;
      gap: 20px;
 }
+.reward-clue{
+    height: 5rem;
+    background-color: var(--box);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+
+}
+.rewardsvg{
+    height: 30px;
+    width: 30px;
+}
+.reward-img-dash{
+    display: flex;
+    gap: 10px;
+    color: var(--grey);
+}
+.reward-earn{
+    height: auto;
+    width: auto;
+    padding: 5px 20px ;
+    font-size: 20px;
+    color: var(--White);
+    border-radius: 20px;
+    background-image: linear-gradient(to left, var(--Bronzetone),var(--Kumera));
+}
+
 .dashaside2{
    
     width: 70%;
@@ -304,6 +334,7 @@
     height: 100vh;
     overflow-y: auto;
     scrollbar-width: none;
+    padding: 20px;
 }
 .reward-content{
     display: flex;
@@ -366,6 +397,10 @@ padding-left: 10px;
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
+}
+.no-reward{
+    color: var(--grey);
+    margin-top: 10px;
 }
 
 

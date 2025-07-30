@@ -16,7 +16,7 @@ import { LuCircleDollarSign } from "react-icons/lu";
 import CandlestickChart from "../components/CandlestickChart";
 import ReactApexChart from 'react-apexcharts';
 import ReferralSection from "../components/ReferralSection";
-
+import rewardsvg from "/cryptoimg/box-gift.svg"
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -368,6 +368,16 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
           
         </div>
        
+      </div>
+      <div className="reward-clue">
+        <div className="reward-img-dash">
+       <img src={rewardsvg} alt="" className="rewardsvg" />
+       Refer and Earn 
+       </div>
+       <Link to="/reward" class="reward-earn">Earn</Link>
+
+
+        
       </div>
 
 
