@@ -58,7 +58,20 @@
     --Bronzetone:#52390e;
     --Kumera:#96651e;
     --box:rgb(7, 7, 7);
-    
+    --svg-tog: rgba(255, 255, 255, 0);
+    --svg-togs: white;
+}
+
+[data-theme='dark'] {
+ --bs-body-bg: hsl(0, 0%, 100%);         /* Light gray background */
+  --bs-secondary-bg: #ebe8e8;    /* White for secondary elements */
+  --Bronzetone: #a97c50;         /* Softer bronze tone */
+  --Kumera: #c69c6d;             /* Lighter, warm gold-like */
+  --box: #dfdede; 
+   --White: #161616;
+   --svg-tog: white;
+   --svg-togs: rgba(255, 255, 255, 0);
+  
 }
 body{
  background-color: var(--BgWhites);
@@ -67,6 +80,80 @@ body{
 
  
 }
+
+.switch {
+  --secondary-container: #3a4b39;
+  --primary: #9ecfa1;
+  font-size: 14px;
+  position: relative;
+  display: inline-block;
+  width: 3.7em;
+  height: 1.8em;
+   z-index: 20;
+
+}
+.moon svg{
+  position: absolute;
+  top: 6px;
+  right: 5px;
+  z-index: 1;
+  width: 17px;
+  height: 13px;
+  fill: var(--svg-togs);
+}
+
+ .sun svg {
+  fill: var(--svg-tog);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  width: 17px;
+  height: 15px;
+}
+
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #313033;
+  transition: 0.2s;
+  border-radius: 30px;
+ 
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 20px;
+  left: 0.2em;
+  bottom: 0.2em;
+  background-color: #aeaaae;
+  transition: 0.4s;
+}
+
+input:checked + .slider::before {
+  background-color: var(--primary);
+}
+
+input:checked + .slider {
+  background-color: var(--secondary-container);
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.9em);
+}
+
 
 @theme {
   --container-screen-xl: 75rem;

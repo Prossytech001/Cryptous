@@ -430,6 +430,7 @@ import '../../../src/components/layouts/Dashboardlayout.css';
 import { RiFundsBoxFill } from "react-icons/ri";
 import NotificationBell from '../../pages/NotificationBell';
 import axios from "axios";
+import Theme from "../../components/TopNav"
 
 
 const DashboardLayout = ({ children }) => {
@@ -491,6 +492,7 @@ const DashboardLayout = ({ children }) => {
           <FaBars />
         </button>
         <div className="nav-title flex items-center gap-2">
+          <Theme user={user}/>
           <Link to="/notifications">
           <NotificationBell />
           </Link>

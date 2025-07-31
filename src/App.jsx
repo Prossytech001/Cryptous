@@ -307,6 +307,7 @@ import "../src/App.css"; // Import your CSS file for global styles
 import CookieConsentModal from './components/CookieConsentModal/CookieConsentModal';
 import Preloader from './components/Preloader/Preloader';
 import ReferralRewards from './pages/ReferralRewards';
+import { getStoredTheme, setTheme } from "./components/theme";
 // import AssistantIndicator from './components/AiIndicator/Aiindicator';
 // function App() {
 //   const { isAuthenticated, user } = React.useContext(AuthContext);
@@ -494,6 +495,12 @@ import ReferralRewards from './pages/ReferralRewards';
 function App() {
   const { isAuthenticated, user } = React.useContext(AuthContext);
   const [loading, setLoading] = useState(true);
+
+
+useEffect(() => {
+    const savedTheme = getStoredTheme();
+    setTheme(savedTheme);
+  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoading(false), 2000); // simulate preloader

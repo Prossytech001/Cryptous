@@ -29,10 +29,13 @@ const Dashboard = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [drawerOpen, setDrawerOpen] = useState(false);
+ 
   
 const [visibleCount, setVisibleCount] = useState(2);
 
  
+
+
 
   const api = import.meta.env.VITE_API_URL;
 
@@ -394,7 +397,7 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
     USDT/BTC
   </h2>
   </div> */}
-      <CandlestickChart />
+      <CandlestickChart  />
     </div>
 
 
