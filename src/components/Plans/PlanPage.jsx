@@ -133,19 +133,19 @@ const handleSubmit = async () => {
               Duration: <strong>{plan.durationDays} days</strong>
             </p>
 
-            <p className="flex items-center gap-1 text-white mb-4">
+            <p className="flex items-center gap-1 text-[var(--grey)] mb-4">
               <FaCircleCheck className="palngood"/> 
                Minimun : ${plan.minInvestment} 
             </p>
-            <p className=" flex items-center gap-1 text-white mb-4">
+            <p className=" flex items-center gap-1 text-[var(--grey)] mb-4">
               <FaCircleCheck className="palngood"/>
               Maximun : ${plan.maxInvestment}
             </p>
-             <p className=" flex items-center gap-1 text-white mb-4">
+             <p className=" flex items-center gap-1 text-[var(--grey)] mb-4">
               <FaCircleCheck className="palngood"/>
              Daily Payout
             </p>
-             <p className=" flex items-center gap-1 text-white mb-4">
+             <p className=" flex items-center gap-1 text-[var(--grey)] mb-4">
               <FaCircleCheck className="palngood"/>
               Topup Available
             </p>

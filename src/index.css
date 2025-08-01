@@ -73,6 +73,13 @@
    --svg-togs: rgba(255, 255, 255, 0);
   
 }
+
+
+[data-theme="dark"] #tv-container {
+  background-color: #121212;
+  border-radius: 20px;
+}
+
 body{
  background-color: var(--BgWhites);
  backdrop-filter: blur(100%);

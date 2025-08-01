@@ -146,8 +146,8 @@ useEffect(() => {
       <div className="p-4 bg-yel00 border-l-4 border-yellow-500 text-white rounded-xl shadow">
         <div className="flex items-start gap-3">
           <div>
-            <h2 className="text-lg font-semibold">Important Funding Instruction</h2>
-            <p className="mt-2 text-sm">
+            <h2 className="text-lg text-[var(--White)] font-semibold">Important Funding Instruction</h2>
+            <p className="mt-2 text-sm text-[var(--White)]">
               Please <strong>fund your account using only USDT (TRC20)</strong>.
               <br />
               <span style={{ color: "red", fontWeight: "bold" }}>

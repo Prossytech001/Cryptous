@@ -13,10 +13,12 @@ import { FaPlus } from "react-icons/fa6";
 import { PiHandWithdraw } from "react-icons/pi";
 import { MdSupportAgent } from "react-icons/md";
 import { LuCircleDollarSign } from "react-icons/lu";
-import CandlestickChart from "../components/CandlestickChart";
+import TradingViewChart from "../components/CandlestickChart";
 import ReactApexChart from 'react-apexcharts';
 import ReferralSection from "../components/ReferralSection";
 import rewardsvg from "/cryptoimg/box-gift.svg"
+import { getStoredTheme , setTheme} from '../components/theme'; // adjust path as needed
+
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -42,6 +44,18 @@ const [visibleCount, setVisibleCount] = useState(2);
 
 
   const [countdowns, setCountdowns] = useState({});
+
+
+   const [theme, setThemeState] = useState(getStoredTheme());
+
+  useEffect(() => {
+    setTheme(theme); // Set data-theme and localStorage
+  }, [theme]);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setThemeState(newTheme); // triggers both TopNav + Chart update
+  };
 
 // ✅ 1. Define helper FIRST
 const getCountdownParts = (lastClaimDate) => {
@@ -397,7 +411,7 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
     USDT/BTC
   </h2>
   </div> */}
-      <CandlestickChart  />
+      <TradingViewChart theme={theme}/>
     </div>
 
 
@@ -409,7 +423,7 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
     <select
       value={filters}
       onChange={(e) => setFilters(e.target.value)}
-      className="bg-dashboard-cards p-2 rounded text-white"
+      className="bg-dashboard-cards p-2 rounded text-[var(--white)]"
     >
       <option className="last7" value="7">Last 7 Days</option>
       <option className="last7" value="30">Last 30 Days</option>
@@ -426,7 +440,7 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
   {/* Drawer for Mobile */}
   
     <div className="  h-full bg-gray p-4 shadow-lg overflow-y-auto lg:hidden">
-      <h2 className="text-white-800   font-bold mb-3">Transaction History</h2>
+      <h2 className="text-[var(--grey)]   font-bold mb-3">Transaction History</h2>
       <ActivityList data={activities} />
     </div>
  
