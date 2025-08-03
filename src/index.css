@@ -82,7 +82,7 @@
 }
 
 body{
- background-color: var(--BgWhites);
+ 
  backdrop-filter: blur(100%);
  width: 100%;
 

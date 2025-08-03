@@ -610,7 +610,7 @@ font-weight: 500;
 .layout-container {
     display: flex;
     min-height: 100vh;
-   
+  
     position: relative;
     flex-direction: column;
   }
@@ -739,8 +739,8 @@ font-weight: 500;
   /* Main Content */
   .main-content {
     flex: 1;
-    margin-bottom: 60px;
-  background-color: var(--BgWhite);
+    padding-bottom: 80px;
+ background-color: var(--bs-body-bg);
 
     transition: margin-left 0.3s ease;
   }

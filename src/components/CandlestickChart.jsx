@@ -272,45 +272,7 @@
 // export default CandlestickChart;
 import React, { useEffect, useRef } from 'react';
 
-// const TradingViewChart = () => {
-//   const container = useRef();
-
-//   useEffect(() => {
-//     const script = document.createElement('script');
-//     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
-//     script.type = 'text/javascript';
-//     script.async = true;
-//     script.innerHTML = JSON.stringify({
-//       symbols: [["BTCUSDT", "BINANCE:BTCUSDT|1D"]],
-//       chartOnly: false,
-//       width: "100%",
-//       height: "400",
-//       locale: "en",
-//       colorTheme: "dark",
-//       gridLineColor: "#3a3939",
-//       trendLineColor: "#96651e",
-//       fontColor: "#ffffff",
-//       underLineColor: "#3a3939",
-//       isTransparent: true,
-//       autosize: false,
-//       container_id: "tv-container" // ✅ must match div ID
-//     });
-
-//     container.current.innerHTML = ''; // Clear previous
-//     container.current.appendChild(script);
-//   }, []);
-
-//   return (
-//     <div
-//       id="tv-container"
-//       ref={container}
-//       style={{ width: '100%', height: '400px' }}
-//     />
-//   );
-// };
-
-// export default TradingViewChart;
-const TradingViewChart = ({ theme }) => {
+const TradingViewChart = () => {
   const container = useRef();
 
   useEffect(() => {
@@ -324,22 +286,60 @@ const TradingViewChart = ({ theme }) => {
       width: "100%",
       height: "400",
       locale: "en",
-      colorTheme: theme,
-      gridLineColor: theme === 'dark' ? "#3a3939" : "#e0e0e0",
-      trendLineColor: theme === 'dark' ? "#96651e" : "#0066cc",
-      fontColor: theme === 'dark' ? "#ffffff" : "#000000",
-      underLineColor: theme === 'dark' ? "#3a3939" : "#dcdcdc",
-      isTransparent:true,
+      colorTheme: "dark",
+      gridLineColor: "#3a3939",
+      trendLineColor: "#96651e",
+      fontColor: "#ffffff",
+      underLineColor: "#3a3939",
+      isTransparent: true,
       autosize: false,
-      container_id: "tv-container"
+      container_id: "tv-container" // ✅ must match div ID
     });
 
-    container.current.innerHTML = '';
+    container.current.innerHTML = ''; // Clear previous
     container.current.appendChild(script);
-  }, [theme]); // ✅ re-run on theme change
+  }, []);
 
-  return <div id="tv-container" ref={container} style={{ height: "400px" }} />;
+  return (
+    <div
+      id="tv-container"
+      ref={container}
+      style={{ width: '100%', height: '400px' }}
+    />
+  );
 };
 
 export default TradingViewChart;
+// const TradingViewChart = ({ theme }) => {
+//   const container = useRef();
+
+//   useEffect(() => {
+//     const script = document.createElement('script');
+//     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
+//     script.type = 'text/javascript';
+//     script.async = true;
+//     script.innerHTML = JSON.stringify({
+//       symbols: [["BTCUSDT", "BINANCE:BTCUSDT|1D"]],
+//       chartOnly: false,
+//       width: "100%",
+//       height: "400",
+//       locale: "en",
+//       colorTheme: theme,
+//       gridLineColor: theme === 'dark' ? "#3a3939" : "#e0e0e0",
+//       trendLineColor: theme === 'dark' ? "#96651e" : "#0066cc",
+//       fontColor: theme === 'dark' ? "#ffffff" : "#000000",
+//       underLineColor: theme === 'dark' ? "#3a3939" : "#dcdcdc",
+//       isTransparent:true,
+//       autosize: false,
+//       container_id: "tv-container"
+//     });
+
+//     container.current.innerHTML = '';
+//     container.current.appendChild(script);
+//   }, [theme]); // ✅ re-run on theme change
+
+//   return <div id="tv-container" ref={container} style={{ height: "400px" }} />;
+// };
+
+// export default TradingViewChart;
 

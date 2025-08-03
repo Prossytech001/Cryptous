@@ -600,24 +600,26 @@ const DashboardLayout = ({ children }) => {
         {children}
         
       </main>
-      <nav className="md:hidden rounded-[40px] fixed bottom-0 left-0 right-0 bg-[var(--bs-body-bg)] border-t border-gray-200 dark:border-gray-700 shadow-md flex justify-around items-center h-16 z-100">
+      
+      <nav className="md:hidden rounded-[40px] h-[70px] w-[100%] fixed bottom-[10px] left-0 right-0 bg-[var(--bs-body-bg)] border-t border-gray-200 dark:border-gray-700 shadow-md flex justify-around items-center h-16 z-100">
       <Link to="/dashboard" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
-        <FaTachometerAlt className="text-lg text-[var(--Kumera)]" />
+        <FaTachometerAlt className="text-lg text-[var(--Kumera)] text-[25px]" />
         <span className="text-[var(--White)]">Dashboard</span>
       </Link>
       <Link to="/funding" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
-        <FaWallet className="text-lg text-[var(--Kumera)]" />
+        <FaWallet className="text-lg text-[var(--Kumera)] text-[25px]" />
         <span className="text-[var(--White)]">Fund</span>
       </Link>
       <Link to="/plans" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
-        <FaBoxOpen className="text-lg text-[var(--Kumera)]" />
+        <FaBoxOpen className="text-lg text-[var(--Kumera)] text-[25px]" />
         <span className="text-[var(--White)]">Plans</span>
       </Link>
       <Link to="/reward" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
-        <FaGift className="text-lg text-[var(--Kumera)]" />
+        <FaGift className="text-lg text-[var(--Kumera)] text-[25px]" />
         <span className="text-[var(--White)]">Rewards</span>
       </Link>
     </nav>
+    
     </div>
   );
 };
