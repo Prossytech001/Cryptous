@@ -83,9 +83,9 @@ const DashboardLayout = ({ children }) => {
             </button>
             {openReports && (
               <div className="ml-6 mt-1 flex flex-col text-sm gap-1">
-                <Link to="/admin/reports/revenue" className="text-gray-300 hover:text-blue-600">Revenue</Link>
-                <Link to="/admin/reports/growth" className="text-gray-300 hover:text-blue-600">User Growth</Link>
-                <Link to="/admin/reports/stakes" className="text-gray-300 hover:text-blue-600">Stakes</Link>
+                <Link to="/admin/track" className="text-gray-300 hover:text-blue-600">Track visitor</Link>
+                <Link to="/admin/plans" className="text-gray-300 hover:text-blue-600">plans</Link>
+                <Link to="/admin/email" className="text-gray-300 hover:text-blue-600">Send Email</Link>
               </div>
             )}
           </div>

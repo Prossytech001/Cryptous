@@ -420,11 +420,13 @@
 
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useContext, useState,useEffect } from 'react';
+import { CiMenuKebab } from "react-icons/ci";
 import { AuthContext } from '../Authcontext';
 import { AiFillDashboard } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { RiMessage3Fill } from "react-icons/ri";
 import { MdSupportAgent, MdLogout, MdOutlineAttachMoney } from "react-icons/md";
+import { IoGiftSharp } from "react-icons/io5";
 import { FaBars, FaTimes } from "react-icons/fa";
 import '../../../src/components/layouts/Dashboardlayout.css';
 import { RiFundsBoxFill } from "react-icons/ri";
@@ -432,6 +434,7 @@ import NotificationBell from '../../pages/NotificationBell';
 import axios from "axios";
 import Theme from "../../components/TopNav"
 import { getStoredTheme, setTheme } from '../theme'; // adjust path as needed
+import { FaTachometerAlt, FaWallet, FaBoxOpen, FaGift } from 'react-icons/fa';
 
 
 
@@ -491,11 +494,8 @@ const DashboardLayout = ({ children }) => {
      { path: '/notifications', label: 'Notifications', icon: <RiMessage3Fill /> },
     { path: '/plans', label: 'Plans', icon: <MdOutlineAttachMoney /> },
     { path: '/support', label: 'Support', icon: <MdSupportAgent /> },
-    { path: '/reward', label: 'reward', icon: <MdSupportAgent /> },
+    { path: '/reward', label: 'reward', icon: <IoGiftSharp /> },
      { path: '/profile', label: 'Profile', icon: <CgProfile /> },
-   
-
-   
   ];
 
   return (
@@ -503,7 +503,7 @@ const DashboardLayout = ({ children }) => {
       {/* Top Nav */}
       <div className="top-nav">
         <button className="toggle-button" onClick={() => setSidebarOpen(!isSidebarOpen)}>
-          <FaBars />
+         <CiMenuKebab />
         </button>
         <div className="nav-title flex items-center gap-2">
           <Theme user={user} theme={theme} toggleTheme={toggleTheme} />
@@ -596,10 +596,28 @@ const DashboardLayout = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main  className="main-content">
+      <main  className="main-content mb-[60px]">
         {children}
         
       </main>
+      <nav className="md:hidden rounded-[40px] fixed bottom-0 left-0 right-0 bg-[var(--bs-body-bg)] border-t border-gray-200 dark:border-gray-700 shadow-md flex justify-around items-center h-16 z-100">
+      <Link to="/dashboard" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
+        <FaTachometerAlt className="text-lg text-[var(--Kumera)]" />
+        <span className="text-[var(--White)]">Dashboard</span>
+      </Link>
+      <Link to="/funding" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
+        <FaWallet className="text-lg text-[var(--Kumera)]" />
+        <span className="text-[var(--White)]">Fund</span>
+      </Link>
+      <Link to="/plans" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
+        <FaBoxOpen className="text-lg text-[var(--Kumera)]" />
+        <span className="text-[var(--White)]">Plans</span>
+      </Link>
+      <Link to="/reward" className="flex flex-col items-center text-xs text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white">
+        <FaGift className="text-lg text-[var(--Kumera)]" />
+        <span className="text-[var(--White)]">Rewards</span>
+      </Link>
+    </nav>
     </div>
   );
 };

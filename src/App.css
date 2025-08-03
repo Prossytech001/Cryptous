@@ -223,6 +223,7 @@
     padding: 10px 20px;
     font-weight: 300;
     letter-spacing: .4px;
+    
 }
 .btn3s{
     background: transparent;
@@ -232,6 +233,15 @@
     padding: 10px 20px;
     font-weight: 300;
 }
+@media all and (max-width: 386px){
+.btn1s ,.btn3s{
+   
+    padding: 10px 10px;
+    font-size: 14px;
+    
+}
+}
+
 .dashboard-heading-h svg{
     background-color: var(--Bronzetone);
     padding:7px;
@@ -241,6 +251,7 @@
 .buttondah{
     display: flex;
     gap: 20px;
+    width: 100%;
 }
 /* nofication */
 .notify-con{

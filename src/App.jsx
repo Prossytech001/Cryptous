@@ -308,6 +308,10 @@ import CookieConsentModal from './components/CookieConsentModal/CookieConsentMod
 import Preloader from './components/Preloader/Preloader';
 import ReferralRewards from './pages/ReferralRewards';
 import { getStoredTheme, setTheme } from "./components/theme";
+import AdminVisitorTrack from './pages/AdminVisitorTrack';
+import useVisitorTracking from './components/useVisitorTracking';
+import AdminPlanManager from './pages/AdminPlanManager';
+import AdminEmailSender from './pages/AdminEmailSender';
 // import AssistantIndicator from './components/AiIndicator/Aiindicator';
 // function App() {
 //   const { isAuthenticated, user } = React.useContext(AuthContext);
@@ -496,6 +500,8 @@ function App() {
   const { isAuthenticated, user } = React.useContext(AuthContext);
   const [loading, setLoading] = useState(true);
 
+ useVisitorTracking();
+
 
 useEffect(() => {
     const savedTheme = getStoredTheme();
@@ -682,6 +688,36 @@ useEffect(() => {
             <AdminPrivateRoute>
               <AdminDashboardLayout>
                 <AdminChat />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/track"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminVisitorTrack />
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+         <Route
+          path="/admin/plans"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminPlanManager/>
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/email"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminEmailSender/>
               </AdminDashboardLayout>
             </AdminPrivateRoute>
           }

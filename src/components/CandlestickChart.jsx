@@ -329,7 +329,7 @@ const TradingViewChart = ({ theme }) => {
       trendLineColor: theme === 'dark' ? "#96651e" : "#0066cc",
       fontColor: theme === 'dark' ? "#ffffff" : "#000000",
       underLineColor: theme === 'dark' ? "#3a3939" : "#dcdcdc",
-      isTransparent: false,
+      isTransparent:true,
       autosize: false,
       container_id: "tv-container"
     });
