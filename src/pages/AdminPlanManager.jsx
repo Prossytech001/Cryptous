@@ -74,7 +74,7 @@ const AdminPlanManager = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="plan-mangement">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">📋 Plan Management</h2>
         <button
@@ -85,52 +85,66 @@ const AdminPlanManager = () => {
         </button>
       </div>
 
-      <div className="overflow-x-auto bg-white shadow rounded">
-        <table className="min-w-full text-sm">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-2 text-left">Name</th>
-              <th className="p-2 text-left">Min Invest</th>
-              <th className="p-2 text-left">Max Invest</th>
-              <th className="p-2 text-left">Daily ROI (%)</th>
-              <th className="p-2 text-left">Duration (days)</th>
-              <th className="p-2 text-left">Description</th>
-              <th className="p-2 text-left">Actions</th>
-            </tr>
-          </thead>
+      <div className="overflow-x-autoadminUser-card  bg-white shadow rounded">
+
+        <div className="nk-tb-list">
+          <div className="nk-tb-item ">
+            <div className='plans-man'>
+              <span className=" ">Name</span></div>
+             <div className=' plans-man'>
+              <span className=" ">Min Invest</span></div>
+             <div className='plans-man'>
+              <span className=" ">Max Invest</span></div>
+              <div className='plans-man'>
+              <span className=" ">Daily ROI (%)</span></div>
+              <div className='plans-man'>
+              <span className=" ">Duration (days)</span></div>
+              <div className='plans-man'>
+              <span className=" ">Description</span></div>
+              <div className='plans-man'>
+              <span className=" ">Actions</span></div>
+            
+          </div>
           <tbody>
             {plans.map((plan) => (
-              <tr key={plan._id} className="border-t">
-                <td className="p-2">{plan.name}</td>
-                <td className="p-2">{plan.minInvestment}</td>
-                <td className="p-2">{plan.maxInvestment}</td>
-                <td className="p-2">{plan.dailyROI}</td>
-                <td className="p-2">{plan.durationDays}</td>
-                <td className="p-2">{plan.description}</td>
-                <td className="p-2 flex gap-2">
+              <div  key={plan._id} className="nk-tb-item  ">
+                <div className='nk-tb-col '>
+              <span className="  ">{plan.name}</span></div>
+               <div className='nk-tb-col'>
+              <span className=" ">{plan.minInvestment}</span></div>
+                <div className='nk-tb-col'>
+              <span className=" ">{plan.maxInvestment}</span></div>
+               <div className='nk-tb-col'>
+              <span className=" ">{plan.dailyROI}</span></div>
+               <div className='nk-tb-col'>
+              <span className=" ">{plan.durationDays}</span></div>
+                <div className='nk-tb-col description-plans'>
+              <span className=" ">{plan.description}</span></div>
+               <div className='nk-tb-col'>
+              <span className=" ">
                   <button
                     onClick={() => openModal(plan)}
-                    className="text-blue-600 hover:underline"
+                    className="text-blue-600 text-[20px] hover:underline"
                   >
                     <FiEdit />
                   </button>
                   <button
                     onClick={() => handleDelete(plan._id)}
-                    className="text-red-600 hover:underline"
+                    className="text-red-600 text-[20px]  hover:underline"
                   >
                     <FiTrash2 />
                   </button>
-                </td>
-              </tr>
+               </span></div>
+              </div >
             ))}
           </tbody>
-        </table>
+        </div>
       </div>
 
       {/* Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md shadow-lg">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-5000">
+          <div className="bg-white add-plan rounded-lg p-6 w-full max-w-md shadow-lg">
             <h3 className="text-lg font-bold mb-4">
               {editingId ? "Edit Plan" : "Add Plan"}
             </h3>
@@ -141,7 +155,7 @@ const AdminPlanManager = () => {
                 onChange={handleChange}
                 placeholder="Plan Name"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border add-plan-input rounded"
               />
               <input
                 name="minInvestment"
@@ -150,7 +164,7 @@ const AdminPlanManager = () => {
                 onChange={handleChange}
                 placeholder="Minimum Investment"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border add-plan-input  rounded"
               />
               <input
                 name="maxInvestment"
@@ -159,7 +173,7 @@ const AdminPlanManager = () => {
                 onChange={handleChange}
                 placeholder="Maximum Investment"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border add-plan-input  rounded"
               />
               <input
                 name="dailyROI"
@@ -168,7 +182,7 @@ const AdminPlanManager = () => {
                 onChange={handleChange}
                 placeholder="Daily ROI (%)"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border add-plan-input  rounded"
               />
               <input
                 name="durationDays"
@@ -177,7 +191,7 @@ const AdminPlanManager = () => {
                 onChange={handleChange}
                 placeholder="Duration in Days"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border add-plan-input  rounded"
               />
               <textarea
                 name="description"
@@ -185,19 +199,19 @@ const AdminPlanManager = () => {
                 onChange={handleChange}
                 placeholder="Description"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border add-plan-inputs rounded"
               />
               <div className="flex justify-end gap-3 mt-4">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="px-4 py-2 border rounded"
+                  className="px-4 py-2 border add-plan-btn  rounded"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded"
+                  className="px-4 py-2 bg-blue-600 add-plan-btn text-white rounded"
                 >
                   {editingId ? "Update" : "Create"}
                 </button>

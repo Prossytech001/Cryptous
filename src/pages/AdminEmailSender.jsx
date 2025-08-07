@@ -525,17 +525,22 @@ const wrapHtml = (raw) => `
   }, [html]);
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">📧 Admin Email Sender</h2>
+    <div className="compose-mail">
 
+
+      <div className="modal-content">
+        <div className="modal-header">
+      <h2 className="text-2xl font-bold mb-4">compose mail to a User</h2>
+       </div>
       <div className="mb-4">
         <label className="block font-medium mb-1">To Email</label>
         <input
           type="email"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 compose-mail-input border rounded"
           value={to}
           onChange={(e) => setTo(e.target.value)}
           placeholder="user@example.com"
+          
         />
       </div>
 
@@ -543,7 +548,7 @@ const wrapHtml = (raw) => `
         <label className="block font-medium mb-1">Subject</label>
         <input
           type="text"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 compose-mail-input  border rounded"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
           placeholder="Enter email subject"
@@ -553,7 +558,7 @@ const wrapHtml = (raw) => `
       <div className="mb-4">
         <label className="block font-medium mb-1">Template</label>
         <select
-          className="w-full p-2 border rounded"
+          className="w-full p-2 compose-mail-input  border rounded"
           value={messageType}
           onChange={(e) => handleTemplateChange(e.target.value)}
         >
@@ -592,6 +597,7 @@ const wrapHtml = (raw) => `
 />
 
 
+      </div>
       </div>
 
       <div className="mb-6">

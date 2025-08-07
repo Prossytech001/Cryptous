@@ -67,37 +67,50 @@ const AdminWithdrawals = () => {
       ) : (
         withdrawals.length === 0 ? <p>No withdrawal requests</p> : (
           <>
-            <table>
-              <thead>
-                <tr>
-                  <th>User</th>
-                  <th>Email</th>
-                  <th>Amount</th>
-                  <th>Wallet</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
+           <div className="adminUser-card rounded-xl shadow ">
+            <div className="nk-tb-list ">
+              <div className="nk-tb-item ">
+               <div className='nk-tb-col nk-head1'>
+              <span className=" ">User</span></div>
+               <div className='nk-tb-col nk-head1'>
+              <span className=" ">Email</span></div>
+                 <div className='nk-tb-col nk-head1'>
+              <span className=" ">Amount</span></div>
+                 <div className='nk-tb-col nk-head1'>
+              <span className=" ">Wallet</span></div>
+                <div className='nk-tb-col nk-head1'>
+              <span className=" ">Status</span></div>
+                 <div className='nk-tb-col nk-head1'>
+              <span className=" ">Action</span></div>
+                
+              </div>
               <tbody>
                 {withdrawals.map((w) => (
-                  <tr key={w._id}>
-                    <td>{w.user?.username}</td>
-                    <td>{w.user?.email}</td>
-                    <td>${w.amount}</td>
-                    <td>{w.walletAddress}</td>
-                    <td>{w.status}</td>
-                    <td>
+                  <div key={w._id} className="nk-tb-item  ">
+                     <div className='nk-tb-col'>
+              <span className=" ">{w.user?.username}</span></div>
+                    <div className='nk-tb-col'>
+              <span className=" ">{w.user?.email}</span></div>
+                    <div className='nk-tb-col'>
+              <span className=" ">${w.amount}</span></div>
+                    <div className='nk-tb-col'>
+              <span className=" ">{w.walletAddress}</span></div>
+                     <div className='nk-tb-col'>
+              <span className=" ">{w.status}</span></div>
+                     <div className='nk-tb-col'>
+              <span className=" ">
                       {w.status === 'pending' ? (
                         <>
                           <button onClick={() => handleAction(w._id, 'approve')}>✅</button>
                           <button onClick={() => handleAction(w._id, 'decline')}>❌</button>
                         </>
                       ) : '—'}
-                    </td>
-                  </tr>
+                    </span></div>
+                  </div>
                 ))}
               </tbody>
-            </table>
+            </div>
+            </div>
 
             <div className="pagination">
               <button onClick={() => setPage(p => Math.max(1, p - 1))}>⬅ Prev</button>

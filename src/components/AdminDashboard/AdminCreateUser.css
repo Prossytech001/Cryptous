@@ -19,8 +19,8 @@
     width: 100%;
     margin: 20px;
     padding: 20px;
-    background-color: #2A2A3C;
-   
+    background-color: rgb(242, 243, 245);
+   border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    justify-content: center;
     align-items: center;
@@ -37,6 +37,9 @@
 
 .create-user-button:hover {
     background-color: #2563EB;
+}
+.admin-user-input{
+    padding: 10px;
 }
 
 @media all and (max-width: 768px) {

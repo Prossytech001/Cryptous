@@ -34,7 +34,7 @@ const AdminDeposits = () => {
 
   return (
     <div className="admin-deposits">
-      <h2>💰 Admin Deposit Dashboard</h2>
+      <h2> Admin Deposit Dashboard</h2>
 
       <div className="filters">
         <select onChange={(e) => setStatus(e.target.value)} value={status}>
@@ -44,41 +44,53 @@ const AdminDeposits = () => {
           <option value="finished">Finished</option>
           <option value="failed">Failed</option>
         </select>
-        <input type="date" onChange={(e) => setStartDate(e.target.value)} value={startDate} />
+        
         <input type="date" onChange={(e) => setEndDate(e.target.value)} value={endDate} />
       </div>
 
       <p><strong>Total Amount:</strong> ${total}</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>User</th>
-            <th>Email</th>
-            <th>Amount</th>
-            <th>Status</th>
-            <th>Wallet</th>
-            <th>Date</th>
-          </tr>
-        </thead>
+ <div className="adminUser-card rounded-xl shadow ">
+      <div className="nk-tb-list">
+        <div className="nk-tb-item ">
+          <div className='nk-tb-col nk-head1'>
+              <span className=" ">User</span></div>
+           <div className='nk-tb-col nk-head1'>
+              <span className=" ">Email</span></div>
+           <div className='nk-tb-col nk-head1'>
+              <span className=" ">Amount</span></div>
+            <div className='nk-tb-col nk-head1'>
+              <span className=" ">Status</span></div>
+           <div className='nk-tb-col nk-head1'>
+              <span className=" ">Wallet</span></div>
+           <div className='nk-tb-col nk-head1'>
+              <span className=" ">Date</span></div>
+          
+        </div>
         <tbody>
           {deposits.map((d) => (
-            <tr key={d._id}>
-              <td>{d.user?.username || 'N/A'}</td>
-<td>{d.user?.email || 'N/A'}</td>
+            <div key={d._id} className="nk-tb-item  ">
+              <div className='nk-tb-col'>
+              <span className=" ">{d.user?.username || 'N/A'}</span></div>
+<div className='nk-tb-col'>
+              <span className=" ">{d.user?.email || 'N/A'}</span></div>
 
-              <td>${d.amount}</td>
-              <td>{d.status}</td>
-              <td>{d.payAddress}</td>
-              <td>
+              <div className='nk-tb-col'>
+              <span className=" ">${d.amount}</span></div>
+              <div className='nk-tb-col'>
+              <span className=" ">{d.status}</span></div>
+              <div className='nk-tb-col'>
+              <span className=" ">{d.payAddress}</span></div>
+              <div className='nk-tb-col'>
+              <span className=" ">
   <Link to={`/admin/deposit/${d._id}`}>
     {new Date(d.createdAt).toLocaleString()}
   </Link>
-</td>
-            </tr>
+</span></div>
+            </div>
           ))}
         </tbody>
-      </table>
+      </div>
+      </div>
 
       <style>{`
         .admin-deposits { padding: 2rem; max-width: 1100px; margin: auto; }

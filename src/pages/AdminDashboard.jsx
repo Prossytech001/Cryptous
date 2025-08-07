@@ -626,7 +626,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-dashboard_container h-screen">
-      <h1 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-6">Admin Dashboard</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold text-[var(--bs-secondary-bg)] mb-6">Admin Dashboard</h1>
 
       <div className="w-full grid grid-cols align-center md:grid-cols-3 gap-4 mb-6">
         <div className="admin-card acard1">
@@ -660,9 +660,9 @@ const AdminDashboard = () => {
           )}
         </ul>
       </div> */}
-      <div className="admin-content flex flex-col sm:flex-row gap-4 mb-6">
-      <div className="admin-card flex-1 bg-white rounded-xl shadow-md p-5">
-  <h3 className="text-lg font-semibold text-white-800 mb-4">📌 Recent Activity</h3>
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+      <div className="card-bordered  flex-1 bg-white rounded-xl shadow-md p-5">
+  <h3 className="text-lg card-inner font-semibold text-white-800 mb-4">Recent Activities</h3>
 
   {activities.length > 0 ? (
     <ul className="admin_recent_activity divide-y divide-gray-200 ">
@@ -671,11 +671,12 @@ const AdminDashboard = () => {
           key={i}
           className="admin_recent_activity-list"
         >
-          <div className="flex items-center space-x-2  font-medium">
-            <PiUsersThreeFill className="text-xl text-blue-500" />
-            <span>{act.message}</span>
+          <div className="flex flex-col  space-x-2  font-medium">
+           <span className='flex items-center user-activities'> <div className="admin-icon"><PiUsersThreeFill className="" /></div> 
+            {act.message}</span>
+            <span className="user-activities-email">{act.email}</span>
           </div>
-          <span className="text-sm text-blue-600">{act.email}</span>
+          
         </li>
       ))}
     </ul>
@@ -686,27 +687,32 @@ const AdminDashboard = () => {
 
 
       {/* Users Table */}
-      <div className="admin-card flex-1 bg-white rounded-xl shadow-md p-5">
-        <h3 className="text-lg font-semibold text-white-700 mb-4">👥 All Users</h3>
-        <table className="table-auto w-full text-left">
-          <thead className="admin-table-header">
-            <tr>
-              <th className=" ">username</th>
-              <th className="">Email</th>
-              <th className="">Balance</th>
-            </tr>
-          </thead>
+      <div className="flex-1 bg-white rounded-xl shadow-md p-5">
+        <h3 className="text-lg font-semibold  card-inner text-white-700 mb-4">👥 All Users</h3>
+        <div className="nk-tb-list ">
+          <div className="nk-tb-item ">
+            <div className='nk-tb-col nk-head1'>
+              <span className=" ">username</span></div>
+              <div className='nk-tb-col nk-head2'>
+              <span className=" ">Email</span></div>
+               <div className='nk-tb-col nk-head3'>
+              <span className=" ">Balance</span></div>
+            
+          </div>
           <tbody>
            {users.slice(0, visibleCount).map((user) => (
 
-              <tr key={user._id} className="admin_tr border-b ">
-                <td className="admin-username">{user.username}</td>
-                <td className="admin-email">{user.email}</td>
-                <td className="admin-balance">₦{user.balance.toLocaleString()}</td>
-              </tr>
+              <div key={user._id} className="nk-tb-item  ">
+               <div className='nk-tb-col'>
+              <span className=" ">{user.username}</span></div>
+               <div className='nk-tb-col'>
+              <span className=" ">{user.email}</span></div>
+                <div className='nk-tb-col'>
+              <span className=" ">${user.balance.toLocaleString()}</span></div>
+              </div>
             ))}
           </tbody>
-        </table>
+        </div>
         {users.length > 10 && (
   <div className="text-center mt-4">
     <button

@@ -85,9 +85,230 @@
 // };
 
 // export default AdminUsers;
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import "../components/AdminDashboard/AdminUser.css"
+// import { BiEdit } from "react-icons/bi";
+// import { MdOutlineDeleteOutline } from "react-icons/md";
+// import { CiSaveDown2 } from "react-icons/ci";
+// import { FcCancel } from "react-icons/fc";
+
+// const AdminUsers = () => {
+//   const api = import.meta.env.VITE_API_URL;
+//   const token = localStorage.getItem('adminToken');
+//   const [users, setUsers] = useState([]);
+//   const [editUserId, setEditUserId] = useState(null);
+//   const [formData, setFormData] = useState({ username: '', email: '', role: '' , balance: ''});
+//   const [error, setError] = useState('');
+//   const [viewUserId, setViewUserId] = useState(20);
+//   const headers = { Authorization: `Bearer ${token}` };
+
+//   useEffect(() => {
+//     fetchUsers();
+//   }, []);
+
+//   const fetchUsers = async () => {
+//     try {
+//       const res = await axios.get(`${api}/api/admin/users`, { headers });
+//       setUsers(res.data);
+//     } catch (err) {
+//       setError('Failed to fetch users');
+//     }
+//   };
+
+//   const handleToggleStatus = async (id) => {
+//     try {
+//       await axios.patch(`${api}/api/admin/users/${id}/status`, {}, { headers });
+//       fetchUsers();
+//     } catch (err) {
+//       setError('Failed to toggle status');
+//     }
+//   };
+
+//   const handleDelete = async (id) => {
+//     if (confirm('Are you sure you want to delete this user?')) {
+//       try {
+//         await axios.delete(`${api}/api/admin/users/${id}`, { headers });
+//         fetchUsers();
+//       } catch (err) {
+//         setError('Failed to delete user');
+//       }
+//     }
+//   };
+
+//   const startEdit = (user) => {
+//     setEditUserId(user._id);
+//     setFormData({
+//       username: user.username,
+//       email: user.email,
+//       role: user.role || 'user',
+//       balance: user.balance
+//     });
+//   };
+
+//   const cancelEdit = () => {
+//     setEditUserId(null);
+//     setFormData({ username: '', email: '', role: '' });
+//   };
+
+//   const handleEditSubmit = async (id) => {
+//     try {
+//       await axios.put(`${api}/api/admin/users/${id}`, formData, { headers });
+//       fetchUsers();
+//       cancelEdit();
+//     } catch (err) {
+//       setError('Failed to update user');
+//     }
+//   };
+
+//   const handleInputChange = (e) => {
+//     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+//   };
+
+//   const handleViewMore = () => {
+//     if (viewUserId >= users.length) {
+//       setViewUserId(20); // Collapse
+//     } else {
+//       setViewUserId(prev => Math.min(prev + 10, users.length)); // Show more
+//     }
+//   }
+
+//   return (
+//     <div className="admin-users-content" >
+//       <h1 className="text-2xl font-bold text-blue-800 mb-4">All Users</h1>
+
+//       {error && <div className="text-red-600 mb-4">{error}</div>}
+
+//       <div className="adminUser-card rounded-xl shadow overflow-x-auto">
+//         <div className="nk-tb-list  ">
+//           <div className="nk-tb-item ">
+//           <div className='nk-tb-col nk-head1'>
+//               <span className=" ">Username</span></div>
+//              <div className='nk-tb-col nk-head1'>
+//               <span className=" ">Email</span></div>
+              
+//              <div className='nk-tb-col nk-head1'>
+//               <span className=" ">Balance</span></div>
+// <div className='nk-tb-col nk-head1'>
+//               <span className=" ">Status</span></div>
+//              <div className='nk-tb-col nk-head1'>
+//               <span className=" ">Role</span></div>
+//              <div className='nk-tb-col nk-head1'>
+//               <span className=" ">Created</span></div>
+//              <div className='nk-tb-col nk-head1'>
+//               <span className=" ">Actions</span></div>
+           
+//           </div>
+//           <tbody className="divide-y divide-gray-600">
+//             {users.slice(0, viewUserId).map((user) => (
+//               <div key={user._id} className="nk-tb-item ">
+//                 <div className='nk-tb-col'>
+//               <span className=" ">
+//                   {editUserId === user._id ? (
+//                     <input
+//                       name="username"
+//                       value={formData.username}
+//                       onChange={handleInputChange}
+//                       className="border px-2 py-1 h-[30px] rounded w-full"
+//                     />
+//                   ) : (
+//                     user.username
+//                   )}
+// </span></div>
+//                <div className='nk-tb-col'>
+//               <span className=" ">
+//                   {editUserId === user._id ? (
+//                     <input
+//                       name="email"
+//                       type="email"
+//                       value={formData.email}
+//                       onChange={handleInputChange}
+//                       className="border px-2 py-1 h-[30px] rounded w-full"
+//                     />
+//                   ) : (
+//                     user.email
+//                   )}
+//                 </span></div>
+//                <div className='nk-tb-col'>
+//               <span className=" ">
+//   {editUserId === user._id ? (
+//     <input
+//       name="balance"
+//       type="number"
+//       value={formData.balance}
+//       onChange={handleInputChange}
+//       className="border px-2 py-1 h-[30px] rounded w-full"
+//     />
+//   ) : (
+//     `₦${Number(user.balance).toLocaleString()}`
+//   )}
+// </span></div>
+
+//                <div className='nk-tb-col'>
+//               <span className=" ">
+//                   <span className={`active_adminUser rounded-full text-xs font-medium ${user.isVerified ? ' text-green-700' : ' text-red-700'}`}>
+//                     {user.isVerified ? 'Active' : 'Inactive'}
+//                   </span>
+//                 </span></div>
+//                <div className='nk-tb-col'>
+//               <span className=" ">
+//                   {editUserId === user._id ? (
+//                     <input
+//                       name="role"
+//                       value={formData.role}
+//                       onChange={handleInputChange}
+//                       className="border p-[10px]  h-[30px] rounded w-full"
+//                     />
+//                   ) : (
+//                     user.role || 'user'
+//                   )}
+//                 </span></div>
+//                 <div className='nk-tb-col'>
+//               <span className=" ">{new Date(user.createdAt).toLocaleDateString()}</span></div>
+//                 <div className='nk-tb-col'>
+//               <span className=" ">
+//                   {editUserId === user._id ? (
+//                     <>
+//                       <button onClick={() => handleEditSubmit(user._id)} className="text-green-600 text-[30px] hover:underline"><CiSaveDown2/></button>
+//                       <button onClick={cancelEdit} className="text-gray-600 text-[30px] hover:underline"><FcCancel/></button>
+//                     </>
+//                   ) : (
+//                     <>
+//                       <button onClick={() => startEdit(user)} className="admin-edit text-blue-600 hover:underline"><BiEdit/></button>
+//                       {/* <button onClick={() => handleToggleStatus(user._id)} className="admin-act text-yellow-600 hover:underline">
+//                         {user.isVerified ? ' Deactivate' : ' Activate'}
+//                       </button> */}
+//                       <button onClick={() => handleDelete(user._id)} className="admin-del text-red-600 hover:underline"><MdOutlineDeleteOutline/></button>
+//                     </>
+//                   )}
+//                 </span></div>
+//               </div>
+//             ))}
+//           </tbody>
+//         </div>
+//         {users.length > 10 && (
+//   <div className="text-center mt-4">
+//     <button
+//       onClick={handleViewMore}
+//       className="admin-see-more-btn "
+//     >
+//       {viewUserId >= users.length ? 'See Less' : 'See More'}
+//     </button>
+//   </div>
+// )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default AdminUsers;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import "../components/AdminDashboard/AdminUser.css"
+import { BiEdit } from "react-icons/bi";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import { CiSaveDown2 } from "react-icons/ci";
+import { FcCancel } from "react-icons/fc";
 
 const AdminUsers = () => {
   const api = import.meta.env.VITE_API_URL;
@@ -97,6 +318,9 @@ const AdminUsers = () => {
   const [formData, setFormData] = useState({ username: '', email: '', role: '' , balance: ''});
   const [error, setError] = useState('');
   const [viewUserId, setViewUserId] = useState(20);
+  const [search, setSearch] = useState('');
+  const [filterDate, setFilterDate] = useState('');
+
   const headers = { Authorization: `Bearer ${token}` };
 
   useEffect(() => {
@@ -163,122 +387,156 @@ const AdminUsers = () => {
 
   const handleViewMore = () => {
     if (viewUserId >= users.length) {
-      setViewUserId(20); // Collapse
+      setViewUserId(20);
     } else {
-      setViewUserId(prev => Math.min(prev + 10, users.length)); // Show more
+      setViewUserId(prev => Math.min(prev + 10, users.length));
     }
-  }
+  };
+
+  const filteredUsers = users.filter((user) => {
+    const matchesEmail = user.email.toLowerCase().includes(search.toLowerCase());
+    const matchesDate = filterDate ? new Date(user.createdAt).toISOString().slice(0, 10) === filterDate : true;
+    return matchesEmail && matchesDate;
+  });
 
   return (
-    <div className="admin-users-content" >
+    <div className="admin-users-content">
       <h1 className="text-2xl font-bold text-blue-800 mb-4">All Users</h1>
-
       {error && <div className="text-red-600 mb-4">{error}</div>}
 
-      <div className="adminUser-card rounded-xl shadow overflow-x-auto">
-        <table className="adminUser-head ">
-          <thead className="adminUser-head1 text-xs font-semibold uppercase ">
-            <tr className='adminUser-head1'>
-              <th className="px-6 py-3 text-left">Username</th>
-              <th className="px-6 py-3 text-left">Email</th>
-              
-              <th className="px-6 py-3 text-left">Balance</th>
-<th className="px-6 py-3 text-left">Status</th>
-              <th className="px-6 py-3 text-left">Role</th>
-              <th className="px-6 py-3 text-left">Created</th>
-              <th className="adminUser-head1 px-6 py-3 text-left">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-600">
-            {users.slice(0, viewUserId).map((user) => (
-              <tr key={user._id} className="hover:bg-gray-800">
-                <td className="px-6 py-3">
-                  {editUserId === user._id ? (
-                    <input
-                      name="username"
-                      value={formData.username}
-                      onChange={handleInputChange}
-                      className="border px-2 py-1 rounded w-full"
-                    />
-                  ) : (
-                    user.username
-                  )}
-                </td>
-                <td className="px-6 py-3">
-                  {editUserId === user._id ? (
-                    <input
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="border px-2 py-1 rounded w-full"
-                    />
-                  ) : (
-                    user.email
-                  )}
-                </td>
-                <td className="px-6 py-3">
-  {editUserId === user._id ? (
-    <input
-      name="balance"
-      type="number"
-      value={formData.balance}
-      onChange={handleInputChange}
-      className="border px-2 py-1 rounded w-full"
-    />
-  ) : (
-    `₦${Number(user.balance).toLocaleString()}`
-  )}
-</td>
+      {/* Filters */}
+      <div className="flex flex-col  md:flex-row md:items-center gap-4 mb-4">
+        <input
+          type="text"
+          placeholder="Search by email"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="px-4 py-2 border h-[30px]  border-gray-300 rounded-md w-full md:w-1/2"
+        />
+        <input
+          type="date"
+          value={filterDate}
+          onChange={(e) => setFilterDate(e.target.value)}
+          className="px-4 py-2 border h-[30px]  border-gray-300 rounded-md"
+        />
+      </div>
 
-                <td className="px-6 py-3">
-                  <span className={`active_adminUser rounded-full text-xs font-medium ${user.isVerified ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                    {user.isVerified ? 'Active' : 'Inactive'}
+      <div className="adminUser-card rounded-xl shadow ">
+        <div className="nk-tb-list">
+          <div className="nk-tb-item">
+            <div className='nk-tb-col nk-head1'><span>Username</span></div>
+            <div className='nk-tb-col nk-head1'><span>Email</span></div>
+            <div className='nk-tb-col nk-head1'><span>Balance</span></div>
+            <div className='nk-tb-col nk-head1'><span>Status</span></div>
+            <div className='nk-tb-col nk-head1'><span>Role</span></div>
+            <div className='nk-tb-col nk-head1'><span>Created</span></div>
+            <div className='nk-tb-col nk-head1'><span>Actions</span></div>
+          </div>
+
+          <tbody className="divide-y divide-gray-600">
+            {filteredUsers.slice(0, viewUserId).map((user) => (
+              <div key={user._id} className="nk-tb-item">
+                <div className='nk-tb-col'>
+                  <span>
+                    {editUserId === user._id ? (
+                      <input
+                        name="username"
+                        value={formData.username}
+                        onChange={handleInputChange}
+                        className="border px-2 py-1 h-[30px] rounded w-full"
+                      />
+                    ) : (
+                      user.username
+                    )}
                   </span>
-                </td>
-                <td className="px-6 py-3 capitalize">
-                  {editUserId === user._id ? (
-                    <input
-                      name="role"
-                      value={formData.role}
-                      onChange={handleInputChange}
-                      className="border px-2 py-1 rounded w-full"
-                    />
-                  ) : (
-                    user.role || 'user'
-                  )}
-                </td>
-                <td className="px-6 py-3">{new Date(user.createdAt).toLocaleDateString()}</td>
-                <td className="button-container px-6 py-3 space-x-2">
-                  {editUserId === user._id ? (
-                    <>
-                      <button onClick={() => handleEditSubmit(user._id)} className="text-green-600 hover:underline">💾 Save</button>
-                      <button onClick={cancelEdit} className="text-gray-600 hover:underline">Cancel</button>
-                    </>
-                  ) : (
-                    <>
-                      <button onClick={() => startEdit(user)} className="admin-edit text-blue-600 hover:underline">Edit</button>
-                      <button onClick={() => handleToggleStatus(user._id)} className="admin-act text-yellow-600 hover:underline">
-                        {user.isVerified ? ' Deactivate' : ' Activate'}
-                      </button>
-                      <button onClick={() => handleDelete(user._id)} className="admin-del text-red-600 hover:underline">Delete</button>
-                    </>
-                  )}
-                </td>
-              </tr>
+                </div>
+
+                <div className='nk-tb-col'>
+                  <span>
+                    {editUserId === user._id ? (
+                      <input
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="border px-2 py-1 h-[30px] rounded w-full"
+                      />
+                    ) : (
+                      user.email
+                    )}
+                  </span>
+                </div>
+
+                <div className='nk-tb-col'>
+                  <span>
+                    {editUserId === user._id ? (
+                      <input
+                        name="balance"
+                        type="number"
+                        value={formData.balance}
+                        onChange={handleInputChange}
+                        className="border px-2 py-1 h-[30px] rounded w-full"
+                      />
+                    ) : (
+                      `₦${Number(user.balance).toLocaleString()}`
+                    )}
+                  </span>
+                </div>
+
+                <div className='nk-tb-col'>
+                  <span>
+                    <span className={`active_adminUser rounded-full text-xs font-medium ${user.isVerified ? ' text-green-700' : ' text-red-700'}`}>
+                      {user.isVerified ? 'Active' : 'Inactive'}
+                    </span>
+                  </span>
+                </div>
+
+                <div className='nk-tb-col'>
+                  <span>
+                    {editUserId === user._id ? (
+                      <input
+                        name="role"
+                        value={formData.role}
+                        onChange={handleInputChange}
+                        className="border p-[10px]  h-[30px] rounded w-full"
+                      />
+                    ) : (
+                      user.role || 'user'
+                    )}
+                  </span>
+                </div>
+
+                <div className='nk-tb-col'>
+                  <span>{new Date(user.createdAt).toLocaleDateString()}</span>
+                </div>
+
+                <div className='nk-tb-col'>
+                  <span>
+                    {editUserId === user._id ? (
+                      <>
+                        <button onClick={() => handleEditSubmit(user._id)} className="text-green-600 text-[30px] hover:underline"><CiSaveDown2 /></button>
+                        <button onClick={cancelEdit} className="text-gray-600 text-[30px] hover:underline"><FcCancel /></button>
+                      </>
+                    ) : (
+                      <>
+                        <button onClick={() => startEdit(user)} className="admin-edit text-blue-600 hover:underline"><BiEdit /></button>
+                        <button onClick={() => handleDelete(user._id)} className="admin-del text-red-600 hover:underline"><MdOutlineDeleteOutline /></button>
+                      </>
+                    )}
+                  </span>
+                </div>
+              </div>
             ))}
           </tbody>
-        </table>
-        {users.length > 10 && (
-  <div className="text-center mt-4">
-    <button
-      onClick={handleViewMore}
-      className="admin-see-more-btn "
-    >
-      {viewUserId >= users.length ? 'See Less' : 'See More'}
-    </button>
-  </div>
-)}
+        </div>
+
+        {filteredUsers.length > 10 && (
+          <div className="text-center mt-4">
+            <button onClick={handleViewMore} className="admin-see-more-btn">
+              {viewUserId >= filteredUsers.length ? 'See Less' : 'See More'}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

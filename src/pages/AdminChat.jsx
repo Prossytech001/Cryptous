@@ -163,28 +163,32 @@ const AdminTicketDashboard = () => {
         <div style={{ flex: 1 }}>
           <h3>Tickets</h3>
           {tickets.map((ticket) => (
-            <div key={ticket._id} style={{ border: "1px solid #ccc", marginBottom: 10, padding: 10, cursor: "pointer" }}
+            <div key={ticket._id} 
+            className="nk-msg-item"
               onClick={() => setActiveTicket(ticket)}
             >
-              <strong>{ticket.subject}</strong> <br />
-              User: {ticket.userId?.email || "Unknown"} <br />
-              Status: <b>{ticket.status}</b> | Urgency: {ticket.urgency}
+              <strong className="admin-subject">{ticket.subject}</strong> <br />
+               <h1 className="admin-chat-email"> {ticket.userId?.email || "Unknown"}</h1>  <br />
+               <b className="admin-chat-status">{ticket.status}</b> | Urgency: {ticket.urgency}
             </div>
           ))}
         </div>
 
         {activeTicket && (
           <div style={{ flex: 1 }}>
-            <h3>📋 Ticket Details</h3>
-            <p><strong>Subject:</strong> {activeTicket.subject}</p>
-            <p><strong>Category:</strong> {activeTicket.category}</p>
-            <p><strong>Urgency:</strong> {activeTicket.urgency}</p>
-            <p><strong>Message:</strong> {activeTicket.message}</p>
+            <h3> Details</h3>
+            <p className="admin-subject"><strong></strong> {activeTicket.subject}</p>
+            <p className="nk-msg-item"><strong></strong> {activeTicket.message}</p>
+            <div className="flex">
+            <p className="admin-chat-status"> {activeTicket.category}</p>
+            <p className="admin-chat-status"> {activeTicket.urgency}</p>
+            </div>
+            
 
             <h4>Replies:</h4>
             {activeTicket.replies.map((r, i) => (
-              <div key={i} style={{ padding: 5, marginBottom: 5, background: r.from === "admin" ? "#d1e7dd" : "#f8d7da" }}>
-                <strong>{r.from}</strong>: {r.message}
+              <div key={i} style={{ padding: 5, marginBottom: 5, background: r.from === "admin" ? "#d1e7dd" : "#f8d7da" }} className="nk-msg-item">
+               {r.from}:  <strong className=" admin-chat-status">{r.message}</strong>
               </div>
             ))}
 
@@ -194,6 +198,7 @@ const AdminTicketDashboard = () => {
               placeholder="Type your reply..."
               style={{ width: "100%", padding: 10, marginTop: 10 }}
               rows={4}
+              className="textare-admin-chat"
             />
 
             <button onClick={() => sendReply(activeTicket._id)} style={{ marginTop: 10 }}>Send Reply</button>

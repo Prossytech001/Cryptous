@@ -420,6 +420,175 @@ padding-left: 10px;
 .notification-icon{
     fill: var(--White);
 }
+/* admin route */
+.admin-aside{
+        background: #f5f6fa;
+    overflow: auto;
+    height: 100vh;
+    padding: 10px;
+    
+   
+    
+}
+.nk-menu{
+    padding: 16px;
+}
+.nk-text{
+    font-size: 36px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: oblique;
+    color: blue;
+}
+.nk-menu-link {
+    padding: .625rem 40px .625rem 24px;
+   
+    font-family: Nunito, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .01em;
+    text-transform: none;
+    line-height: 1.25rem;
+}
+.nk-menu-icon {
+    font-size: 24px;
+    letter-spacing: normal;
+    vertical-align: middle;
+    color: currentColor;
+    transition: color .4s, background-color .4s;
+}
+.nk-menu-icon  {
+    font-family: Nioicon !important;
+    
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.nk-header {
+    background: #f5f6fa;
+    border-bottom: 1px solid #e5e9f2;
+    padding: 0 6px;
+    
+    padding: 10px;
+}
 
 
+/* admin-chat-dashboard */
+.nk-msg-item {
+    position: relative;
+    cursor: default;
+    background: rgba(226, 229, 241, 0.7);
+    padding: 10px;
+    border-left: 3px solid blue;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
 
+.nk-msg-item {
+    border-bottom: 2px solid rgb(229, 233, 242);
+}
+.admin-subject{
+    font-weight: 400;
+    color: #7d7d7d;
+}
+.admin-chat-email{
+    font-size: 18px;
+    font-weight: 400;
+}
+.admin-chat-status{
+    background-color: blue;
+    color: var(--BgWhite);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+.textare-admin-chat{
+    border: 2px solid grey;
+
+}
+.description-plans{
+    min-width: 50%;
+}
+.plans-man{
+  background-color: blue;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1rem .5rem;
+    font-size: 13px;
+    color: var(--BgWhite);
+
+}
+/*add-plan  */
+.add-plan{
+    padding: 20px;
+}
+.add-plan-input{
+    height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid blue;
+}
+.add-plan-inputs {
+    height: 4rem;
+    border: 1px solid blue;
+}
+.add-plan-btn{
+    padding: 10px;
+}
+.plan-mangement{
+    padding: 20px;
+}
+.visitor-log{
+    padding: 20px;
+}
+/* Admin Email Sender */
+.modal-content {
+    position: relative;
+    min-height: 40px;
+    box-shadow: 0 0 1px 0 rgba(82, 100, 132, .2), 0 8px 15.52px .48px rgba(28, 43, 70, .15);
+}
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+    
+  padding: 40px;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: 20px;
+    outline: 0;
+}
+.modal-header {
+    display: flex
+;
+color: blue;
+font-size: 10px;
+font-weight: 300;
+font-style: italic;
+    flex-shrink: 0;
+    align-items: center;
+    padding: var(--bs-modal-header-padding);
+    border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+    border-top-left-radius: var(--bs-modal-inner-border-radius);
+    border-top-right-radius: var(--bs-modal-inner-border-radius);
+}
+.compose-mail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.compose-mail-input{
+    height: 40px;
+    padding: 10px;
+    width: 100%;
+    border: 2px solid rgba(128, 128, 128, 0.548);
+}

@@ -45,8 +45,8 @@ const CreateUserForm = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#1E1E2D' }}  className="create-user-form p-4  flex flex-col justify-center items-center rounded shadow-md h-screen">
-      <h2 className="text-xlfont-bold mb-4 text-gray-800 dark:text-white">Create New User</h2>
+    <div style={{ backgroundColor: 'var(--BgWhite)' }}  className="create-user-form p-4  flex flex-col justify-center items-center rounded shadow-md h-screen">
+      <h2 className="text-xl font-bold mb-4 text-blue-800 dark:text-blue">Create New User</h2>
       <form onSubmit={handleSubmit} className="admin-create-form  ">
         <input
           type="text"
@@ -54,7 +54,7 @@ const CreateUserForm = () => {
           placeholder="Username"
           value={formData.username}
           onChange={handleChange}
-          className="w-full text-gray-50 h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-50 placeholder-gray-400 transition"
+          className="w-full admin-user-input text-gray-50 h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-50 placeholder-gray-400 transition"
           required
         />
 
@@ -64,7 +64,7 @@ const CreateUserForm = () => {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full text-gray-50 h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 transition"
+          className="w-full admin-user-input text-gray-50 h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 transition"
           required
         />
 
@@ -74,7 +74,7 @@ const CreateUserForm = () => {
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
-          className="w-full h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-50 placeholder-gray-400 transition"
+          className="w-full admin-user-input h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-50 placeholder-gray-400 transition"
           required
         />
 
@@ -82,7 +82,7 @@ const CreateUserForm = () => {
           name="role"
           value={formData.role}
           onChange={handleChange}
-          className="w-full h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-50 placeholder-gray-400 transition"
+          className="w-full admin-user-input h-12 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-50 placeholder-gray-400 transition"
         >
           <option value="user">User</option>
           <option value="admin">Admin</option>

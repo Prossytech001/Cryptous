@@ -3,15 +3,24 @@
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    background-color: #1E1E2D;
+    background-color: var(--BgWhite);
     height: 100vh;
 }
 .adminUser-card {
-    background-color: #2A2A3C;
    
-    padding: 20px;
+   
+  
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #FFFFFF;
+}
+@media all and (max-width: 600px){
+    .adminUser-card {
+   width:400px;
+   
+  overflow-x: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+}
 }
 .adminUser-head{
    
@@ -31,10 +40,11 @@ height: 3rem;
 .admin-edit{
     background-color: green;
     color: #FFFFFF;
-    padding: 6px 10px;
+    padding:10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 20px;
 }
 .admin-edit:hover{
     background-color: darkgreen;
@@ -53,8 +63,9 @@ height: 3rem;
 .admin-del{
     background-color: rgb(243, 20, 4);
     color: #FFFFFF;
-    padding: 6px 10px;
+    padding: 10px;
     border-radius: 5px;
+    font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

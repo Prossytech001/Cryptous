@@ -150,7 +150,7 @@ const AdminVisitorTrack = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100 min-h-screen  visitor-log">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Visitor Logs</h2>
       {loading ? (
         <p className="text-gray-600">Loading...</p>
@@ -158,42 +158,55 @@ const AdminVisitorTrack = () => {
         <p className="text-gray-600">No visitor records yet.</p>
       ) : (
         <div className="bg-white rounded shadow overflow-hidden">
-          <table className="min-w-full text-sm text-gray-700">
-            <thead className="bg-red-600 text-white text-left">
-              <tr>
-                <th className="px-4 py-3">IP</th>
-                <th className="px-4 py-3">Country</th>
-                <th className="px-4 py-3">City</th>
-                <th className="px-4 py-3">Region</th>
-                <th className="px-4 py-3">Device</th>
-                <th className="px-4 py-3">Browser</th>
-                <th className="px-4 py-3">OS</th>
-                <th className="px-4 py-3">Visited</th>
-                <th className="px-4 py-3 text-right">Actions</th>
-              </tr>
-            </thead>
+           <div className="adminUser-card rounded-xl shadow ">
+          <div className="nk-tb-list">
+            <div className="nk-tb-item ">
+              <div className='plans-man'>
+              <span className=" ">IP</span></div>
+                <div className='plans-man'>
+              <span className=" ">Country</span></div>
+                <div className='plans-man'>
+              <span className=" ">City</span></div>
+                <div className='plans-man'>
+              <span className=" ">Region</span></div>
+                <div className='plans-man'>
+              <span className=" ">Device</span></div>
+                <div className='plans-man'>
+              <span className=" ">Browser</span></div>
+                <div className='plans-man'>
+              <span className=" ">OS</span></div>
+                <div className='plans-man'>
+              <span className=" ">Visited</span></div>
+                
+              
+            </div>
             <tbody>
               {currentVisitors.map((v, i) => (
-                <tr key={i} className="border-b hover:bg-gray-50">
-                  <td className="px-4 py-3">{v.ip}</td>
-                  <td className="px-4 py-3">{v.country}</td>
-                  <td className="px-4 py-3">{v.city}</td>
-                  <td className="px-4 py-3">{v.region}</td>
-                  <td className="px-4 py-3">{v.deviceType || 'N/A'}</td>
-                  <td className="px-4 py-3">{v.browser} {v.browserVersion}</td>
-                  <td className="px-4 py-3">{v.os} {v.osVersion}</td>
-                  <td className="px-4 py-3 whitespace-nowrap">
+                <div key={i} className="nk-tb-item  ">
+                  <div className='nk-tb-col '>
+              <span className="  ">{v.ip}</span></div>
+                  <div className='nk-tb-col '>
+              <span className="  ">{v.country}</span></div>
+                  <div className='nk-tb-col '>
+              <span className="  ">{v.city}</span></div>
+                 <div className='nk-tb-col '>
+              <span className="  ">{v.region}</span></div>
+                 <div className='nk-tb-col '>
+              <span className="  ">{v.deviceType || 'N/A'}</span></div>
+                  <div className='nk-tb-col '>
+              <span className="  ">{v.browser} {v.browserVersion}</span></div>
+                 <div className='nk-tb-col '>
+              <span className="  ">{v.os} {v.osVersion}</span></div>
+                  <div className='nk-tb-col '>
+              <span className="  ">
                     {new Date(v.timestamp).toLocaleString()}
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    <button className="text-gray-600 hover:text-black">
-                      <FiMoreVertical size={18} />
-                    </button>
-                  </td>
-                </tr>
+                  </span></div>
+                  
+                </div>
               ))}
             </tbody>
-          </table>
+          </div>
+          </div>
 
           <div className="flex items-center justify-between px-4 py-3 bg-gray-50">
             <span className="text-sm text-gray-600">
