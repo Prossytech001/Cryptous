@@ -13,12 +13,12 @@ import {
   Pagination,
 } from "swiper/modules";
 import { motion } from "framer-motion";
-import MarketCapChart from "/here.jpg";
+
 
 const slides = [
   {
-    title: "Grow Your Wealth with Cryptous ",
-    subtitle: "At Cryptous, we make crypto investing simple and profitable. Whether you're new to the world of crypto or a seasoned investor, our platform gives you everything you need to stake, grow, and manage your assets with confidence.",
+    title: "Grow Your Wealth with CryptFlux ",
+    subtitle: "At CryptoFlux, we make crypto investing simple and profitable. Whether you're new to the world of crypto or a seasoned investor, our platform gives you everything you need to stake, grow, and manage your assets with confidence.",
     image: "/bgs.jpg",
   },
   {
@@ -94,7 +94,7 @@ export default function HeroSlider() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className=" hero_h1 text-4xl md:text-6xl font-bold mb-4"
               >
-                {slide.title}
+               
               </motion.h1>
               
 
@@ -123,7 +123,7 @@ export default function HeroSlider() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}>
-                       <img src={MarketCapChart} alt="" />
+                       
                     </motion.div>
           </div>
         </SwiperSlide>

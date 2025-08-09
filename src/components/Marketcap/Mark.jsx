@@ -115,6 +115,7 @@ function TradingViewWidget() {
         "scalePosition": "right",
         "scaleMode": "Normal",
         "valuesTracking": "1",
+        "isTransparent": true,
         "changeMode": "price-and-percent",
         "dateRanges": [
           "1d|1",

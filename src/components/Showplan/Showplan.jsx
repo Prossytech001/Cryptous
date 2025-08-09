@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../Authcontext";
 import "./Showplan.css"
 import Loader from "../Loader/Loader";
-import img from "../../../public/pig.jpg"
+
 import Footer from "../Footer/Footer";
 
 const Plans = () => {

@@ -32,7 +32,7 @@ const Portfolio = () => {
              
             </h2>
             <p className='port-p text-muted/60 text-18'>
-              Cryptous has a variety of features that make it the best
+              CryptoFlux has a variety of features that make it the best
               <br className='md:block hidden' /> place to start trading.
             </p>
 

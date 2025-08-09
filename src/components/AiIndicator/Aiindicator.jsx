@@ -933,3 +933,203 @@
 // };
 
 // export default AssistantIndicator;
+import { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { FaRobot } from "react-icons/fa";
+import "../AiIndicator/Aiindicator.css";
+
+const DRAG_THRESHOLD = 5; // px before we call it a drag
+
+export default function AssistantIndicator() {
+  const [showChat, setShowChat] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+  const api = import.meta.env.VITE_API_URL;
+
+  // Drag state
+  const [position, setPosition] = useState({ x: 200, y: 400 });
+  const draggingRef = useRef(false);
+  const movedRef = useRef(false);
+  const startRef = useRef({ x: 0, y: 0 });
+  const offsetRef = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
+
+  const handleAsk = async () => {
+    if (!input.trim()) return;
+    const newMessages = [...messages, { role: "user", text: input }];
+    setMessages(newMessages);
+    setLoading(true);
+    setInput("");
+
+    try {
+      const res = await axios.post(`${api}/api/chat`, { message: input });
+      setMessages([...newMessages, { role: "assistant", text: res.data.reply }]);
+    } catch {
+      setMessages([...newMessages, { role: "assistant", text: "❌ Sorry, something went wrong." }]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // --- DRAG HANDLERS (window-level while dragging) ---
+  const onPointerDown = (clientX, clientY) => {
+    draggingRef.current = true;
+    movedRef.current = false;
+    startRef.current = { x: clientX, y: clientY };
+    offsetRef.current = { x: clientX - position.x, y: clientY - position.y };
+
+    window.addEventListener("mousemove", onWindowMouseMove, { passive: false });
+    window.addEventListener("mouseup", onWindowMouseUp);
+    window.addEventListener("touchmove", onWindowTouchMove, { passive: false });
+    window.addEventListener("touchend", onWindowTouchEnd);
+  };
+
+  const onWindowMouseMove = (e) => {
+    if (!draggingRef.current) return;
+    e.preventDefault();
+    const dx = e.clientX - startRef.current.x;
+    const dy = e.clientY - startRef.current.y;
+    if (!movedRef.current && (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD)) {
+      movedRef.current = true;
+    }
+    setPosition({ x: e.clientX - offsetRef.current.x, y: e.clientY - offsetRef.current.y });
+  };
+
+  const onWindowTouchMove = (e) => {
+    if (!draggingRef.current) return;
+    const t = e.touches[0];
+    if (!t) return;
+    e.preventDefault();
+    const dx = t.clientX - startRef.current.x;
+    const dy = t.clientY - startRef.current.y;
+    if (!movedRef.current && (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD)) {
+      movedRef.current = true;
+    }
+    setPosition({ x: t.clientX - offsetRef.current.x, y: t.clientY - offsetRef.current.y });
+  };
+
+  const endDrag = () => {
+    draggingRef.current = false;
+    window.removeEventListener("mousemove", onWindowMouseMove);
+    window.removeEventListener("mouseup", onWindowMouseUp);
+    window.removeEventListener("touchmove", onWindowTouchMove);
+    window.removeEventListener("touchend", onWindowTouchEnd);
+  };
+
+  const onWindowMouseUp = () => endDrag();
+  const onWindowTouchEnd = () => endDrag();
+
+  const handleBubbleMouseDown = (e) => onPointerDown(e.clientX, e.clientY);
+  const handleBubbleTouchStart = (e) => {
+    const t = e.touches[0];
+    if (t) onPointerDown(t.clientX, t.clientY);
+  };
+
+  const handleBubbleClick = () => {
+    // If we didn’t actually drag, treat as click -> open
+    if (!movedRef.current) setShowChat(true);
+  };
+
+  const renderMessage = (msg, i) => {
+    const isUser = msg.role === "user";
+    const avatar = isUser
+      ? "https://cdn-icons-png.flaticon.com/512/1144/1144760.png"
+      : "https://cdn-icons-png.flaticon.com/512/4712/4712107.png";
+
+    return (
+      <div
+        key={i}
+        style={{
+          display: "flex",
+          justifyContent: isUser ? "flex-end" : "flex-start",
+          marginBottom: 10,
+        }}
+      >
+        {!isUser && <img src={avatar} alt="avatar" style={avatarStyle} />}
+        <div style={{ ...bubbleStyle, background: isUser ? "#690dfd" : "#f1f1f1", color: isUser ? "#fff" : "#000" }}>
+          {msg.text}
+        </div>
+        {isUser && <img src={avatar} alt="avatar" style={avatarStyle} />}
+      </div>
+    );
+  };
+
+  return (
+    <>
+      {!showChat && (
+        <div
+          className="assistant-fixed-container"
+          onMouseDown={handleBubbleMouseDown}
+          onTouchStart={handleBubbleTouchStart}
+          onClick={handleBubbleClick}
+          style={{
+            position: "fixed",
+            left: position.x,
+            top: position.y,
+            zIndex: 1000,
+            cursor: draggingRef.current ? "grabbing" : "grab",
+            touchAction: "none",
+            transition: draggingRef.current ? "none" : "transform 0.15s ease-out",
+          }}
+        >
+          <div className="tooltip-bubble">💬 Ask anything</div>
+          <div className="ring-container w-20 h-20">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse shadow-lg">
+              <div className="ai-text flex items-center justify-center center-div-ani rounded-full bg-white">
+                <FaRobot size={20} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showChat && (
+        <div className="chat-popup-box">
+          <div className="chat-h">
+            <div className="chat-header">
+              <span>🔮 Ask Assistant</span>
+              <button onClick={() => setShowChat(false)}>×</button>
+            </div>
+          </div>
+
+          <div style={chatBoxStyle}>
+            {messages.map(renderMessage)}
+            {loading && (
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" alt="typing" style={avatarStyle} />
+                <em>AI is typing...</em>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          <div className="chatinput flex justify-between items-center p-4">
+            <input
+              type="text"
+              placeholder="Ask about our platform..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleAsk()}
+              style={inputStyle}
+            />
+            <button onClick={handleAsk} disabled={loading} style={buttonStyle}>
+              Send
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+// --- styles ---
+const avatarStyle = { width: 30, height: 30, borderRadius: "50%" };
+const bubbleStyle = { padding: 10, borderRadius: 10, maxWidth: "75%" };
+const chatBoxStyle = { maxHeight: 400, overflowY: "auto", marginBottom: 20, background: "#f9f9f9", padding: 10, borderRadius: 5 };
+const inputStyle = { width: "100%", padding: 10, borderRadius: 5, border: "1px solid #ccc" };
+const buttonStyle = { padding: 10, background: "#2D2A4D", color: "white", borderRadius: 5, border: "none", cursor: "pointer" };

@@ -312,7 +312,10 @@ import AdminVisitorTrack from './pages/AdminVisitorTrack';
 import useVisitorTracking from './components/useVisitorTracking';
 import AdminPlanManager from './pages/AdminPlanManager';
 import AdminEmailSender from './pages/AdminEmailSender';
-// import AssistantIndicator from './components/AiIndicator/Aiindicator';
+import VisitorEmailGate from './components/VisitorEmailGate';
+import useEmailGate from './components/useEmailGate';
+import AdminEmails from './pages/AdminEmails';
+import AssistantIndicator from './components/AiIndicator/Aiindicator';
 // function App() {
 //   const { isAuthenticated, user } = React.useContext(AuthContext);
 //   const [loading, setLoading] = useState(true);
@@ -499,6 +502,7 @@ import AdminEmailSender from './pages/AdminEmailSender';
 function App() {
   const { isAuthenticated, user } = React.useContext(AuthContext);
   const [loading, setLoading] = useState(true);
+  const { open, setOpen, submitEmail } = useEmailGate();
 
  useVisitorTracking();
 
@@ -517,8 +521,16 @@ useEffect(() => {
     <Preloader />
   ) : (
     <>
+    <VisitorEmailGate
+    open={open}
+        onClose={() => {
+          setOpen(false);
+          sessionStorage.setItem("visitorTracked", "true");
+        }}
+        onSubmit={submitEmail}/>
       <CookieConsentModal />
-      {/* <AssistantIndicator /> */}
+      
+      <AssistantIndicator />
 
       <Routes>
         {/* PUBLIC ROUTES */}
@@ -718,6 +730,16 @@ useEffect(() => {
             <AdminPrivateRoute>
               <AdminDashboardLayout>
                 <AdminEmailSender/>
+              </AdminDashboardLayout>
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/adminemail"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboardLayout>
+                <AdminEmails/>
               </AdminDashboardLayout>
             </AdminPrivateRoute>
           }

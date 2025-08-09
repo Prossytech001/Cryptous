@@ -592,3 +592,20 @@ font-style: italic;
     width: 100%;
     border: 2px solid rgba(128, 128, 128, 0.548);
 }
+/* email-gate */
+.email-gate-con{
+    padding: 30px;
+    line-height: 50px;
+   
+}
+.email-gate-text{
+    margin-bottom: 20px;
+}
+.email-mate-gate{
+    padding: 30px;
+}
+/* admin-get0-all-email */
+.email-lead{
+    padding: 10px;
+    margin-bottom: 5px;
+}

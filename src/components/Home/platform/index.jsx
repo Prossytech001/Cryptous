@@ -40,7 +40,7 @@ const Platform = () => {
         <div className="platforms bg-section/10 px-16 py-14 rounded-3xl border-2 border-section/20 grid grid-cols-12 items-center before:content-[''] before:absolute relative before:w-96 before:h-64 before:bg-start before:bg-no-repeat before:-bottom-11 overflow-hidden lg:before:right-48 before:-z-1 before:opacity-10">
           <div className='lg:col-span-8 col-span-12'>
             <h2 className='text-white sm:text-40 text-30 mb-6'>
-              Powered by the Cryp<span className='text-primary'>tous</span>{' '}
+              Powered by the Crypto<span className='text-primary'>Flux</span>{' '}
               Platform
             </h2>
             <p className='text-muted/60 text-18'>

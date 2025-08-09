@@ -307,7 +307,7 @@ const DashboardLayout = ({ children }) => {
                 <div className="ml-6 flex flex-col text-sm gap-1">
                   <Link to="/admin/deposits" className="text-[#6B7280] hover:text-[#2563EB]">Deposits</Link>
                   <Link to="/admin/withdrawals" className="text-[#6B7280] hover:text-[#2563EB]">Withdrawals</Link>
-                  <Link to="/admin/approvals" className="text-[#6B7280] hover:text-[#2563EB]">Approvals</Link>
+                  
                 </div>
               )}
             </div>
@@ -324,11 +324,12 @@ const DashboardLayout = ({ children }) => {
                   <Link to="/admin/track" className="text-[#6B7280] hover:text-[#2563EB]">Track Visitor</Link>
                   <Link to="/admin/plans" className="text-[#6B7280] hover:text-[#2563EB]">Plans</Link>
                   <Link to="/admin/email" className="text-[#6B7280] hover:text-[#2563EB]">Send Email</Link>
+                  <Link to="/admin/adminemail" className="text-[#6B7280] hover:text-[#2563EB]">visitor Email</Link>
                 </div>
               )}
             </div>
 
-            <Link to="/admin/settings" className={`flex items-center gap-3 px-4 py-2 rounded-md text-base font-medium ${location.pathname === '/admin/settings' ? 'bg-[#2563EB] text-white' : 'hover:bg-[#F3F4F6]'} nk-menu-link `}><FiSettings /> Settings</Link>
+            {/* <Link to="/admin/settings" className={`flex items-center gap-3 px-4 py-2 rounded-md text-base font-medium ${location.pathname === '/admin/settings' ? 'bg-[#2563EB] text-white' : 'hover:bg-[#F3F4F6]'} nk-menu-link `}><FiSettings /> Settings</Link> */}
           </nav>
 
           <div className="border-t border-[#E5E7EB] p-4">

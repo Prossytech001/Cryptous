@@ -40,7 +40,7 @@ const MarketCapChart = () => {
     script.async = true;
     script.innerHTML = JSON.stringify({
       "showSymbolLogo": true,
-        "isTransparent": false,
+        "isTransparent": true,
         "displayMode": "adaptive",
         "colorTheme": "dark",
         "locale": "en",
