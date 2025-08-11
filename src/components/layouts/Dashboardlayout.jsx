@@ -548,16 +548,25 @@ const DashboardLayout = ({ children }) => {
 </svg>
 
           </Link>
+
           <Link to="/profile" className='flex items-center profile-top-nav'>
          {user && (
         <>
+
           
-          <span className="text-white user-header-h1 font-medium capitalize">{user.username}</span>
           <div className="user-header w-10 h-10 rounded-full  flex items-center justify-center text-black font-bold text-lg">
             {getInitial(user.username)}
           </div>
+        <div className='flex flex-col'>
+           <span className="text-white user-header-h1 font-medium capitalize">{user.username}</span>
+          <p className='id-disply'>ID : <span className="text-[var(--grey)] font-sm capitalize">{user.referralCode}</span></p>
+        </div>
+          
+         
+        
         </>
       )}
+     
       </Link>
           </div>
       </div>

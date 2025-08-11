@@ -161,7 +161,7 @@
    
 }
 .nk-tb-list {
-    display: table;
+    
     width: 100%;
     font-size: 13px;
     overflow-x: auto;
@@ -181,13 +181,11 @@
     
     border-bottom: 1px solid #dbdfea;
 }
-.nk-tb-col:first-child {
-    padding-left: 1.25rem;
-}
+
 .nk-tb-col {
-    position: relative;
+     
     display: table-cell;
-    vertical-align: middle;
+    
     padding: 1rem .5rem;
 }
 .nk-head1{
@@ -204,6 +202,40 @@
     color: var(--BgWhite);
      border: 2px solid #50CD89;
      background-color:#50CD89 ;
+}
+/* plan maneger */
+.table-responsive{
+padding: 20px;
+line-height: 10px;
+}
+.headspan{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgb(0, 60, 255);
+    color: var(--BgWhite);
+}
+.add-plans {
+    padding: 5px 10px;
+}
+.sheet-plans{
+    padding: 20px;
+}
+.plan-manage-head{
+    padding: 20px;
+}
+/* edit / add */
+.add-plan-inputss{
+    padding: 20px;
+   
+}
+.plan-form input{
+    margin: 5px 0;
+    height: 30px;
+    padding: 10px;
+}
+.plan-form input::placeholder{
+    color: black;
 }
 
 

@@ -623,7 +623,7 @@ font-weight: 500;
   background-color:  var(--bs-body-bg);
     padding: 1rem;
    border-bottom: 1px solid #3B3854;
-    position: sticky;
+    position: static;
     color: var(--blue);
     top: 0;
     z-index: 1000;

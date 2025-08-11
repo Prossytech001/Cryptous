@@ -157,7 +157,7 @@ const AdminVisitorTrack = () => {
       ) : visitors.length === 0 ? (
         <p className="text-gray-600">No visitor records yet.</p>
       ) : (
-        <div className="bg-white rounded shadow overflow-hidden">
+        <div className="rounded shadow ">
            <div className="adminUser-card rounded-xl shadow ">
           <div className="nk-tb-list">
             <div className="nk-tb-item ">

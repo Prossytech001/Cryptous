@@ -53,7 +53,8 @@
     --LimeGreen: #24293E;
     --Green: #2BC155;
     --bs-body-bg: #040404;
-    --bs-secondary-bg: #0c0c0e;
+    
+     --bs-secondary-bg: #0c0c0e;
     --Bronzetone:#52390e;
     --Kumera:#96651e;
     --box:rgb(7, 7, 7);
@@ -68,7 +69,7 @@
   --Kumera: #c69c6d;             /* Lighter, warm gold-like */
   --box: #dfdede; 
    --White: #161616;
-   --svg-tog: white;
+   --svg-tog: rgb(0, 0, 0);
    --svg-togs: rgba(255, 255, 255, 0);
   
 }
@@ -93,29 +94,29 @@ body{
   font-size: 14px;
   position: relative;
   display: inline-block;
-  width: 3.7em;
-  height: 1.8em;
+  width: auto;
+  height: auto;
    z-index: 20;
+   display: flex;
 
 }
-.moon svg{
-  position: absolute;
+.sun svg{
+ 
   top: 6px;
   right: 5px;
   z-index: 1;
-  width: 17px;
-  height: 13px;
+  width: 20px;
+  height: 20px;
   fill: var(--svg-togs);
 }
 
- .sun svg {
+ .moon  svg {
   fill: var(--svg-tog);
-  position: absolute;
-  top: 5px;
-  left: 5px;
+
+  
   z-index: 1;
-  width: 17px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
 }
 
 
@@ -124,7 +125,7 @@ body{
 }
 
 .slider {
-  position: absolute;
+
   cursor: pointer;
   top: 0;
   left: 0;
@@ -137,7 +138,7 @@ body{
 }
 
 .slider:before {
-  position: absolute;
+  
   content: "";
   height: 1.4em;
   width: 1.4em;
@@ -286,10 +287,11 @@ p{
  
  
 } */
-
+*, *::before, *::after { box-sizing: border-box; }
 html, body {
   overflow-x: hidden;
    background-color: #040404;
+   width: 100%;
 }
 
 

@@ -66,10 +66,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import ReferralSection from "../components/ReferralSection";
+
+
 const ReferralRewards = () => {
   const [totalReward, setTotalReward] = useState(null); // Changed to null for clarity
   const [referredUsers, setReferredUsers] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state for UX
+  const [loadings, setLoadings] = useState(false);
    const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -95,6 +98,35 @@ const ReferralRewards = () => {
     fetchReferralData();
   }, []);
 
+
+  const handleConvert = async () => {
+  if (totalReward <= 0) {
+    alert("No rewards to convert");
+    return;
+  }
+
+  setLoadings(true);
+  try {
+    const res = await axios.post(
+      `${API}/api/users/convert-reward`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` }
+      }
+    );
+    alert(res.data.message);
+
+    // Update state
+    setTotalReward(res.data.totalReward);
+  } catch (err) {
+    console.error(err);
+    alert(err.response?.data?.message || "Error converting rewards");
+  } finally {
+    setLoadings(false);
+  }
+};
+
+
   return (
     <div className="referral-contain">
       
@@ -114,7 +146,18 @@ const ReferralRewards = () => {
               ${totalReward !== null ? totalReward : "0"}
             </p>
             <h2 className="Total-Referral-Reward">Total Referral Reward</h2>
+            <button
+  onClick={handleConvert}
+  disabled={loadings || totalReward <= 0}
+  className={`mt-3 px-4 conert-button py-2 rounded text-white ${
+    totalReward > 0 ? "bg-[var(--Kumera)] hover:bg-[var(--Kumera)]-700" : "bg-gray-400 cursor-not-allowed"
+  }`}
+>
+  {loadings ? "Converting..." : "Convert to Balance"}
+</button>
           </div>
+         
+
 
           <div className="referred-users-content">
             <h2 className="referral-user">Referred Users</h2>

@@ -800,7 +800,17 @@ const AdminDashboard = () => {
         setWithdrawableBalance(withdrawableRes.data.totalWithdrawable);
         setStats(visitorsRes.data); // { totalVisitors, visitorsToday }
         setUsers(allUsersRes.data);
-        setActivities(activitiesRes.data.activities);
+       // helper (Mongo ObjectId → created time) in case timestamp is missing
+const objectIdTime = (id) =>
+  id ? new Date(parseInt(id.substring(0, 8), 16) * 1000) : new Date(0);
+
+const sortedActs = [...(activitiesRes.data?.activities || [])].sort((a, b) => {
+  const ta = a.timestamp ? new Date(a.timestamp) : objectIdTime(a._id);
+  const tb = b.timestamp ? new Date(b.timestamp) : objectIdTime(b._id);
+  return tb - ta; // newest first
+});
+setActivities(sortedActs);
+
       } catch (err) {
         console.error(err);
         setError('Failed to fetch admin stats');
@@ -881,45 +891,41 @@ const AdminDashboard = () => {
 
         {/* All Users Table */}
         <div className="flex-1 bg-white rounded-xl shadow-md p-5">
-        <h3 className="text-lg font-semibold  card-inner text-white-700 mb-4">👥 All Users</h3>
-        <div className="nk-tb-list ">
-          <div className="nk-tb-item ">
-            <div className='nk-tb-col nk-head1'>
-              <span className=" ">username</span></div>
-              <div className='nk-tb-col nk-head2'>
-              <span className=" ">Email</span></div>
-               <div className='nk-tb-col nk-head3'>
-              <span className=" ">Balance</span></div>
-            
-          </div>
-          
-           {users.slice(0, visibleCount).map((user) => (
-
-              <div key={user._id} className="nk-tb-item  ">
-               <div className='nk-tb-col'>
-              <span className=" ">{user.username}</span></div>
-               <div className='nk-tb-col'>
-              <span className=" ">{user.email}</span></div>
-                <div className='nk-tb-col'>
-              <span className=" ">${user.balance.toLocaleString()}</span></div>
-              </div>
-            ))}
-        
+          <h3 className="text-lg font-semibold mb-4">👥 All Users</h3>
+          <table className="w-full text-left">
+            <thead>
+              <tr>
+                <th className="pb-2">Username</th>
+                <th className="pb-2">Email</th>
+                <th className="pb-2">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.slice(0, visibleCount).map((user) => (
+                <tr key={user._id}>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>₦{user.balance.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {users.length > 10 && (
+            <div className="text-center mt-4">
+              <button
+                onClick={handleToggleUsers}
+                className="admin-see-more-btn"
+              >
+                {visibleCount >= users.length ? 'See Less' : 'See More'}
+              </button>
+            </div>
+          )}
         </div>
-        {users.length > 10 && (
-  <div className="text-center mt-4">
-    <button
-      onClick={handleToggleUsers}
-      className="admin-see-more-btn "
-    >
-      {visibleCount >= users.length ? 'See Less' : 'See More'}
-    </button>
-  </div>
-)}
-
       </div>
-</div>
-      {error && <div className="mt-4 text-red-600 font-semibold">{error}</div>}
+
+      {error && (
+        <div className="mt-4 text-red-600 font-semibold">{error}</div>
+      )}
     </div>
   );
 };
