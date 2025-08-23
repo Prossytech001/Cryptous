@@ -1,0 +1,27 @@
+[
+  { "userMask": "User 123********", "action": "deposited", "amount": 1200 },
+  { "userMask": "User 793**********", "action": "invested",  "amount": 3000 },
+  { "userMask": "User 797********", "action": "withdrew",  "amount": 8000 },
+  { "userMask": "User 534*********", "action": "deposited", "amount": 450  },
+  { "userMask": "User 890*********", "action": "invested",  "amount": 1500 },
+  { "userMask": "User 276**********", "action": "withdrew",  "amount": 2300 },
+  { "userMask": "User 823********", "action": "deposited", "amount": 1200 },
+  { "userMask": "User 793**********", "action": "invested",  "amount": 3000 },
+  { "userMask": "User 7097********", "action": "withdrew",  "amount": 8000 },
+  { "userMask": "User 7634*********", "action": "deposited", "amount": 450  },
+  { "userMask": "User 890*********", "action": "invested",  "amount": 1500 },
+  { "userMask": "User 3876**********", "action": "withdrew",  "amount": 2300 },
+  { "userMask": "User 123********", "action": "deposited", "amount": 1200 },
+  { "userMask": "User 793**********", "action": "invested",  "amount": 3000 },
+  { "userMask": "User 9297********", "action": "withdrew",  "amount": 8000 },
+  { "userMask": "User 534*********", "action": "deposited", "amount": 450  },
+  { "userMask": "User 890*********", "action": "invested",  "amount": 1500 },
+  { "userMask": "User 276**********", "action": "withdrew",  "amount": 2300 },
+  { "userMask": "User 123********", "action": "deposited", "amount": 1200 },
+  { "userMask": "User 793**********", "action": "invested",  "amount": 3000 },
+  { "userMask": "User 797********", "action": "withdrew",  "amount": 8000 },
+  { "userMask": "User 534*********", "action": "deposited", "amount": 450  },
+  { "userMask": "User 890*********", "action": "invested",  "amount": 1500 },
+  { "userMask": "User 276**********", "action": "withdrew",  "amount": 2300 }
+
+]

@@ -18,7 +18,8 @@ import ReactApexChart from 'react-apexcharts';
 import ReferralSection from "../components/ReferralSection";
 import rewardsvg from "/cryptoimg/box-gift.svg"
 import { getStoredTheme , setTheme} from '../components/theme'; // adjust path as needed
-
+import ActivityTicker from "../components/ActivityTicker";
+import  data  from "../data/activities.json";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
@@ -386,6 +387,10 @@ const series = [{ data: [10, 30, 18, 55,20, 50 ] }];
         </div>
        
       </div>
+      <div>
+      {/* your dashboard UI */}
+       <ActivityTicker data={data} />
+    </div>
       <div className="reward-clue">
         <div className="reward-img-dash">
        <img src={rewardsvg} alt="" className="rewardsvg" />

@@ -127,9 +127,8 @@ const CardSlider = () => {
                   <img
                     src={item.icon}
                     alt='icon'
-                    width="30px"
-                    height="30px"
-                    className='object-contain'
+                    
+                    className='object-contain  w-[30px] h-[30px]'
                   />
                 </div>
                 <p className='text-white text-xs font-normal '>

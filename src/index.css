@@ -3,10 +3,9 @@
 
 
 *{
-  padding: 0;
-  margin: 0;
+
   list-style: none;
-  box-sizing: border-box;
+  margin: 0;
   text-decoration: none;
 }
 
@@ -160,6 +159,18 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(1.9em);
 }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn .4s ease; }
+
+.ticker {
+margin-bottom: 20px;
+
+}
+
+
 
 
 @theme {
@@ -297,7 +308,8 @@ html, body {
 
 section{
  background-color: black;
- padding: 20px
+ padding: 20px;
+ width: 100%;
 }
 
 /* .blog-details p,

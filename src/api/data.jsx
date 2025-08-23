@@ -189,7 +189,7 @@ export const pricedeta = [
     mark: "$94,040.99 (-0.9%)",
     width: 18,
     height: 23,
-    padding: "px-4 py-3",
+    padding: "px-0 py-0",
   },
   {
     title: "Ethereum",
@@ -200,7 +200,7 @@ export const pricedeta = [
     mark: "$4,878.26 (-35.9%)",
     width: 18,
     height: 23,
-    padding: "px-4 py-2",
+    padding: "px-0 py-0",
   },
   {
     title: "Bitcoin Cash ",
@@ -209,8 +209,8 @@ export const pricedeta = [
     background: "bg-warning/20",
     price: "$443.27",
     mark: "$3,785.82 (-88.3%)",
-    width: 46,
-    height: 46,
+    width: 18,
+    height: 23,
     padding: "px-0 py-0",
   },
   {
@@ -222,7 +222,7 @@ export const pricedeta = [
     mark: "$410.26 (-79.1%)",
     width: 18,
     height: 23,
-    padding: "px-4 py-3",
+    padding: "px-0 py-0",
   },
   {
     title: "Solana",
@@ -231,9 +231,9 @@ export const pricedeta = [
     background: "bg-light_grey",
     price: "$238.70",
     mark: "$259.96 (-8.2%)",
-    width: 24,
-    height: 24,
-    padding: "px-4 py-3",
+     width: 18,
+    height: 23,
+    padding: "px-0 py-0",
   },
   {
     title: "Dogecoin",
@@ -242,8 +242,8 @@ export const pricedeta = [
     background: "bg-light_grey",
     price: "$0.394",
     mark: "$0.7316 (-46.2%)",
-    width: 46,
-    height: 46,
+     width: 18,
+    height: 23,
     padding: "px-0 py-0",
   },
 ]
