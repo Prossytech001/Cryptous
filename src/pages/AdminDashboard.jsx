@@ -842,14 +842,14 @@ setActivities(sortedActs);
         <div className="admin-card acard2">
           <p className="text-sm text-gray-500 mb-1">All User Balance</p>
           <h2 className="admin_dash_h4">
-            ₦{balance?.toLocaleString() ?? '--'}
+            ${balance?.toLocaleString() ?? '--'}
           </h2>
         </div>
 
         <div className="admin-card acard3">
           <p className="text-sm text-gray-500 mb-1">All Withdrawable Balance</p>
           <h2 className="admin_dash_h4">
-            ₦{withdrawableBalance?.toLocaleString() ?? '--'}
+            ${withdrawableBalance?.toLocaleString() ?? '--'}
           </h2>
         </div>
 
